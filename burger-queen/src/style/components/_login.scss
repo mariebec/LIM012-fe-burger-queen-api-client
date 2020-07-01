@@ -10,12 +10,16 @@ $blackTrans: rgba (0, 0, 0, 0.1);
 }
 
 .container-border {
+    border: 5px solid white;  
+    width: 92%;
+}
+.box-login{
     display: flex;
     justify-content: space-around;
-    padding: 40px;
-    border: 5px solid white;
-}
+    padding: 30px;
+    margin-bottom: 280px;
 
+}
 
 .logo{
     margin: 50px;
@@ -28,12 +32,46 @@ $blackTrans: rgba (0, 0, 0, 0.1);
     border-radius: 9px;
     background-color: black;
     opacity: 0.4;
+    width: 35%;
 
     p{
-        margin: 15px;
-        font-size: 1.2 rem;
+        font-size: 30px;
         color: white;
         font-family: 'Pridi', serif;
+        margin: 10px
+    }
+
+    .box-user{
+        margin: 15px 15px 5px 15px;
+        border: antiquewhite;
+        .user{
+            background: transparentize($color: #000000, $amount: 0);
+            background: black;
+            border-radius: 9px;
+            height: 45px;
+            width: 240px;
+            border: 2px solid white;
+        }
+    }
+
+    .box-password{
+        margin: 15px 15px 5px 15px;
+        .password{
+            background: transparentize($color: #000000, $amount: 0);
+            background: black;
+            border-radius: 9px;
+            height: 45px;
+            width: 240px;
+            border: 2px solid white;
+        }
+    }
+    .btn-login{
+        margin-top: 15px;
+        background-color: #DABC4F;
+        height: 50px;
+        width: 80%;
+        border-radius: 9px;
+
     }
 }
 
