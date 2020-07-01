@@ -1,12 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .container-login {
-  background-color: #411515;
   height: 100vh;
-  text-align: center;
+  background-image: url(../assets/fondo-login.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+
+.container-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-align: center;
-  padding: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .container-border {
@@ -47,10 +61,5 @@
   font-size: 1.2 rem;
   color: white;
   font-family: 'Pridi', serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }
 /*# sourceMappingURL=style.css.map */
