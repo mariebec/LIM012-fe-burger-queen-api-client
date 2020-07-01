@@ -4,13 +4,9 @@ $blackTrans: rgba (0, 0, 0, 0.1);
 
 
 .container-login {
-    background-color: $brown;
-    height: 100vh;
-    text-align: center;
+    display: flex;
     justify-content: center;
-    text-align: center;
-    padding: 30px;
-  
+    align-items: center;
 }
 
 .container-border {
