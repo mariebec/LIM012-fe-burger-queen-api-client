@@ -1,27 +1,30 @@
 import React from 'react';
-import img from '../assets/logo-fondoblanco.png';
+
+
 
 const LoginView = () => {
     return (
         <>
-         <section>
-             <div><img src={img} alt="logo"></img></div>
-             <form>
-                 <p>Iniciar Sesión</p>
-                 <div>
-                     <div>
-                     </div>
-                     <input placeholder="Ingresa usuario">
-                     </input>
-                 </div>
-                 <div>
-                     <div>
-                     </div>
-                     <input placeholder="Ingresa contraseña">
-                     </input>
-                 </div>
-                 <button>INGRESAR</button>
-             </form>
+         <section className="container-login"> 
+             <div className="container-border"> 
+               <img src={"./assets/logo-fondoblanco.png"} alt="logo" className="logo"></img>
+                    <form className="login-form">
+                        <p>Inicia Sesión</p>
+                        <div className="box-user">
+                            <div>
+                            </div>
+                            <input placeholder="Ingresa usuario">
+                            </input>
+                        </div>
+                        <div className="box-password">
+                            <div>
+                            </div>
+                            <input placeholder="Ingresa contraseña">
+                            </input>
+                        </div>
+                        <button className="btn-login">INGRESAR</button>
+                    </form>
+             </div>
          </section>
         </>
     )
