@@ -1,13 +1,11 @@
 import React from 'react';
-
-
+import img from '../../assets/logo-fondoblanco.png'
 
 const LoginView = () => {
     return (
-        <>
          <section className="container-login"> 
              <div className="container-border"> 
-               <img src={"./assets/logo-fondoblanco.png"} alt="logo" className="logo"></img>
+               <img src={img} alt="logo" className="logo"></img>
                     <form className="login-form">
                         <p>Inicia Sesión</p>
                         <div className="box-user">
@@ -26,7 +24,6 @@ const LoginView = () => {
                     </form>
              </div>
          </section>
-        </>
     )
 }
 
