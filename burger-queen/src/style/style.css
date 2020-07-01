@@ -1,16 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.container-login {
-  height: 100vh;
-  background-image: url(../assets/fondo-login.png);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
-}
-
 .container-login {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -24,13 +11,18 @@
 }
 
 .container-border {
+  border: 5px solid white;
+  width: 92%;
+}
+
+.box-login {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 40px;
-  border: 5px solid white;
+  padding: 30px;
+  margin-bottom: 280px;
 }
 
 .logo {
@@ -54,12 +46,61 @@
   border-radius: 9px;
   background-color: black;
   opacity: 0.4;
+  width: 35%;
 }
 
 .login-form p {
-  margin: 15px;
-  font-size: 1.2 rem;
+  font-size: 30px;
   color: white;
   font-family: 'Pridi', serif;
+  margin: 10px;
+}
+
+.login-form .box-user {
+  margin: 15px 15px 5px 15px;
+  border: antiquewhite;
+}
+
+.login-form .box-user .user {
+  background: black;
+  background: black;
+  border-radius: 9px;
+  height: 45px;
+  width: 240px;
+  border: 2px solid white;
+}
+
+.login-form .box-password {
+  margin: 15px 15px 5px 15px;
+}
+
+.login-form .box-password .password {
+  background: black;
+  background: black;
+  border-radius: 9px;
+  height: 45px;
+  width: 240px;
+  border: 2px solid white;
+}
+
+.login-form .btn-login {
+  margin-top: 15px;
+  background-color: #DABC4F;
+  height: 50px;
+  width: 80%;
+  border-radius: 9px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container-login {
+  height: 100vh;
+  background-image: url(../assets/fondo-login.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
 }
 /*# sourceMappingURL=style.css.map */
