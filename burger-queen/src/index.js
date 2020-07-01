@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginView from './components/login/LogIn';
 
+import './style/style.css';
+
 const root = document.getElementById('root');
 
 ReactDOM.render( <LoginView/>, root);
-// import './index.css';
+
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
