@@ -1,4 +1,9 @@
 .container-login {
+  height: 100vh;
+  background-image: url(../assets/fondo-login.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,23 +15,23 @@
           align-items: center;
 }
 
-.container-border {
-  border: 5px solid white;
-  width: 92%;
-}
-
 .box-login {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 30px;
-  margin-bottom: 280px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 250px;
+  width: 100%;
 }
 
 .logo {
-  margin: 50px;
+  width: auto;
+  height: 170px;
 }
 
 .login-form {
@@ -44,63 +49,94 @@
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 9px;
-  background-color: black;
-  opacity: 0.4;
+  background: rgba(0, 0, 0, 0.5);
   width: 35%;
+  padding: 25px 0;
 }
 
 .login-form p {
-  font-size: 30px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  font-size: 2rem;
   color: white;
-  font-family: 'Pridi', serif;
-  margin: 10px;
+  font-family: "Pridi", serif;
 }
 
 .login-form .box-user {
-  margin: 15px 15px 5px 15px;
-  border: antiquewhite;
+  margin: 15px;
+  height: 45px;
+  width: 80%;
+  border-radius: 9px;
+  border: 2px solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .login-form .box-user .user {
-  background: black;
-  background: black;
-  border-radius: 9px;
-  height: 45px;
-  width: 240px;
-  border: 2px solid white;
+  color: white;
+  font-size: 1.1rem;
+  background-color: rgba(0, 0, 0, 0);
+  padding-left: 10px;
+  height: 100%;
+  width: 100%;
+  border: 0;
+  border-left: 1px solid white;
+  outline: none;
 }
 
-.login-form .box-password {
-  margin: 15px 15px 5px 15px;
+.login-form .box-user .user:focus {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.login-form .box-password .password {
-  background: black;
-  background: black;
-  border-radius: 9px;
-  height: 45px;
-  width: 240px;
-  border: 2px solid white;
+.login-form .box-user .user::-webkit-input-placeholder {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user:-ms-input-placeholder {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user::-ms-input-placeholder {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user::placeholder {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user-icon {
+  font-size: 1.5rem;
+  color: white;
+  margin: 0 10px;
 }
 
 .login-form .btn-login {
+  color: #411515;
+  font-family: "Pridi", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
   margin-top: 15px;
   background-color: #DABC4F;
   height: 50px;
   width: 80%;
   border-radius: 9px;
+  border: 0;
+}
+
+.login-form .btn-login:hover {
+  background-color: #b1973b;
 }
 
 * {
   margin: 0;
   padding: 0;
-}
-
-.container-login {
-  height: 100vh;
-  background-image: url(../assets/fondo-login.png);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
 }
 /*# sourceMappingURL=style.css.map */
