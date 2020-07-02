@@ -3,25 +3,20 @@ import img from '../../assets/logo-fondoblanco.png';
 
 const LoginView = () => (
   <section className="container-login">
-    <div className="container-border">
-      <div className="box-login">
-        <img src={img} alt="logo" className="logo" />
+    <div className="box-login">
+      <img src={img} alt="logo" className="logo" />
         <form className="login-form">
-
-          <p>Inicia Sesión</p>
+          <p>Inicia sesión</p>
           <div className="box-user">
-            <div />
-            <input placeholder="Ingresa usuario" className="user" />
+            <i className="user-icon fas fa-user"></i>
+            <input placeholder="Usuario" className="user" />
           </div>
-          <div className="box-password">
-            <div />
-            <input placeholder="Ingresa contraseña" className="password" />
+          <div className="box-user">
+          <i className="user-icon fas fa-lock"></i>
+            <input placeholder="Contraseña" className="user" type="password"/>
           </div>
           <button type="button" className="btn-login">INGRESAR</button>
-
         </form>
-
-      </div>
     </div>
   </section>
 );
