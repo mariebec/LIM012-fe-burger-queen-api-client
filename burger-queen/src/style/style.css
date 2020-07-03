@@ -1,40 +1,49 @@
-.container-login {
-  height: 100vh;
-  background-image: url(../assets/fondo-login.png);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
+.header-menu {
+  background-color: #DABC4F;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.box-login {
+.header-menu .logo-Header {
+  padding: 8px;
+}
+
+.header-menu .title {
+  font-size: 35px;
+  color: #411515;
+}
+
+.header-menu .userlogueado {
+  font-family: "Prompt", sans-serif;
+  padding: 15px;
+  margin: 10px;
+  font-size: 25px;
+  color: #411515;
+}
+
+.container-orders {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 250px;
-  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 88vh;
 }
 
-.logo {
-  width: auto;
-  height: 170px;
-}
-
-.login-form {
+.container-orders .breakfast-options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,97 +51,115 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 9px;
-  background: rgba(0, 0, 0, 0.5);
-  width: 35%;
-  padding: 25px 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-image: url(../assets/fondo-hu1.png);
+  width: 65%;
 }
 
-.login-form p {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  font-size: 2rem;
-  color: white;
-  font-family: "Pridi", serif;
-}
-
-.login-form .box-user {
-  margin: 15px;
-  height: 45px;
-  width: 80%;
-  border-radius: 9px;
-  border: 2px solid white;
+.container-orders .breakfast-options .options-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.login-form .box-user .user {
+.container-orders .breakfast-options .options-header .options-food {
+  border-radius: 9px;
+  background: rgba(0, 0, 0, 0.8);
+  width: 33%;
+  padding: 15px 0;
   color: white;
-  font-size: 1.1rem;
-  background-color: rgba(0, 0, 0, 0);
-  padding-left: 10px;
-  height: 100%;
-  width: 100%;
-  border: 0;
-  border-left: 1px solid white;
-  outline: none;
+  font-family: "Pridi", serif;
+  font-size: 25px;
 }
 
-.login-form .box-user .user:focus {
-  background-color: rgba(0, 0, 0, 0.5);
+.container-orders .breakfast-options .box-photos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background: rgba(0, 0, 0, 0.8);
+  width: 85%;
+  height: 70%;
+  margin-left: 50px;
+  border-radius: 9px;
 }
 
-.login-form .box-user .user::-webkit-input-placeholder {
-  color: white;
-  font-size: 1.1rem;
+.container-orders .breakfast-options .box-photos .box-btn-food {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.login-form .box-user .user:-ms-input-placeholder {
-  color: white;
-  font-size: 1.1rem;
-}
-
-.login-form .box-user .user::-ms-input-placeholder {
-  color: white;
-  font-size: 1.1rem;
-}
-
-.login-form .box-user .user::placeholder {
-  color: white;
-  font-size: 1.1rem;
-}
-
-.login-form .box-user .user-icon {
-  font-size: 1.5rem;
-  color: white;
-  margin: 0 10px;
-}
-
-.login-form .btn-login {
+.container-orders .breakfast-options .box-photos .box-btn-food .btn-food {
+  background: #DABC4F;
+  border-radius: 9px;
+  width: 25%;
+  padding: 5px 0;
   color: #411515;
   font-family: "Pridi", serif;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 15px;
-  background-color: #DABC4F;
-  height: 50px;
-  width: 80%;
-  border-radius: 9px;
-  border: 0;
+  font-size: 20px;
 }
 
-.login-form .btn-login:hover {
-  background-color: #b1973b;
+.container-orders .breakfast-options .box-photos .box-option-breakfast {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 80%;
+}
+
+.container-orders .breakfast-options .box-photos .box-option-breakfast .photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30%;
+  height: 40%;
+  background: white;
+  background-size: cover;
+  margin: 10px;
+  margin-left: 5px;
+}
+
+.container-orders .breakfast-options .box-photos .box-option-breakfast .photo .option-breakfast {
+  width: 80%;
+  margin: 5px 15px;
 }
 
 * {

@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginView from './components/login/LogIn';
+//import LoginView from './components/login/LogIn';
+import MenuView from './components/admin/Menu'
 
 import './style/style.css';
 
 const root = document.getElementById('root');
 
-ReactDOM.render(<LoginView />, root);
+//ReactDOM.render(<LoginView />, root);
+ReactDOM.render(<MenuView />, root);
 
 // import * as serviceWorker from './serviceWorker';
 
