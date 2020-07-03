@@ -1,6 +1,7 @@
 $brown: #411515;
 $gold: #DABC4F;
 $font-pridi: 'Pridi', serif;
+$font-prompt: 'Prompt', sans-serif;
 $gold-2: #b1973b;
 
 .container-login {
@@ -69,6 +70,7 @@ $gold-2: #b1973b;
             // pseudo-elemento para poner estilo texto por defecto del input
             &::placeholder{
                 color: white;
+                font-family: $font-prompt;
                 font-size: 1.1rem;
             }
         }
