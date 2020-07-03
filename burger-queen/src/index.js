@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import LoginView from './components/login/LogIn';
-import MenuView from './components/admin/Menu'
+import MenuView from './components/order/Menu'
 
 import './style/style.css';
 
