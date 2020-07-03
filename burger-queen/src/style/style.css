@@ -17,19 +17,40 @@
 
 .header-menu .logo-Header {
   padding: 8px;
+  margin-left: 10px;
 }
 
 .header-menu .title {
   font-size: 35px;
   color: #411515;
+  opacity: 0.8;
 }
 
-.header-menu .userlogueado {
+.header-menu .user-logged {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: "Prompt", sans-serif;
   padding: 15px;
   margin: 10px;
   font-size: 25px;
   color: #411515;
+}
+
+.header-menu .user-icon {
+  font-size: 1.4rem;
+  margin-left: 10px;
+  padding: 7px;
+  border: 2px solid #411515;
+  border-radius: 50%;
+}
+
+.header-menu .menu-icon {
+  font-size: 2.5rem;
+  margin-left: 25px;
 }
 
 .container-orders {
@@ -43,7 +64,7 @@
   height: 88vh;
 }
 
-.container-orders .breakfast-options {
+.container-orders .products-options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,7 +78,7 @@
   width: 65%;
 }
 
-.container-orders .breakfast-options .options-header {
+.container-orders .products-options .options-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,7 +93,7 @@
           align-items: center;
 }
 
-.container-orders .breakfast-options .options-header .options-food {
+.container-orders .products-options .options-header .options-food {
   border-radius: 9px;
   background: rgba(0, 0, 0, 0.8);
   width: 33%;
@@ -82,7 +103,7 @@
   font-size: 25px;
 }
 
-.container-orders .breakfast-options .box-photos {
+.container-orders .products-options .box-photos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,7 +120,7 @@
   border-radius: 9px;
 }
 
-.container-orders .breakfast-options .box-photos .box-btn-food {
+.container-orders .products-options .box-photos .box-btn-food {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -115,7 +136,7 @@
           align-items: center;
 }
 
-.container-orders .breakfast-options .box-photos .box-btn-food .btn-food {
+.container-orders .products-options .box-photos .box-btn-food .btn-food {
   background: #DABC4F;
   border-radius: 9px;
   width: 25%;
@@ -125,7 +146,7 @@
   font-size: 20px;
 }
 
-.container-orders .breakfast-options .box-photos .box-option-breakfast {
+.container-orders .products-options .box-photos .box-option-food {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,9 +160,10 @@
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   height: 80%;
+  overflow: auto;
 }
 
-.container-orders .breakfast-options .box-photos .box-option-breakfast .photo {
+.container-orders .products-options .box-photos .box-option-food .box-food {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -149,17 +171,31 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 30%;
-  height: 40%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
   background: white;
   background-size: cover;
-  margin: 10px;
-  margin-left: 5px;
+  margin-bottom: 30px;
 }
 
-.container-orders .breakfast-options .box-photos .box-option-breakfast .photo .option-breakfast {
-  width: 80%;
-  margin: 5px 15px;
+.container-orders .products-options .box-photos .box-option-food .box-food .img-food {
+  height: 100px;
+  width: auto;
+}
+
+.container-orders .products-options .box-photos .box-option-food .box-food p {
+  text-align: center;
+  font-family: "Pridi", serif;
+  color: #411515;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 * {

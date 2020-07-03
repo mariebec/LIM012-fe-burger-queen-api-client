@@ -12,18 +12,32 @@ $font-prompt: 'Prompt', sans-serif;
 
     .logo-Header{
         padding: 8px;
+        margin-left: 10px;
     }
     .title{
         font-size: 35px;
         color: $brown;
-        
+        opacity: 0.8;
     }
-    .userlogueado{
+    .user-logged{
+        display: flex;
+        align-items: center;
         font-family: $font-prompt;
         padding: 15px;
         margin: 10px;
         font-size: 25px;
         color: $brown; 
+    }
+    .user-icon{
+        font-size: 1.4rem;
+        margin-left: 10px;
+        padding: 7px;
+        border: 2px solid $brown;
+        border-radius: 50%;
+    }
+    .menu-icon{
+        font-size: 2.5rem;
+        margin-left: 25px;
     }
 
 }
@@ -33,7 +47,7 @@ $font-prompt: 'Prompt', sans-serif;
     flex-direction: row;
     height: 88vh;
 
-    .breakfast-options{
+    .products-options{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -85,27 +99,36 @@ $font-prompt: 'Prompt', sans-serif;
                 }
             }
 
-            .box-option-breakfast{
+            .box-option-food{
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: space-evenly;
                 height: 80%;
+                overflow: auto;
 
-                .photo{
+                .box-food{
                     display: flex;
                     flex-direction: column;
-                    width: 30%;
-                    height: 40%;
+                    justify-content: center;
+                    align-items: center;
+                    width: 160px;
+                    height: 160px;
+                    border-radius: 10px;
                     background: white;
                     background-size: cover;
-                    margin: 10px;
-                    margin-left: 5px;
+                    margin-bottom: 30px;
 
-                    .option-breakfast{
-                        width: 80%;
-                        margin: 5px 15px;
-                    
+                    .img-food{
+                        height: 100px;
+                        width: auto;
+                    }
+                    p{
+                        text-align: center;
+                        font-family: $font-pridi;
+                        color: $brown;
+                        font-size: 1.2rem;
+                        font-weight: bold;
                     }
 
                 }
