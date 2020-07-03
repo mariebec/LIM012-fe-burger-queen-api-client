@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../assets/logo-fondomarron.png';
+import Header from '../Header';
 import hsimple from '../../assets/hamburguesa-simple.png';
 import hdouble from '../../assets/hamburguesa-doble.png';
 import chips from '../../assets/papas-fritas.png';
@@ -8,18 +8,8 @@ import water from '../../assets/agua.png';
 import waterBig from '../../assets/agua-big.png';
 
 const MenuView = () => (
-  <section className="container-menu">
-
-    <header className="header-menu">
-      <img src={img} alt="logo" className="logo-Header" />
-      <p className="title">TOMAR PEDIDOS</p>
-      <div className="user-logged">
-        <p className="user-name">Pedro Campbell</p>
-        <i className="user-icon fas fa-user"></i>
-        <i class="menu-icon fas fa-bars"></i>
-      </div>
-    </header>
-
+  <>
+    <Header />
     <main className="container-orders">
       <section className="products-options">
         <div className="options-header">
@@ -81,8 +71,7 @@ const MenuView = () => (
         </div>
       </aside>
     </main>
-
-  </section>
+  </>
 
 )
     
