@@ -12,28 +12,28 @@ import './style/style.css';
 
 
 function App() {
-    return (
-        <Router>
-            <div className="container"> 
+  return (
+    <Router>
+      <div className="container"> 
 
-                <Switch>
-                    <Route path="/" exact>
-                        <LogIn />
-                    </Route> 
-                    <Route path="/menu" exact>
-                        <Menu />
-                    </Route>
-                    <Route path="/userlist" exact>
-                        <UserList />
-                    </Route>
-                    <Route path="/productlist" exact>
-                        <ProductList />
-                    </Route>
-                </Switch>
+        <Switch>
+          <Route path="/" exact>
+            <LogIn />
+          </Route> 
+          <Route path="/menu" exact>
+            <Menu />
+          </Route>
+          <Route path="/userlist" exact>
+            <UserList />
+          </Route>
+          <Route path="/productlist" exact>
+            <ProductList />
+          </Route>
+        </Switch>
 
-            </div>
-        </Router>
-    )
+      </div>
+    </Router>
+  )
 }
 
 export default App;
