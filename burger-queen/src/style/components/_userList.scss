@@ -1,0 +1,92 @@
+$gold: #DABC4F;
+$brown: #411515;
+$font-pridi: 'Pridi', serif;
+$font-prompt: 'Prompt', sans-serif;
+
+.container-users{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2{
+        font-family: $font-pridi;
+        color: $brown;
+        font-size: 2.5rem;
+        margin: 20px 0;
+    }
+
+    .btn-container{
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    
+        button{
+            margin: 20px;
+            color: $brown;
+            background-color: $gold;
+            border: none;
+            width: 200px;
+            height: 50px;
+            border-radius: 10px;
+            font-family: $font-pridi;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+    }
+
+    ul{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .table{
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            p{  
+                text-align: center;
+                font-family: $font-prompt;
+                color: gray;
+                font-size: 1.2rem;
+            }
+            .xl-column{
+                width: 25%;
+            }
+            .l-column{
+                width: 18%;
+            }
+            .m-column{
+                width: 10%; //x4
+            }
+            .s-column{
+                width: 7%;
+            }
+
+        }
+        .header{
+            border: 1px solid #000;
+            p{
+                font-weight: bold;
+            }
+        }
+        .data{
+            border: 1px solid;
+            .icon{
+                font-size: 1.5rem;
+            }
+            .edit{
+                margin: 0 10px;
+                color: $gold;
+            }
+            .delete{
+                margin-left: 10px;
+                color: #960404;
+            }
+        }
+    }
+}
+
+
+
+
