@@ -1,3 +1,144 @@
+.container-login {
+  height: 100vh;
+  background-image: url(../assets/fondo-login.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.box-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 250px;
+  width: 100%;
+}
+
+.logo {
+  width: auto;
+  height: 170px;
+}
+
+.login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 9px;
+  background: rgba(0, 0, 0, 0.5);
+  width: 35%;
+  padding: 25px 0;
+}
+
+.login-form p {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  font-size: 2rem;
+  color: white;
+  font-family: "Pridi", serif;
+}
+
+.login-form .box-user {
+  margin: 15px;
+  height: 45px;
+  width: 80%;
+  border-radius: 9px;
+  border: 2px solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-form .box-user .user {
+  color: white;
+  font-size: 1.1rem;
+  background-color: rgba(0, 0, 0, 0);
+  padding-left: 10px;
+  height: 100%;
+  width: 100%;
+  border: 0;
+  border-left: 1px solid white;
+  outline: none;
+}
+
+.login-form .box-user .user:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login-form .box-user .user::-webkit-input-placeholder {
+  color: white;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user:-ms-input-placeholder {
+  color: white;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user::-ms-input-placeholder {
+  color: white;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user::placeholder {
+  color: white;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.1rem;
+}
+
+.login-form .box-user .user-icon {
+  font-size: 1.5rem;
+  color: white;
+  margin: 0 10px;
+}
+
+.login-form .btn-login {
+  color: #411515;
+  font-family: "Pridi", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 15px;
+  background-color: #DABC4F;
+  height: 50px;
+  width: 80%;
+  border-radius: 9px;
+  border: 0;
+}
+
+.login-form .btn-login:hover {
+  background-color: #b1973b;
+}
+
 .header-menu {
   background-color: #DABC4F;
   display: -webkit-box;
@@ -142,7 +283,7 @@
   width: 25%;
   padding: 5px 0;
   color: #411515;
-  font-family: "Pridi", serif;
+  font-family: "Pridi", gitserif;
   font-size: 20px;
 }
 
@@ -310,6 +451,118 @@
 }
 
 .container-users ul .data .delete {
+  margin-left: 10px;
+  color: #960404;
+}
+
+.container-products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-products h2 {
+  font-family: "Pridi", serif;
+  color: #411515;
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.container-products .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+
+.container-products .btn-container button {
+  margin: 20px;
+  color: #411515;
+  background-color: #DABC4F;
+  border: none;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: "Pridi", serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.container-products ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-products ul .table {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 15px 0;
+}
+
+.container-products ul .table p {
+  text-align: center;
+  font-family: "Prompt", sans-serif;
+  color: gray;
+  font-size: 1.2rem;
+}
+
+.container-products ul .table .l-column {
+  width: 30%;
+}
+
+.container-products ul .table .m-column {
+  width: 15%;
+}
+
+.container-products ul .table .s-column {
+  width: 15%;
+}
+
+.container-products ul .header {
+  border: 1px solid #000;
+}
+
+.container-products ul .header p {
+  font-weight: bold;
+}
+
+.container-products ul .data {
+  border: 1px solid;
+}
+
+.container-products ul .data .icon {
+  font-size: 1.5rem;
+}
+
+.container-products ul .data .edit {
+  margin: 0 10px;
+  color: #DABC4F;
+}
+
+.container-products ul .data .delete {
   margin-left: 10px;
   color: #960404;
 }
