@@ -14,9 +14,9 @@ import './style/style.css';
 
 
 function App() {
-    return (
-        <Router>
-            <div className="container"> 
+  return (
+    <Router>
+      <div className="container"> 
 
                 <Switch>
                     <Route path="/"  exact>
@@ -39,9 +39,9 @@ function App() {
                     </Route>
                 </Switch>
 
-            </div>
-        </Router>
-    )
+      </div>
+    </Router>
+  )
 }
 
 export default App;

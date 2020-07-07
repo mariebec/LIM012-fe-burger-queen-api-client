@@ -1,13 +1,32 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Header from '../Header';
+import ModalUser from './ModalUsers';
 
 const UserList = () => {
+
+  // const handleAddUser = () => {
+  //   console.log('click');
+  //   return ReactDOM.createPortal(<ModalUser />, document.querySelector('#modal'));
+  // }
+
+  const handleAddUser = () => {
+    fetch('http://localhost:3002/users', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((resp) => resp.json())
+      .then((resp) => console.log(resp));
+  }
+
   return (
     <>
       <Header />
       <main className="container-users">
         <div className="btn-container">
-          <button>Agregar usuario</button>
+          <button onClick={handleAddUser}>Agregar usuario</button>
         </div>
         <h2>Lista de usuarios</h2>
         <ul>
