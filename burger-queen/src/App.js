@@ -8,6 +8,8 @@ import LogIn from './components/login/LogIn';
 import Menu from './components/order/Menu';
 import UserList from './components/admin/UserList';
 import ProductList from './components/admin/ProductList';
+import ModalUser from './components/admin/ModalUser';
+import NotFound from './components/login/NotFound'
 import './style/style.css';
 
 
@@ -17,17 +19,23 @@ function App() {
             <div className="container"> 
 
                 <Switch>
-                    <Route path="/" exact>
+                    <Route path="/"  exact>
                         <LogIn />
                     </Route> 
-                    <Route path="/menu" exact>
+                    <Route path="/menu" >
                         <Menu />
                     </Route>
-                    <Route path="/userlist" exact>
+                    <Route path="/userlist" >
                         <UserList />
                     </Route>
-                    <Route path="/productlist" exact>
+                    <Route path="/productlist" >
                         <ProductList />
+                    </Route>
+                    <Route path="/modaluser" >
+                        <ModalUser />
+                    </Route>
+                    <Route>
+                        <NotFound />
                     </Route>
                 </Switch>
 
