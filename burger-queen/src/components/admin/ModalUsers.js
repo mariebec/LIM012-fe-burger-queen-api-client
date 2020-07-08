@@ -16,9 +16,9 @@ const handleSelectChange = (e) =>{
   setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
 }
 
-const handleCancel = () => {
+// const handleCancel = () => {
   
-}
+// }
 
 const handleSave = (event) => {
   
@@ -82,7 +82,7 @@ const handleSave = (event) => {
                 </div>
               </div>
               <div>
-                <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
+                <button type="button" className="btn-modal cancel">Cancelar</button>
                 <button type="submit" className="btn-modal save" onClick={handleSave}>Guardar</button>
               </div>
             </div>
