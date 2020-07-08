@@ -9,7 +9,7 @@ import waterBig from '../../assets/agua-big.png';
 
 const MenuView = () => (
   <>
-    <Header />
+    <Header title="TOMAR PEDIDOS"/>
     <main className="container-orders">
       <section className="products-options">
         <div className="options-header">
