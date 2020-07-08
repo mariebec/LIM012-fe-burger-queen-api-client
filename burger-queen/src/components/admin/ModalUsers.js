@@ -27,14 +27,15 @@ const handleSave = (event) => {
   } else if (userPassword === '' || userPassword.length < 6) {
     console.log('contraseña invalida');
   } else {
-    fetch('http://localhost:3002/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((resp) => resp.json())
-      .then((resp) => console.log(resp));
+    // fetch('http://localhost:3002/users', {
+    //   method: 'POST',
+    //   body: JSON.stringify(user)
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((resp) => console.log(resp));
   }
 };
 
