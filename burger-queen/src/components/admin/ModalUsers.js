@@ -5,7 +5,7 @@ const ModalUsers = () => {
   const [user, setUser] = useState ({
     email: "",
     password:"",
-    roles: { option: false }
+    roles: { admin: false }
   })
 
 const handleInputChange = (e) => {
@@ -13,10 +13,15 @@ const handleInputChange = (e) => {
 } 
 
 const handleSelectChange = (e) =>{
-  setUser({...user, roles: { option: e.target.value === "SI" ? true : false }})
+  setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
+}
+
+const handleCancel = () => {
+  
 }
 
 const handleSave = (event) => {
+  
   event.preventDefault();
   const userEmail = user.email.trim();
   const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -27,17 +32,19 @@ const handleSave = (event) => {
   } else if (userPassword === '' || userPassword.length < 6) {
     console.log('contraseña invalida');
   } else {
-    // fetch('http://localhost:3002/users', {
-    //   method: 'POST',
-    //   body: JSON.stringify(user)
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((resp) => console.log(resp));
+    fetch('http://localhost:3002/users', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((resp) => resp.json())
+      .catch((error) => console.log(error))
+      .then((resp) => console.log(resp));
   }
 };
+
 
   return (
     <>
@@ -46,34 +53,38 @@ const handleSave = (event) => {
         <div className="modal-window">
           <p className="title-modal">Agregar usuario</p>
           <form className="form-modal" >
-            <div>
-              <label htmlFor="input-email" className="label-text">E-MAIL:</label>
-              <input 
-                id ="input-email" 
-                placeholder="Ingrese un e-mail" 
-                name="email" type="email" 
-                className="input-modal"
-                onChange={handleInputChange} /> 
-            </div>
-            <div>
-              <label htmlFor="input-password" className="label-text">CLAVE:</label>
-              <input 
-                id ="input-password" 
-                placeholder="Ingrese la contraseña" 
-                name="password" type="password"
-                className="input-modal" 
-                onChange={handleInputChange} />
-            </div>
-            <div>
-              <label htmlFor="input-admin" className="label-text">ADMIN:</label>
-              <select id ="input-admin" onChange={handleSelectChange} className="select-modal">
-                <option value="NO">NO</option>
-                <option value="SI">SI</option>
-              </select>
-            </div>
-            <div>
-              <button type="button" className="btn-cancel-modal">Cancelar</button>
-              <button type="submit" className="btn-new-modal" onClick={handleSave}>Guardar</button>
+            <div className="form-container">
+              <div>
+                <label htmlFor="input-email" className="label-text">E-MAIL:</label>
+                <input 
+                  id ="input-email" 
+                  placeholder="Ingrese un e-mail" 
+                  name="email" type="email" 
+                  className="input-modal"
+                  onChange={handleInputChange} /> 
+              </div>
+              <div>
+                <label htmlFor="input-password" className="label-text">CLAVE:</label>
+                <input 
+                  id ="input-password" 
+                  placeholder="Ingrese la contraseña" 
+                  name="password" type="password"
+                  className="input-modal" 
+                  onChange={handleInputChange} />
+              </div>
+              <div>
+                <label htmlFor="input-admin" className="label-text">ADMIN:</label>
+                <div className="box-select">
+                  <select id ="input-admin" onChange={handleSelectChange} className="select-modal">
+                    <option value="NO">NO</option>
+                    <option value="SI">SI</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
+                <button type="submit" className="btn-modal save" onClick={handleSave}>Guardar</button>
+              </div>
             </div>
           </form>
         </div>

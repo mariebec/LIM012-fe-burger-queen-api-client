@@ -18,26 +18,26 @@ function App() {
     <Router>
       <div className="container"> 
 
-                <Switch>
-                    <Route path="/"  exact>
-                        <LogIn />
-                    </Route> 
-                    <Route path="/menu" >
-                        <Menu />
-                    </Route>
-                    <Route path="/userlist" >
-                        <UserList />
-                    </Route>
-                    <Route path="/productlist" >
-                        <ProductList />
-                    </Route>
-                    <Route path="/modalusers" >
-                        <ModalUsers />
-                    </Route>
-                    <Route>
-                        <NotFound />
-                    </Route>
-                </Switch>
+        <Switch>
+            <Route path="/"  exact>
+                <LogIn />
+            </Route> 
+            <Route path="/menu" >
+                <Menu />
+            </Route>
+            <Route path="/userlist" >
+                <UserList />
+            </Route>
+            <Route path="/productlist" >
+                <ProductList />
+            </Route>
+            <Route path="/modalusers" >
+                <ModalUsers />
+            </Route>
+            <Route>
+                <NotFound />
+            </Route>
+        </Switch>
 
       </div>
     </Router>
