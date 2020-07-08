@@ -1,0 +1,26 @@
+$brown: #411515;
+$gold: #DABC4F;
+$font-pridi: 'Pridi', serif;
+$font-prompt: 'Prompt', sans-serif;
+$gold-2: #b1973b;
+// Mientras tanto
+.bg-img-fries{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  height: 80vh;
+
+  .modal-window{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: $brown;
+
+    .form-modal{
+      display: flex;
+      flex-direction: column;
+      background-color: $gold;
+    }
+  }
+}
