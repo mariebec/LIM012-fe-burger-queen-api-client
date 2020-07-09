@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Header from '../Header';
+// import Header from '../Header';
 
 const ModalUsers = () => {
   const [user, setUser] = useState ({
@@ -45,10 +45,10 @@ const handleSave = (event) => {
 
   return (
     <>
-      <Header/>
       <section className="bg-img-fries">
         <div className="modal-window">
           <p className="title-modal">Agregar usuario</p>
+          {/* Esto debería ser un componente */}
           <form className="form-modal" >
             <div className="form-container">
               <div>
