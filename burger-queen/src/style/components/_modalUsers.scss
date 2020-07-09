@@ -1,0 +1,103 @@
+$brown: #411515;
+$gold: #DABC4F;
+$font-pridi: 'Pridi', serif;
+$font-prompt: 'Prompt', sans-serif;
+$gold-2: #b1973b;
+$green: #3DB01C;
+// Mientras tanto
+.bg-img-fries{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  height: 80vh;
+
+  .modal-window{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: $brown;
+    border-radius: 10px;
+
+    p{
+      color: #FFF;
+      font-family: $font-pridi;
+      font-size: 1.8rem;
+      text-align: center;
+      line-height: 60px;
+      height: 60px;
+    }
+
+    .form-modal{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #FFF;
+      border-radius: 0 0 10px 10px;
+
+      .form-container{
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0;
+
+        div{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 25px 0;
+          height: 35px;
+
+          .label-text{
+            font-family: $font-pridi;
+            color: $brown;
+            font-weight: bold;
+            font-size: 1.3rem;
+          }
+          
+          .input-modal{
+            width: 75%;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            border: 0;
+            border-bottom: 1px solid gray;
+            outline-color: gray;
+
+            &::placeholder{
+              font-size: 1.2rem;
+            }
+          }
+
+          .box-select{
+            width: 80%;
+          }
+
+          .select-modal{
+            width: 20%;
+            height: 35px;
+            border-radius: 5px;
+          }
+
+          .btn-modal{
+            width: 48%;
+            font-family: $font-pridi;
+            font-size: 1.2rem;
+            font-weight: bold;
+            height: 50px;
+            border-radius: 9px;
+            border: 0;
+          }
+
+          .cancel{
+            background-color: #E5E5E5;
+            color: rgb(78, 78, 78);
+          }
+
+          .save{
+            background-color: $green;
+          }          
+        }
+      }
+    }
+  }
+}
