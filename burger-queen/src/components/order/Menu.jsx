@@ -1,11 +1,6 @@
 import React from 'react';
 import Header from '../Header';
-import hsimple from '../../assets/hamburguesa-simple.png';
-import hdouble from '../../assets/hamburguesa-doble.png';
-import chips from '../../assets/papas-fritas.png';
-import onion from '../../assets/aros-cebolla.png';
-import water from '../../assets/agua.png';
-import waterBig from '../../assets/agua-big.png';
+import photos from './product-img';
 
 const MenuView = () => (
   <>
@@ -24,27 +19,27 @@ const MenuView = () => (
           </div>
           <div className="box-option-food">
             <div className="box-food">
-              <img src={hsimple} alt="logo" className="img-food" /> 
+              <img src={photos.hsimple} alt="logo" className="img-food" /> 
               <p>Hamburguesas simple</p>
             </div>
             <div className="box-food"> 
-              <img src={hdouble} alt="logo" className="img-food" /> 
+              <img src={photos.hdouble} alt="logo" className="img-food" /> 
               <p>Hamburguesas dobles</p>
             </div>
             <div className="box-food">
-              <img src={chips} alt="logo" className="img-food" /> 
+              <img src={photos.fries} alt="logo" className="img-food" /> 
               <p>Papas fritas</p>
             </div>
             <div className="box-food"> 
-              <img src={onion} alt="logo" className="img-food" />
+              <img src={photos.onion} alt="logo" className="img-food" />
               <p>Aros de cebolla</p> 
             </div>
             <div className="box-food">
-              <img src={water} alt="logo" className="img-food" /> 
+              <img src={photos.water500} alt="logo" className="img-food" /> 
               <p>Agua 500ml</p>
             </div>
             <div className="box-food"> 
-              <img src={waterBig} alt="logo" className="img-food" /> 
+              <img src={photos.water750} alt="logo" className="img-food" /> 
               <p>Agua 750ml</p>
             </div>
           </div>
