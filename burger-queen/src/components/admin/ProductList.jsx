@@ -4,7 +4,7 @@ import Header from '../Header';
 const ProductList = () => {
   return (
     <>
-      <Header />
+      <Header title="ADMINISTRADOR"/>
       <main className="container-products">
         <div className="btn-container">
           <button>Agregar nuevo</button>
