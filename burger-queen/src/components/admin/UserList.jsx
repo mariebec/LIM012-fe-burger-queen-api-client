@@ -5,21 +5,21 @@ import Header from '../Header';
 const UserList = () => {
 
   const users = [
-      {
-        "id": "u_001",
-        "email": "kirikiki@gmail.com",
-        "roles": {admin: true}
-      },
-      {
-        "id": "u_002",
-        "email": "mbarakaja@gmail.com",
-        "roles": {admin: false}
-      },
-      {
-        "id": "u_003",
-        "email": "jagua@gmail.com",
-        "roles": {admin: false}
-      }
+    {
+      "id": "u_001",
+      "email": "kirikiki@gmail.com",
+      "roles": {admin: true}
+    },
+    {
+      "id": "u_002",
+      "email": "mbarakaja@gmail.com",
+      "roles": {admin: false}
+    },
+    {
+      "id": "u_003",
+      "email": "jagua@gmail.com",
+      "roles": {admin: false}
+    }
   ]
 
   const handleAddUser = () => {
