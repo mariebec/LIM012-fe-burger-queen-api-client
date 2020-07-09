@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ user }) => {
+const FormUsers = ({ handleInputChange, handleSelectChange, handleSave }) => {
   return (
     <form className="form-modal" >
       <div className="form-container">
