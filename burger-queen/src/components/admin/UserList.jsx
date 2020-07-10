@@ -1,26 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from '../Header';
 
 
 const UserList = () => {
 
-  const users = [
-    {
-      "id": "u_001",
-      "email": "kirikiki@gmail.com",
-      "roles": {admin: true}
-    },
-    {
-      "id": "u_002",
-      "email": "mbarakaja@gmail.com",
-      "roles": {admin: false}
-    },
-    {
-      "id": "u_003",
-      "email": "jagua@gmail.com",
-      "roles": {admin: false}
-    }
-  ]
+  const [ user, setUser ] = useState([]);
 
   const handleAddUser = () => {
     fetch('http://localhost:3002/users', {
@@ -30,7 +14,11 @@ const UserList = () => {
       }
     })
       .then((resp) => resp.json())
-      .then((resp) => console.log(resp));
+      // Se actualiza el estado del user al consumir la segunda promesa para que sea igual a la data
+      // obtenida de mockoon. Para probar no olvidar hacer click en botón agregar usuario.
+      // Tendríamos que ejecutar la petición al cargar la página, para eso es useEffect, me di cuenta que si
+      // el useState se actualiza cada ciertos segundos
+      .then((resp) => setUser(resp));
   }
 
   return (
@@ -52,12 +40,12 @@ const UserList = () => {
           </thead>
           <tbody>
             { 
-              users.length > 0 ?
-              users.map((element) => (
+              user.length > 0 ?
+              user.map((element) => (
                 <tr key={element.id}>
                   <td>{element.id}</td>
                   <td>{element.email}</td>
-                  <td>{element.roles.admin === true ? 'SI' : 'NO' }</td>
+                  <td>{element.roles.admin ? 'SI' : 'NO' }</td>
                   <td>
                     <i className="icon edit fas fa-edit"/>
                     <i className="icon delete fas fa-trash-alt"/>
