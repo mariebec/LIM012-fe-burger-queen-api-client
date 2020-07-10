@@ -632,6 +632,55 @@
   background-color: #3DB01C;
 }
 
+.table {
+  width: 80%;
+  font-family: "Prompt", sans-serif;
+  color: gray;
+  font-size: 1.2rem;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table th, .table td {
+  height: 50px;
+}
+
+.table th {
+  font-size: 1.3rem;
+  border-bottom: 2px solid gray;
+  border-top: 2px solid gray;
+}
+
+.table td:last-child, .table th:last-child {
+  border: 0;
+}
+
+.table th:first-child, .table th:last-child {
+  border-left: 2px solid gray;
+}
+
+.table td {
+  border-bottom: 1px solid gray;
+}
+
+.table td:first-child, .table td:last-child {
+  border-left: 1px solid gray;
+}
+
+.table .icon {
+  font-size: 2rem;
+}
+
+.table .edit {
+  color: #DABC4F;
+}
+
+.table .delete {
+  margin-left: 30px;
+  color: #960404;
+}
+
 * {
   margin: 0;
   padding: 0;
