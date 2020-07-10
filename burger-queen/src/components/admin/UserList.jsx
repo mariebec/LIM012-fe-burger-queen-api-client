@@ -26,6 +26,7 @@ const UserList = () => {
   const [ users, setUser ] = useState([]);
 
   const handleAddUser = () => {
+    // fetchGET().then((resp) => setUser(resp));
     fetch('http://localhost:3002/users', {
       method: 'GET',
       headers: {
