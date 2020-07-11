@@ -29,9 +29,9 @@ const handleSave = (event) => {
   // setUser({...user, id: idGenerado})
 
   if (userEmail === '' || !exRegEmail.test(userEmail)) {
-    console.log('email invalido');
+    console.log('email inválido');
   } else if (userPassword === '' || userPassword.length < 6) {
-    console.log('contraseña invalida');
+    console.log('contraseña inválida');
   } else {
     fetch('http://localhost:3002/users', {
       method: 'POST',
