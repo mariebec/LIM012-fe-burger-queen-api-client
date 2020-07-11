@@ -578,8 +578,22 @@
   font-size: 1.3rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .input-modal {
+.bg-img-fries .modal-window .form-modal .form-container div .box-input {
   width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal {
+  width: 100%;
   font-size: 1.2rem;
   padding: 5px 10px;
   border: 0;
@@ -587,20 +601,27 @@
   outline-color: gray;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .input-modal::-webkit-input-placeholder {
+.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal::-webkit-input-placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .input-modal:-ms-input-placeholder {
+.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal:-ms-input-placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .input-modal::-ms-input-placeholder {
+.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal::-ms-input-placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .input-modal::placeholder {
+.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal::placeholder {
   font-size: 1.2rem;
+}
+
+.bg-img-fries .modal-window .form-modal .form-container div .box-input span {
+  margin: 5px 0 0 10px;
+  font-size: 1.1rem;
+  color: red;
+  font-family: "Pridi", serif;
 }
 
 .bg-img-fries .modal-window .form-modal .form-container div .box-select {
