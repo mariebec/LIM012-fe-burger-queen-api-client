@@ -12,6 +12,8 @@ const ModalUsers = () => {
   };
 
   const [user, setUser] = useState(initialState);
+  const [ errMail, setErrorMail ] = useState(false);
+  const [ errPass, setErrorPass ] = useState(false);
 
   const handleInputChange = (e) => {
     setUser({...user, [e.target.name]: e.target.value});
@@ -27,20 +29,20 @@ const ModalUsers = () => {
 
   const handleSave = () => {
     // e.preventDefault();
-    const userEmail = user.email.trim();
     const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-    const userPassword = user.password.trim();
+
+    const validEmail = user.email.trim() === '' || !exRegEmail.test(user.email.trim());
+    const validPassword = user.password.trim() === '' || user.password.trim().length < 6;
   
-    if (userEmail === '' || !exRegEmail.test(userEmail)) {
-      console.log('email inválido');
-    } else if (userPassword === '' || userPassword.length < 6) {
-      console.log('password inválido');
+    if (validEmail || validPassword) {
+      (validEmail) ? setErrorMail(true) : setErrorMail(false);
+      (validPassword) ? setErrorPass(true) : setErrorPass(false);
     } else {
       postUser(user)
         .catch((error) => console.log(error))
         .then((resp) => console.log(resp));
+      setUser({...initialState});
     }
-    setUser({...initialState});
   }
 
   return (
@@ -50,6 +52,8 @@ const ModalUsers = () => {
           <p className="title-modal">Agregar usuario</p>
           <FormUsers 
             user={user} 
+            errMail={errMail}
+            errPass={errPass}
             handleInputChange={handleInputChange} 
             handleSelectChange={handleSelectChange} 
             handleCancel={handleCancel} 

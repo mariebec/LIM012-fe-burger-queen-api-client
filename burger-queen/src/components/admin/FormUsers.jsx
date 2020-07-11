@@ -1,28 +1,34 @@
 import React from 'react'
 
-const FormUsers = ({ user, handleInputChange, handleSelectChange, handleCancel, handleSave }) => {
+const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChange, handleCancel, handleSave }) => {
   return (
     <form className="form-modal">
       <div className="form-container">
         <div>
           <label htmlFor="input-email" className="label-text">E-MAIL:</label>
-          <input 
-            value={user.email}
-            id ="input-email" 
-            placeholder="Ingrese un e-mail" 
-            name="email" type="email" 
-            className="input-modal"
-            onChange={handleInputChange} /> 
+          <div className="box-input">
+            <input 
+              value={user.email}
+              id ="input-email" 
+              placeholder="Ingrese un e-mail" 
+              name="email" type="email" 
+              className="input-modal"
+              onChange={handleInputChange} />
+              {errMail && <span>e-mail inválido</span>} 
+          </div>
         </div>
         <div>
           <label htmlFor="input-password" className="label-text">CLAVE:</label>
-          <input 
-            value={user.password}
-            id ="input-password" 
-            placeholder="Ingrese la contraseña" 
-            name="password" type="password"
-            className="input-modal" 
-            onChange={handleInputChange} />
+          <div className="box-input">
+            <input 
+              value={user.password}
+              id ="input-password" 
+              placeholder="Ingrese la contraseña" 
+              name="password" type="password"
+              className="input-modal" 
+              onChange={handleInputChange} />
+              {errPass && <span>contraseña inválida</span>} 
+          </div>
         </div>
         <div>
           <label htmlFor="input-admin" className="label-text">ADMIN:</label>
