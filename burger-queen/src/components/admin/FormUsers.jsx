@@ -40,8 +40,8 @@ const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChan
           </div>
         </div>
         <div>
-          <button type="button" className="btn-modal cancel" onClick={handleCancel, closeModal}>Cancelar</button>
-          <button type="button" className="btn-modal save" onClick={handleSave, closeModal}>Guardar</button>
+          <button type="button" className="btn-modal cancel" onClick={closeModal}>Cancelar</button>
+          <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
         </div>
       </div>
     </form>
