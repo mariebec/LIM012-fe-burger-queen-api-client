@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
 import { postUser } from '../../controller/admin-users';
 
-const ModalUsers = forwardRef((ref) => {
+const ModalUsers = forwardRef((props, ref) => {
   // const idGenerado = (Math.random() * 100).toString();
   const initialState = {
     // id: idGenerado,
@@ -46,11 +46,12 @@ const ModalUsers = forwardRef((ref) => {
     }
   }
 
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(false);
 
   useImperativeHandle(ref, () => {
     return {
-      testMethod: () => console.log('hola modal')
+      handleAddUser: () => openModal(),
+      closeModal: () => closeModal()
     }
   })
 
