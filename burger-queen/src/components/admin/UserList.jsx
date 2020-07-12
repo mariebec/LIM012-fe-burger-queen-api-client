@@ -16,7 +16,8 @@ const UserList = () => {
   const modalRef =  useRef();
 
   const handleAddUser = () => {
-    console.log(modalRef)
+     modalRef.current.handleAddUser();
+    
   }
 
   return (
