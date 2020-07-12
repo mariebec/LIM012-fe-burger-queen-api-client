@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
 import { postUser } from '../../controller/admin-users';
 
-const ModalUsers = forwardRef((ref) => {
-  // const idGenerado = (Math.random() * 100).toString();
+const ModalUsers = forwardRef((props, ref) => {
   const initialState = {
-    // id: idGenerado,
     email:'',
     password:'',
     roles: { admin: false }
@@ -24,12 +22,27 @@ const ModalUsers = forwardRef((ref) => {
     setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
   }
 
-  const handleCancel = () => {
+  const [display, setDisplay] = useState(false);
+
+  useImperativeHandle(ref, () => {
+    return {
+      handleAddUser: () => openModal(),
+      closeModal: () => closeModal()
+    }
+  });
+
+  const openModal = () => {
+    setDisplay(true);
+  }
+
+  const closeModal = () => {
+    setDisplay(false);
     setUser({...initialState});
-  };
+    setErrorMail(false);
+    setErrorPass(false);
+  }
 
   const handleSave = () => {
-    // e.preventDefault();
     const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 
     const validEmail = user.email.trim() === '' || !exRegEmail.test(user.email.trim());
@@ -43,23 +56,8 @@ const ModalUsers = forwardRef((ref) => {
         .catch((error) => console.log(error))
         .then((resp) => console.log(resp));
       setUser({...initialState});
+      closeModal();
     }
-  }
-
-  const [display, setDisplay] = useState(true);
-
-  useImperativeHandle(ref, () => {
-    return {
-      testMethod: () => console.log('hola modal')
-    }
-  })
-
-  const openModal = () => {
-    setDisplay(true)
-  }
-
-  const closeModal = () => {
-    setDisplay(false)
   }
 
   if(display) {
@@ -74,7 +72,6 @@ const ModalUsers = forwardRef((ref) => {
             errPass={errPass}
             handleInputChange={handleInputChange} 
             handleSelectChange={handleSelectChange} 
-            handleCancel={handleCancel} 
             handleSave={handleSave}
             closeModal={closeModal}/>
         </div>
@@ -82,8 +79,6 @@ const ModalUsers = forwardRef((ref) => {
     )
   }
   return null;
-
-  
 })
 
 export default ModalUsers;
