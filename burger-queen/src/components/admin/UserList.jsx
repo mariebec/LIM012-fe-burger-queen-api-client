@@ -13,10 +13,10 @@ const UserList = () => {
     getUsers().then((resp) => setUser(resp));
   }, []);
 
-  const modalRef =  useRef();
+  const modalRef = useRef();
 
   const handleAddUser = () => {
-    console.log(modalRef)
+    modalRef.current.handleAddUser();
   }
 
   return (
