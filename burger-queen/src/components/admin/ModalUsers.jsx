@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, forwardRef, useImperativeHandle} from 'react';
+import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
 import { postUser } from '../../controller/admin-users';
 
-const ModalUsers = () => {
+const ModalUsers = forwardRef((ref) => {
   // const idGenerado = (Math.random() * 100).toString();
   const initialState = {
     // id: idGenerado,
@@ -45,9 +46,26 @@ const ModalUsers = () => {
     }
   }
 
-  return (
-    <>
-      <section className="bg-img-fries">
+  const [display, setDisplay] = useState(true);
+
+  useImperativeHandle(ref, () => {
+    return {
+      testMethod: () => console.log('hola modal')
+    }
+  })
+
+  const openModal = () => {
+    setDisplay(true)
+  }
+
+  const closeModal = () => {
+    setDisplay(false)
+  }
+
+  if(display) {
+    return ReactDOM.createPortal(
+      <section className="modal-container">
+        <div className="background-modal"></div>
         <div className="modal-window">
           <p className="title-modal">Agregar usuario</p>
           <FormUsers 
@@ -57,11 +75,15 @@ const ModalUsers = () => {
             handleInputChange={handleInputChange} 
             handleSelectChange={handleSelectChange} 
             handleCancel={handleCancel} 
-            handleSave={handleSave}/>
+            handleSave={handleSave}
+            closeModal={closeModal}/>
         </div>
-      </section>
-    </>
-  )
-}
+      </section>, document.getElementById("modal")
+    )
+  }
+  return null;
+
+  
+})
 
 export default ModalUsers;
