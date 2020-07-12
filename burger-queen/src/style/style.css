@@ -494,21 +494,30 @@
   color: #960404;
 }
 
-.bg-img-fries {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: gray;
-  height: 100vh;
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.bg-img-fries .modal-window {
+.modal-container .background-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-container .modal-window {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -519,9 +528,12 @@
   width: 50%;
   background-color: #411515;
   border-radius: 10px;
+  z-index: 20;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-.bg-img-fries .modal-window p {
+.modal-container .modal-window p {
   color: #FFF;
   font-family: "Pridi", serif;
   font-size: 1.8rem;
@@ -530,7 +542,7 @@
   height: 60px;
 }
 
-.bg-img-fries .modal-window .form-modal {
+.modal-container .modal-window .form-modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -545,7 +557,7 @@
   border-radius: 0 0 10px 10px;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container {
+.modal-container .modal-window .form-modal .form-container {
   width: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -557,7 +569,7 @@
   padding: 30px 0;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div {
+.modal-container .modal-window .form-modal .form-container div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -571,14 +583,14 @@
   height: 35px;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .label-text {
+.modal-container .modal-window .form-modal .form-container div .label-text {
   font-family: "Pridi", serif;
   color: #411515;
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input {
+.modal-container .modal-window .form-modal .form-container div .box-input {
   width: 75%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -592,7 +604,7 @@
           align-items: flex-start;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal {
+.modal-container .modal-window .form-modal .form-container div .box-input .input-modal {
   width: 100%;
   font-size: 1.2rem;
   padding: 5px 10px;
@@ -601,40 +613,40 @@
   outline-color: gray;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal::-webkit-input-placeholder {
+.modal-container .modal-window .form-modal .form-container div .box-input .input-modal::-webkit-input-placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal:-ms-input-placeholder {
+.modal-container .modal-window .form-modal .form-container div .box-input .input-modal:-ms-input-placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal::-ms-input-placeholder {
+.modal-container .modal-window .form-modal .form-container div .box-input .input-modal::-ms-input-placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input .input-modal::placeholder {
+.modal-container .modal-window .form-modal .form-container div .box-input .input-modal::placeholder {
   font-size: 1.2rem;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-input span {
+.modal-container .modal-window .form-modal .form-container div .box-input span {
   margin: 5px 0 0 10px;
   font-size: 1.1rem;
   color: red;
   font-family: "Pridi", serif;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .box-select {
+.modal-container .modal-window .form-modal .form-container div .box-select {
   width: 80%;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .select-modal {
+.modal-container .modal-window .form-modal .form-container div .select-modal {
   width: 20%;
   height: 35px;
   border-radius: 5px;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .btn-modal {
+.modal-container .modal-window .form-modal .form-container div .btn-modal {
   width: 48%;
   font-family: "Pridi", serif;
   font-size: 1.2rem;
@@ -644,12 +656,12 @@
   border: 0;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .cancel {
+.modal-container .modal-window .form-modal .form-container div .cancel {
   background-color: #E5E5E5;
   color: #4e4e4e;
 }
 
-.bg-img-fries .modal-window .form-modal .form-container div .save {
+.modal-container .modal-window .form-modal .form-container div .save {
   background-color: #3DB01C;
 }
 

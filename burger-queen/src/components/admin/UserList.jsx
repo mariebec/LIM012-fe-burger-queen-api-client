@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Header from '../Header';
 import UsersTable from './UsersTable';
 import { getUsers } from '../../controller/admin-users';
+import ModalUsers from './ModalUsers';
 
 
 const UserList = () => {
@@ -12,8 +13,10 @@ const UserList = () => {
     getUsers().then((resp) => setUser(resp));
   }, []);
 
+  const modalRef =  useRef();
+
   const handleAddUser = () => {
-    // Modal
+    console.log(modalRef)
   }
 
   return (
@@ -22,9 +25,11 @@ const UserList = () => {
       <main className="container-users">
         <div className="btn-container">
           <button onClick={handleAddUser}>Agregar usuario</button>
+          <ModalUsers ref={modalRef}/>
         </div>
         <h2>Lista de usuarios</h2>
         <UsersTable users={users} />
+
       </main>
     </>
   )
