@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChange, handleCancel, handleSave, closeModal }) => {
+const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChange, handleSave, handleCancel }) => {
   return (
     <form className="form-modal">
       <div className="form-container">
@@ -40,7 +40,8 @@ const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChan
           </div>
         </div>
         <div>
-          <button type="button" className="btn-modal cancel" onClick={closeModal}>Cancelar</button>
+          {/* Aquí usamos el handleCancel que aparte de limpiar los formularios, cambia el display a false */}
+          <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
           <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
         </div>
       </div>
