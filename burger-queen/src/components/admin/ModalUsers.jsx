@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
 import { postUser } from '../../controller/admin-users';
 
+
 // Obtenemos el estado de display y la función closeModal
-const ModalUsers = ({display, closeModal}) => {
+const ModalUsers = ({display, closeModal, setUsers, users}) => {
+  const idGenerado = (Math.random() * 100).toString();
   const initialState = {
+    id: idGenerado,
     email:'',
     password:'',
     roles: { admin: false }
@@ -23,12 +26,14 @@ const ModalUsers = ({display, closeModal}) => {
     setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
   }
   // Creamos la función handleCancel que se pasa al formulario
-  const handleCancel = () => {
+  const handleCancel = () => { 
+    if (window.confirm ('¿Quieres cancelar el registro?')) {
     // Llamamos la función que tiene el setDisplay(false)
     closeModal();
     setUser({...initialState});
     setErrorMail(false);
     setErrorPass(false);
+   } 
   }
 
   const handleSave = () => {
@@ -40,30 +45,13 @@ const ModalUsers = ({display, closeModal}) => {
     if (validEmail || validPassword) {
       (validEmail) ? setErrorMail(true) : setErrorMail(false);
       (validPassword) ? setErrorPass(true) : setErrorPass(false);
-    } else {
+    } else { 
       postUser(user)
         .catch((error) => console.log(error))
-        .then((resp) => console.log(resp));
+        .then((resp) => setUsers([...users, resp]));
       setUser({...initialState});
       closeModal();
     }
-  }
-
-  const [display, setDisplay] = useState(false);
-
-  useImperativeHandle(ref, () => {
-    return {
-      handleAddUser: () => openModal(),
-      closeModal: () => closeModal()
-    }
-  })
-
-  const openModal = () => {
-    setDisplay(true)
-  }
-
-  const closeModal = () => {
-    setDisplay(false)
   }
 
   if(display) {
