@@ -14,5 +14,5 @@ export const postUser = (user) => {
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then((resp) => resp.json())
+  }).then((resp) => resp.json());
 }
