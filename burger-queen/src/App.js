@@ -8,7 +8,6 @@ import LogIn from './components/login/LogIn';
 import Menu from './components/order/Menu';
 import UserList from './components/admin/UserList';
 import ProductList from './components/admin/ProductList';
-import ModalUsers from './components/admin/ModalUsers';
 import NotFound from './components/login/NotFound'
 import './style/style.css';
 
@@ -30,9 +29,6 @@ function App() {
             </Route>
             <Route path="/productlist" >
                 <ProductList />
-            </Route>
-            <Route path="/modalusers" >
-                <ModalUsers />
             </Route>
             <Route>
                 <NotFound />
