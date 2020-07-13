@@ -14,5 +14,11 @@ export const postUser = (user) => {
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then((resp) => resp.json());
+  }).then((resp) => {
+    if (resp.status === 200) {
+      return resp.json()
+    } if (resp.status === 400){
+      return Promise.reject(console.log('email and password is required'));
+    }
+  });
 }
