@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UsersTable = ({ users }) => {
+const UsersTable = ({ users, handleDeleteUser }) => {
   return (
     <table className="table">
       <thead className="head-table">
@@ -21,7 +21,7 @@ const UsersTable = ({ users }) => {
               <td>{element.roles.admin ? 'SI' : 'NO' }</td>
               <td>
                 <i className="icon edit fas fa-edit"/>
-                <i className="icon delete fas fa-trash-alt"/>
+                <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
               </td>
             </tr>
           )) : (
