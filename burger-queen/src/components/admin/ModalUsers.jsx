@@ -1,10 +1,10 @@
-import React, {useState, forwardRef, useImperativeHandle} from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
 import { postUser } from '../../controller/admin-users';
 
-const ModalUsers = forwardRef((props, ref) => {
-  // const idGenerado = (Math.random() * 100).toString();
+// Obtenemos el estado de display y la función closeModal
+const ModalUsers = ({display, closeModal}) => {
   const initialState = {
     email:'',
     password:'',
@@ -22,22 +22,10 @@ const ModalUsers = forwardRef((props, ref) => {
   const handleSelectChange = (e) =>{
     setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
   }
-
-  const [display, setDisplay] = useState(false);
-
-  useImperativeHandle(ref, () => {
-    return {
-      handleAddUser: () => openModal(),
-      closeModal: () => closeModal()
-    }
-  });
-
-  const openModal = () => {
-    setDisplay(true);
-  }
-
-  const closeModal = () => {
-    setDisplay(false);
+  // Creamos la función handleCancel que se pasa al formulario
+  const handleCancel = () => {
+    // Llamamos la función que tiene el setDisplay(false)
+    closeModal();
     setUser({...initialState});
     setErrorMail(false);
     setErrorPass(false);
@@ -91,12 +79,13 @@ const ModalUsers = forwardRef((props, ref) => {
             handleInputChange={handleInputChange} 
             handleSelectChange={handleSelectChange} 
             handleSave={handleSave}
-            closeModal={closeModal}/>
+            /* Pasamos como prop el handleCancel */
+            handleCancel={handleCancel}/>
         </div>
       </section>, document.getElementById("modal")
     )
   }
   return null;
-})
+}
 
 export default ModalUsers;
