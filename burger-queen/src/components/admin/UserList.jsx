@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../Header';
 import UsersTable from './UsersTable';
-import { getUsers } from '../../controller/admin-users';
+import { getUsers, deleteUser } from '../../controller/admin-users';
 import ModalUsers from './ModalUsers';
 
 
@@ -24,6 +24,13 @@ const UserList = () => {
     setDisplay(false);
   }
 
+  const handleDeleteUser = (id) => {
+    console.log('se va a borrar', id)
+    setUsers(users.filter((user) => user.id !== id))
+    deleteUser(id).then((resp) => console.log(resp));
+
+  }
+
   return (
     <>
       <Header title="ADMINISTRADOR" />
@@ -34,7 +41,7 @@ const UserList = () => {
           <ModalUsers display={display} closeModal={closeModal} setUsers={setUsers} users={users}/>
         </div>
         <h2>Lista de usuarios</h2>
-        <UsersTable users={users}/>
+        <UsersTable users={users} handleDeleteUser={handleDeleteUser}/>
 
       </main>
     </>

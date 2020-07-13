@@ -22,3 +22,20 @@ export const postUser = (user) => {
     }
   });
 }
+
+export const deleteUser = (id) => {
+  return fetch(`http://localhost:3002/users/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((resp) => {
+    if (resp.status === 204) {
+    // return resp.json() 
+    console.log(resp)
+    } if (resp.status === 400){
+      return Promise.reject(console.log('no existe el usuario'));
+    }
+  });
+
+}
