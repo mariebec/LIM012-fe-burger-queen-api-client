@@ -7,10 +7,10 @@ import ModalUsers from './ModalUsers';
 
 const UserList = () => {
 
-  const [ users, setUser ] = useState([]);
+  const [ users, setUsers ] = useState([]);
 
   useEffect(() => {
-    getUsers().then((resp) => setUser(resp));
+    getUsers().then((resp) => setUsers(resp));
   }, []);
 
   // Acá se crea el estado de display
@@ -31,7 +31,7 @@ const UserList = () => {
         <div className="btn-container">
           <button onClick={handleAddUser}>Agregar usuario</button>
           {/* Acá pasamos el estado de display y la función para cambiar el estado a false */}
-          <ModalUsers display={display} closeModal={closeModal}/>
+          <ModalUsers display={display} closeModal={closeModal} setUsers={setUsers} users={users}/>
         </div>
         <h2>Lista de usuarios</h2>
         <UsersTable users={users}/>
