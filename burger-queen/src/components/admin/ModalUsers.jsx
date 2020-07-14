@@ -5,16 +5,8 @@ import { postUser } from '../../controller/admin-users';
 
 
 // Obtenemos el estado de display y la función closeModal
-const ModalUsers = ({display, closeModal, setUsers, users}) => {
-  const idGenerado = (Math.random() * 100).toString();
-  const initialState = {
-    id: idGenerado,
-    email:'',
-    password:'',
-    roles: { admin: false }
-  };
-
-  const [user, setUser] = useState(initialState);
+const ModalUsers = ({display, closeModal, setUsers, users, setUser, user}) => {
+  
   const [ errMail, setErrorMail ] = useState(false);
   const [ errPass, setErrorPass ] = useState(false);
 
@@ -23,17 +15,16 @@ const ModalUsers = ({display, closeModal, setUsers, users}) => {
   } 
 
   const handleSelectChange = (e) =>{
-    setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
+    setUser({...user, roles: { admin: e.target.value === 'SI' ? true : false }});
   }
   // Creamos la función handleCancel que se pasa al formulario
   const handleCancel = () => { 
-    if (window.confirm ('¿Quieres cancelar el registro?')) {
     // Llamamos la función que tiene el setDisplay(false)
     closeModal();
-    setUser({...initialState});
+    const idGenerado = (Math.random() * 100).toString();
+    setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
     setErrorMail(false);
     setErrorPass(false);
-   } 
   }
 
   const handleSave = () => {
@@ -48,8 +39,9 @@ const ModalUsers = ({display, closeModal, setUsers, users}) => {
     } else { 
       postUser(user)
         .catch((error) => console.log(error))
-        .then((resp) => setUsers([...users, resp]));
-      setUser({...initialState});
+        .then((resp) => console.log(resp) || setUsers([...users, resp])); 
+      const idGenerado = (Math.random() * 100).toString();
+      setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
       closeModal();
     }
   }
