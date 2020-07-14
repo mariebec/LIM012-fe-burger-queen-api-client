@@ -7,30 +7,28 @@ import ModalUsers from './ModalUsers';
 
 const UserList = () => {
 
-  const [ users, setUsers ] = useState([]);
+  const [ allUsers, setAllUsers ] = useState([]);
 
   useEffect(() => {
-    getUsers().then((resp) => setUsers(resp));
+    getUsers().then((resp) => setAllUsers(resp));
   }, []);
 
   // Acá se crea el estado de display
   const [display, setDisplay] = useState(false);
+  const [ button, setButton ] = useState(false);
   // El botón agregar usuario cambia el estado de display a true
   const handleAddUser = () => {
     setDisplay(true);
-  }
-  // Se crea una función para cambiar el estado a false, este estado se pasa al modal mediante props
-  const closeModal = () => {
-    setDisplay(false);
+    setButton(false);
   }
 
   const handleDeleteUser = (id) => {
     console.log('se va a borrar', id)
-    setUsers(users.filter((user) => user.id !== id))
+    setAllUsers(allUsers.filter((user) => user.id !== id))
     deleteUser(id).then((resp) => console.log(resp));
   }
 
-  const idGenerado = (Math.random() * 100).toString();
+  const idGenerado = (Math.random() * 1000).toFixed(3).toString();
   const initialState = {
     id: idGenerado,
     email:'',
@@ -42,6 +40,7 @@ const UserList = () => {
 
   const handleUpdateUser = (user) => {
     setDisplay(true);
+    setButton(true);
     setUser({...user, id: user.id, email: user.email, roles: {admin: user.roles.admin}});
   }
 
@@ -52,10 +51,11 @@ const UserList = () => {
         <div className="btn-container">
           <button onClick={handleAddUser}>Agregar usuario</button>
           {/* Acá pasamos el estado de display y la función para cambiar el estado a false */}
-          <ModalUsers display={display} closeModal={closeModal} setUsers={setUsers} users={users} setUser={setUser} user={user}/>
+          <ModalUsers display={display} setDisplay={setDisplay} setAllUsers={setAllUsers} 
+          allUsers={allUsers} setUser={setUser} user={user} button={button}/>
         </div>
         <h2>Lista de usuarios</h2>
-        <UsersTable users={users} handleDeleteUser={handleDeleteUser} handleUpdateUser={handleUpdateUser}/>
+        <UsersTable allUsers={allUsers} handleDeleteUser={handleDeleteUser} handleUpdateUser={handleUpdateUser}/>
 
       </main>
     </>
