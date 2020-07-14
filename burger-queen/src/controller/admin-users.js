@@ -37,5 +37,22 @@ export const deleteUser = (id) => {
       return Promise.reject(console.log('no existe el usuario'));
     }
   });
+}
 
+export const putUser = (user) => {
+  return fetch(`http://localhost:3002/users/${user.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((resp) => {
+    if (resp.status === 200) {
+    return resp.json(); 
+    } else if (resp.status === 400){
+      return Promise.reject({ message: 'Debe ingresar email y contraseña' });
+    } else if (resp.status === 404) {
+      return Promise.reject({ message: 'Usuario no encontrado' });
+    }
+  });
 }
