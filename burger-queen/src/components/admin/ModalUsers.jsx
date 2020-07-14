@@ -12,7 +12,7 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, 
   const [ error, setError ] = useState('');
 
   const handleInputChange = (e) => {
-    setCurrentUser({...currentUser, [e.target.name]: e.target.value});
+    setUser({...user, [e.target.name]: e.target.value});
   } 
 
   const handleSelectChange = (e) =>{
@@ -31,14 +31,14 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, 
 
   const handleSave = () => {
     const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-    const validEmail = currentUser.email.trim() === '' || !exRegEmail.test(currentUser.email.trim());
-    const validPassword = currentUser.password.trim() === '' || currentUser.password.trim().length < 6;
+    const validEmail = user.email.trim() === '' || !exRegEmail.test(user.email.trim());
+    const validPassword = user.password.trim() === '' || user.password.trim().length < 6;
   
     if (validEmail || validPassword) {
       (validEmail) ? setErrorMail(true) : setErrorMail(false);
       (validPassword) ? setErrorPass(true) : setErrorPass(false);
     } else { 
-      postUser(currentUser)
+      postUser(user)
         .catch((error) => console.log(error))
         .then((resp) => setAllUsers([...allUsers, resp])); 
       const idGenerado = (Math.random() * 1000).toFixed(3).toString();
@@ -67,7 +67,7 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, 
         <div className="modal-window">
           <p className="title-modal">Agregar usuario</p>
           <FormUsers 
-            currentUser={currentUser} 
+            user={user} 
             errMail={errMail}
             errPass={errPass}
             error={error}
