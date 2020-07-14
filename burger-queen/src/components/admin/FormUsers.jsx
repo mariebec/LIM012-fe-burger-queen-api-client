@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChange, handleSave, handleCancel }) => {
+const FormUsers = ({ currentUser, errMail, errPass, handleInputChange, handleSelectChange, handleSave, handleCancel }) => {
   return (
     <form className="form-modal">
       <div className="form-container">
@@ -8,7 +8,7 @@ const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChan
           <label htmlFor="input-email" className="label-text">E-MAIL:</label>
           <div className="box-input">
             <input 
-              value={user.email}
+              value={currentUser.email}
               id ="input-email" 
               placeholder="Ingrese un e-mail" 
               name="email" type="email" 
@@ -21,7 +21,7 @@ const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChan
           <label htmlFor="input-password" className="label-text">CLAVE:</label>
           <div className="box-input">
             <input 
-              value={user.password}
+              value={currentUser.password}
               id ="input-password" 
               placeholder="Ingrese la contraseña" 
               name="password" type="password"
@@ -33,7 +33,7 @@ const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChan
         <div>
           <label htmlFor="input-admin" className="label-text">ADMIN:</label>
           <div className="box-select">
-            <select id ="input-admin" onChange={handleSelectChange} className="select-modal" value={user.roles.admin ? "SI" : "NO"}>
+            <select id ="input-admin" onChange={handleSelectChange} className="select-modal" value={currentUser.roles.admin ? "SI" : "NO"}>
               <option value="NO">NO</option>
               <option value="SI">SI</option>
             </select>
