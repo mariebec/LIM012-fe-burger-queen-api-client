@@ -8,6 +8,7 @@ export const getUsers = () => {
 }
 
 export const postUser = (user) => {
+  console.log('Enviando', user);
   return fetch('http://localhost:3002/users', {
     method: 'POST',
     body: JSON.stringify(user),
@@ -40,6 +41,7 @@ export const deleteUser = (id) => {
 }
 
 export const putUser = (user) => {
+  console.log(user);
   return fetch(`http://localhost:3002/users/${user.id}`, {
     method: 'PUT',
     body: JSON.stringify(user),
