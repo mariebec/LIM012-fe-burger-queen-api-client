@@ -569,6 +569,13 @@
   padding: 30px 0;
 }
 
+.modal-container .modal-window .form-modal .form-container span {
+  margin: 5px 0 0 10px;
+  font-size: 1.1rem;
+  color: red;
+  font-family: "Pridi", serif;
+}
+
 .modal-container .modal-window .form-modal .form-container div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -627,13 +634,6 @@
 
 .modal-container .modal-window .form-modal .form-container div .box-input .input-modal::placeholder {
   font-size: 1.2rem;
-}
-
-.modal-container .modal-window .form-modal .form-container div .box-input span {
-  margin: 5px 0 0 10px;
-  font-size: 1.1rem;
-  color: red;
-  font-family: "Pridi", serif;
 }
 
 .modal-container .modal-window .form-modal .form-container div .box-select {
