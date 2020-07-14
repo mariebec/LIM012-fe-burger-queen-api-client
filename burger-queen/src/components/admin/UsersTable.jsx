@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UsersTable = ({ users, handleDeleteUser, handleUpdateUser }) => {
+const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
   return (
     <table className="table">
       <thead className="head-table">
@@ -13,8 +13,8 @@ const UsersTable = ({ users, handleDeleteUser, handleUpdateUser }) => {
       </thead>
       <tbody className="body-table">
         { 
-          users.length > 0 ?
-          users.map((element) => (
+          allUsers.length > 0 ?
+          allUsers.map((element) => (
             <tr key={element.id}>
               <td>{element.id}</td>
               <td>{element.email}</td>
