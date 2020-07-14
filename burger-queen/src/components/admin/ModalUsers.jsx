@@ -5,51 +5,43 @@ import { postUser } from '../../controller/admin-users';
 
 
 // Obtenemos el estado de display y la función closeModal
-const ModalUsers = ({display, closeModal, setUsers, users}) => {
-  const idGenerado = (Math.random() * 100).toString();
-  const initialState = {
-    id: idGenerado,
-    email:'',
-    password:'',
-    roles: { admin: false }
-  };
+const ModalUsers = ({display, closeModal, setUsers, users, currentUser, setCurrentUser}) => {
 
-  const [user, setUser] = useState(initialState);
   const [ errMail, setErrorMail ] = useState(false);
   const [ errPass, setErrorPass ] = useState(false);
 
   const handleInputChange = (e) => {
-    setUser({...user, [e.target.name]: e.target.value});
+    setCurrentUser({...currentUser, [e.target.name]: e.target.value});
   } 
 
   const handleSelectChange = (e) =>{
-    setUser({...user, roles: { admin: e.target.value === "SI" ? true : false }})
+    setCurrentUser({...currentUser, roles: { admin: e.target.value === "SI" ? true : false }})
+    console.log(currentUser);
   }
   // Creamos la función handleCancel que se pasa al formulario
   const handleCancel = () => { 
-    if (window.confirm ('¿Quieres cancelar el registro?')) {
     // Llamamos la función que tiene el setDisplay(false)
     closeModal();
-    setUser({...initialState});
+    const idGenerado = (Math.random() * 100).toString();
+    // setCurrentUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
     setErrorMail(false);
     setErrorPass(false);
-   } 
   }
 
   const handleSave = () => {
     const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-
-    const validEmail = user.email.trim() === '' || !exRegEmail.test(user.email.trim());
-    const validPassword = user.password.trim() === '' || user.password.trim().length < 6;
+    const validEmail = currentUser.email.trim() === '' || !exRegEmail.test(currentUser.email.trim());
+    const validPassword = currentUser.password.trim() === '' || currentUser.password.trim().length < 6;
   
     if (validEmail || validPassword) {
       (validEmail) ? setErrorMail(true) : setErrorMail(false);
       (validPassword) ? setErrorPass(true) : setErrorPass(false);
     } else { 
-      postUser(user)
+      postUser(currentUser)
         .catch((error) => console.log(error))
         .then((resp) => setUsers([...users, resp]));
-      setUser({...initialState});
+      const idGenerado = (Math.random() * 100).toString();
+      // setCurrentUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
       closeModal();
     }
   }
@@ -61,7 +53,7 @@ const ModalUsers = ({display, closeModal, setUsers, users}) => {
         <div className="modal-window">
           <p className="title-modal">Agregar usuario</p>
           <FormUsers 
-            user={user} 
+            currentUser={currentUser} 
             errMail={errMail}
             errPass={errPass}
             handleInputChange={handleInputChange} 
