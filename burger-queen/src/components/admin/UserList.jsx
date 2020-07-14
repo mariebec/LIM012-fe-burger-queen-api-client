@@ -28,7 +28,21 @@ const UserList = () => {
     console.log('se va a borrar', id)
     setUsers(users.filter((user) => user.id !== id))
     deleteUser(id).then((resp) => console.log(resp));
+  }
 
+  const idGenerado = (Math.random() * 100).toString();
+  const initialState = {
+    id: idGenerado,
+    email:'',
+    password:'',
+    roles: { admin: false }
+  };
+
+  const [user, setUser] = useState(initialState);
+
+  const handleUpdateUser = (user) => {
+    setDisplay(true);
+    setUser({...user, id: user.id, email: user.email, roles: {admin: user.roles.admin}});
   }
 
   return (
@@ -38,10 +52,10 @@ const UserList = () => {
         <div className="btn-container">
           <button onClick={handleAddUser}>Agregar usuario</button>
           {/* Acá pasamos el estado de display y la función para cambiar el estado a false */}
-          <ModalUsers display={display} closeModal={closeModal} setUsers={setUsers} users={users}/>
+          <ModalUsers display={display} closeModal={closeModal} setUsers={setUsers} users={users} setUser={setUser} user={user}/>
         </div>
         <h2>Lista de usuarios</h2>
-        <UsersTable users={users} handleDeleteUser={handleDeleteUser}/>
+        <UsersTable users={users} handleDeleteUser={handleDeleteUser} handleUpdateUser={handleUpdateUser}/>
 
       </main>
     </>
