@@ -8,7 +8,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
           <label htmlFor="input-email" className="label-text">E-MAIL:</label>
           <div className="box-input">
             <input 
-              value={currentUser.email}
+              value={user.email}
               id ="input-email" 
               placeholder="Ingrese un e-mail" 
               name="email" type="email" 
@@ -21,7 +21,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
           <label htmlFor="input-password" className="label-text">CLAVE:</label>
           <div className="box-input">
             <input 
-              value={currentUser.password}
+              value={user.email}
               id ="input-password" 
               placeholder="Ingrese la contraseña" 
               name="password" type="password"
