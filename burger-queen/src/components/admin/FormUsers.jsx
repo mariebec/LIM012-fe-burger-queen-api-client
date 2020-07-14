@@ -42,6 +42,7 @@ const FormUsers = ({ user, errMail, errPass, handleInputChange, handleSelectChan
         <div>
           {/* Aquí usamos el handleCancel que aparte de limpiar los formularios, cambia el display a false */}
           <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
+          {/* <button type="button" className="btn-modal save" onClick={handleEdit}>Editar</button> */}
           <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
         </div>
       </div>
