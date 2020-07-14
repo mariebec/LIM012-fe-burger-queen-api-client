@@ -40,7 +40,10 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, 
     } else { 
       postUser(user)
         .catch((error) => console.log(error))
-        .then((resp) => setAllUsers([...allUsers, resp])); 
+        .then((resp) => {
+          console.log('Recibiendo', resp);
+          setAllUsers([...allUsers, resp]); 
+        });
       const idGenerado = (Math.random() * 1000).toFixed(3).toString();
       setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
       setDisplay(false);
@@ -49,6 +52,7 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, 
 
   const handleEdit = () => {
     putUser(user).then((resp) => {
+      console.log(resp)
       setDisplay(false);
       setError('');
       const idGenerado = (Math.random() * 1000).toFixed(3).toString();
