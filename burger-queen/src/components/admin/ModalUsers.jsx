@@ -1,31 +1,32 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
-import { postUser } from '../../controller/admin-users';
+import { postUser, putUser } from '../../controller/admin-users';
 
 
 // Obtenemos el estado de display y la función closeModal
-const ModalUsers = ({display, closeModal, setUsers, users, currentUser, setCurrentUser}) => {
-
+const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, button}) => {
+  
   const [ errMail, setErrorMail ] = useState(false);
   const [ errPass, setErrorPass ] = useState(false);
+  const [ error, setError ] = useState('');
 
   const handleInputChange = (e) => {
     setCurrentUser({...currentUser, [e.target.name]: e.target.value});
   } 
 
   const handleSelectChange = (e) =>{
-    setCurrentUser({...currentUser, roles: { admin: e.target.value === "SI" ? true : false }})
-    console.log(currentUser);
+    setUser({...user, roles: { admin: e.target.value === 'SI' ? true : false }});
   }
   // Creamos la función handleCancel que se pasa al formulario
   const handleCancel = () => { 
     // Llamamos la función que tiene el setDisplay(false)
-    closeModal();
-    const idGenerado = (Math.random() * 100).toString();
-    // setCurrentUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
+    setDisplay(false);
+    const idGenerado = (Math.random() * 1000).toFixed(3).toString();
+    setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
     setErrorMail(false);
     setErrorPass(false);
+    setError('');
   }
 
   const handleSave = () => {
@@ -39,11 +40,24 @@ const ModalUsers = ({display, closeModal, setUsers, users, currentUser, setCurre
     } else { 
       postUser(currentUser)
         .catch((error) => console.log(error))
-        .then((resp) => setUsers([...users, resp]));
-      const idGenerado = (Math.random() * 100).toString();
-      // setCurrentUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
-      closeModal();
+        .then((resp) => setAllUsers([...allUsers, resp])); 
+      const idGenerado = (Math.random() * 1000).toFixed(3).toString();
+      setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
+      setDisplay(false);
     }
+  }
+
+  const handleEdit = () => {
+    putUser(user).then((resp) => {
+      setDisplay(false);
+      setError('');
+      const idGenerado = (Math.random() * 1000).toFixed(3).toString();
+      setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
+      setAllUsers(allUsers.map((user) => user.id === resp.id? resp : user));
+    })
+    .catch((error) => {
+      setError(error)
+    });
   }
 
   if(display) {
@@ -56,11 +70,13 @@ const ModalUsers = ({display, closeModal, setUsers, users, currentUser, setCurre
             currentUser={currentUser} 
             errMail={errMail}
             errPass={errPass}
+            error={error}
             handleInputChange={handleInputChange} 
             handleSelectChange={handleSelectChange} 
             handleSave={handleSave}
-            /* Pasamos como prop el handleCancel */
-            handleCancel={handleCancel}/>
+            handleEdit={handleEdit}
+            handleCancel={handleCancel}
+            button={button}/>
         </div>
       </section>, document.getElementById("modal")
     )

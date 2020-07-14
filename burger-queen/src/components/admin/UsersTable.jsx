@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UsersTable = ({ users, handleDeleteUser, handleUpdateUser }) => {
+const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
   return (
     <table className="table">
       <thead className="head-table">
@@ -13,14 +13,14 @@ const UsersTable = ({ users, handleDeleteUser, handleUpdateUser }) => {
       </thead>
       <tbody className="body-table">
         { 
-          users.length > 0 ?
-          users.map((element) => (
+          allUsers.length > 0 ?
+          allUsers.map((element) => (
             <tr key={element.id}>
               <td>{element.id}</td>
               <td>{element.email}</td>
-              <td>{element.roles.admin ? 'SI' : 'NO' }</td>
+              <td>{element.roles.admin === "true" ? "SI" : "NO" }</td>
               <td>
-                <i className="icon edit fas fa-edit" onClick= {() => handleUpdateUser(element) }/>
+                <i className="icon edit fas fa-edit" onClick = {()=> handleUpdateUser(element) }/>
                 <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
               </td>
             </tr>

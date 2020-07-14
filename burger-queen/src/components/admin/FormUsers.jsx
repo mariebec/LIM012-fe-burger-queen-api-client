@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ currentUser, errMail, errPass, handleInputChange, handleSelectChange, handleSave, handleCancel }) => {
+const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSelectChange, handleSave, handleEdit, handleCancel, button }) => {
   return (
     <form className="form-modal">
       <div className="form-container">
@@ -33,16 +33,20 @@ const FormUsers = ({ currentUser, errMail, errPass, handleInputChange, handleSel
         <div>
           <label htmlFor="input-admin" className="label-text">ADMIN:</label>
           <div className="box-select">
-            <select id ="input-admin" onChange={handleSelectChange} className="select-modal" value={currentUser.roles.admin ? "SI" : "NO"}>
+            <select id ="input-admin" onChange={handleSelectChange} className="select-modal" value={user.roles.admin === "true" ? "SI" : "NO"}>
               <option value="NO">NO</option>
               <option value="SI">SI</option>
             </select>
           </div>
         </div>
+        {error.message !== '' && <span>{error.message}</span>}
         <div>
-          {/* Aquí usamos el handleCancel que aparte de limpiar los formularios, cambia el display a false */}
           <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
-          <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
+          {button ? (
+            <button type="button" className="btn-modal save" onClick={handleEdit}>Editar</button>
+          ) : (
+            <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
+          )}
         </div>
       </div>
     </form>
