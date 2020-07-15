@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import LogIn from './components/login/LogIn';
 import Menu from './components/order/Menu';
-import UserList from './components/admin/UserList';
-import ProductList from './components/admin/ProductList';
+import UserList from './components/admin/users/UserList';
+import ProductList from './components/admin/products/ProductList';
 import NotFound from './components/login/NotFound'
 import './style/style.css';
 
