@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import Header from '../Header';
+import Header from '../../Header';
 import UsersTable from './UsersTable';
-import { getUsers, deleteUser } from '../../controller/admin-users';
+import { getUsers, deleteUser } from '../../../controller/admin-users';
 import ModalUsers from './ModalUsers';
 
 

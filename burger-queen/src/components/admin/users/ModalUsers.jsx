@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom'
 import FormUsers from './FormUsers';
-import { postUser, putUser } from '../../controller/admin-users';
+import { postUser, putUser } from '../../../controller/admin-users';
 
 
 // Obtenemos el estado de display y la función closeModal

@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Hamburguesa doble",
+      "price": "15",
+      "image": "some URL",
+      "type": "burger",
+      "date": "2020-07-15"
+    },
+    {
+      "id": "65.87",
+      "name": "Hamburguesa simple",
+      "price": "10",
+      "image": "",
+      "type": "burger",
+      "date": "2020-07-23"
+    },
+    {
+      "id": "97.71",
+      "name": "Sandwich de jamón y queso",
+      "price": "10",
+      "image": "",
+      "type": "breakfast",
+      "date": "2020-07-15"
+    },
+    {
+      "id": "75.744",
+      "name": "Papas fritas",
+      "price": "5",
+      "image": "",
+      "type": "extra",
+      "date": "2020-07-16"
+    }
+  ]
+}
