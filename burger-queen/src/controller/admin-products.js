@@ -1,5 +1,5 @@
 export const getUsers = () => {
-  return fetch('http://localhost:3002/products', {
+  return fetch('http://localhost:3000/products', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -8,15 +8,15 @@ export const getUsers = () => {
 };
 
 export const postUser = (user) => {
-  console.log('Enviando', user);
-  return fetch('http://localhost:3002/products', {
+  // console.log('Enviando', user);
+  return fetch('http://localhost:3000/products', {
     method: 'POST',
     body: JSON.stringify(user),
     headers: {
       'Content-Type': 'application/json'
     }
   }).then((resp) => {
-    if (resp.status === 200) {
+    if (resp.status === 201) {
       return resp.json();
     } if (resp.status === 400){
       return Promise.reject(console.log('email and password is required'));
@@ -25,7 +25,7 @@ export const postUser = (user) => {
 };
 
 export const deleteUser = (id) => {
-  return fetch(`http://localhost:3002/products/${id}`, {
+  return fetch(`http://localhost:3000/products/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export const deleteUser = (id) => {
 
 export const putUser = (user) => {
   console.log(user);
-  return fetch(`http://localhost:3002/products/${user.id}`, {
+  return fetch(`http://localhost:3000/products/${user.id}`, {
     method: 'PUT',
     body: JSON.stringify(user),
     headers: {
