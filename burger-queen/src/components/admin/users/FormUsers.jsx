@@ -32,7 +32,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
         </div>
         <div>
           <label htmlFor="input-admin" className="label-text">ADMIN:</label>
-          <div className="box-select">
+          <div className="box-option">
             <select id ="input-admin" onChange={handleSelectChange} className="select-modal" value={user.roles.admin ? "SI" : "NO"}>
               <option value="NO">NO</option>
               <option value="SI">SI</option>
