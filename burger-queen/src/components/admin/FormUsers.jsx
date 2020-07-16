@@ -21,7 +21,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
           <label htmlFor="input-password" className="label-text">CLAVE:</label>
           <div className="box-input">
             <input 
-              value={user.email}
+              value={user.password}
               id ="input-password" 
               placeholder="Ingrese la contraseña" 
               name="password" type="password"
