@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
+const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
   return (
     <table className="table">
       <thead className="head-table">
@@ -16,15 +16,15 @@ const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
       </thead>
       <tbody className="body-table">
         { 
-          allUsers.length > 0 ?
-          allUsers.map((element) => (
+          allProducts.length > 0 ?
+          allProducts.map((element) => (
             <tr key={element.id}>
               <td>{element.id}</td>
-              <td>{element.id}</td>
-              <td>{element.id}</td>
-              <td><button>Imagen</button></td>
-              <td>Chatarra</td>
-              <td>15/07/2020</td>
+              <td>{element.name}</td>
+              <td>S/. {element.price}</td>
+              <td><button>Ver</button></td>
+              <td>{element.type}</td>
+              <td>{element.date}</td>
               <td>
                 <i className="icon edit fas fa-edit" onClick = {()=> handleUpdateUser(element) }/>
                 <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
