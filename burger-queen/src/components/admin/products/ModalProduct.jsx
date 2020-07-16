@@ -1,87 +1,77 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom'
-import FormUsers from './TempFormProducts';
-import { postUser, putUser } from '../../../controller/admin-users';
+import TempFormProducts from './TempFormProducts';
+import { postUser, putUser } from '../../../controller/admin-products';
 
 
 // Obtenemos el estado de display y la función closeModal
-const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user, button}) => {
+const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduct, product}) => {
   
-  const [ errMail, setErrorMail ] = useState(false);
-  const [ errPass, setErrorPass ] = useState(false);
-  const [ error, setError ] = useState('');
+  const [ error, setError ] = useState({
+    name: false,
+    price: false,
+    api: '',
+  });
 
-  const handleInputChange = (e) => {
-    setUser({...user, [e.target.name]: e.target.value});
+   const handleInputChange = (e) => {
+    setProduct({...product, [e.target.name]: e.target.value});
   } 
 
-  const handleSelectChange = (e) =>{
-    setUser({...user, roles: { admin: e.target.value === 'SI' ? true : false }});
-  }
-  // Creamos la función handleCancel que se pasa al formulario
   const handleCancel = () => { 
-    // Llamamos la función que tiene el setDisplay(false)
-    setDisplay(false);
     const idGenerado = (Math.random() * 1000).toFixed(3).toString();
-    setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
-    setErrorMail(false);
-    setErrorPass(false);
-    setError('');
+    setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
+    setDisplay(prevState => ({ ...prevState, modal: false }));
+    setError({ name:false, password:false, api: '' });
   }
 
   const handleSave = () => {
-    const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 
-    const validEmail = user.email.trim() === '' || !exRegEmail.test(user.email.trim());
-    const validPassword = user.password.trim() === '' || user.password.trim().length < 6;
+    const notValidName = product.name.trim() === '';
+    const notValidPrice = product.name.trim() === '';
   
-    if (validEmail || validPassword) {
-      (validEmail) ? setErrorMail(true) : setErrorMail(false);
-      (validPassword) ? setErrorPass(true) : setErrorPass(false);
+    if (notValidName || notValidPrice) {
+      (notValidName) ? setError(prevState => ({ ...prevState, name: true })) : setError(prevState => ({ ...prevState, name: false }));
+      (notValidPrice) ? setError(prevState => ({ ...prevState, price: true })) : setError(prevState => ({ ...prevState, price: false }));
     } else { 
-      postUser(user)
+      postUser(product)
         .catch((error) => console.log(error))
         .then((resp) => {
-          console.log('Recibiendo', resp);
-          setAllUsers([...allUsers, resp]); 
+          setAllProducts([...allProducts, resp]); 
         });
-      const idGenerado = (Math.random() * 1000).toFixed(3).toString();
-      setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
-      setDisplay(false);
+      const idGenerado = (Math.random() * 100).toFixed(2).toString();
+      setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
+      setDisplay(prevState => ({ ...prevState, modal: false }));
+      setError({ name:false, price:false, api: '' });
     }
   }
 
   const handleEdit = () => {
-    putUser(user).then((resp) => {
-      console.log(resp)
-      setDisplay(false);
-      setError('');
+    putUser(product).then((resp) => {
+      setAllProducts(allProducts.map((user) => user.id === resp.id? resp : user));
       const idGenerado = (Math.random() * 1000).toFixed(3).toString();
-      setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
-      setAllUsers(allUsers.map((user) => user.id === resp.id? resp : user));
+      setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
+      setDisplay(prevState => ({ ...prevState, modal: false }));
+      setError({ name:false, price:false, api: '' });
     })
     .catch((error) => {
       setError(error)
     });
   }
 
-  if(display) {
+  if(display.modal) {
     return ReactDOM.createPortal(
       <section className="modal-container">
         <div className="background-modal"></div>
         <div className="modal-window">
           <p className="title-modal">Agregar producto</p>
-          <FormUsers 
-            user={user} 
-            errMail={errMail}
-            errPass={errPass}
+          <TempFormProducts 
+            product={product} 
             error={error}
-            handleInputChange={handleInputChange} 
-            handleSelectChange={handleSelectChange} 
+            handleInputChange={handleInputChange}
             handleSave={handleSave}
             handleEdit={handleEdit}
             handleCancel={handleCancel}
-            button={button}/>
+            display={display}/>
         </div>
       </section>, document.getElementById("modal")
     )
