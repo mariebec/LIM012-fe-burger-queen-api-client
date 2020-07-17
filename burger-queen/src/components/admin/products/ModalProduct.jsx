@@ -22,7 +22,7 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
     const idGenerado = (Math.random() * 1000).toFixed(3).toString();
     setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
     setDisplay(prevState => ({ ...prevState, modal: false }));
-    setError({ name:false, password:false, api: '' });
+    setError({ name:false, price:false, api: '' });
   }
 
   const handleSave = () => {

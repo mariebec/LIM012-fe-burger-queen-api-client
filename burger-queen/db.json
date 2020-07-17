@@ -1,4 +1,54 @@
 {
+  "users": [
+    {
+      "id": "u_001",
+      "email": "kirikiki@gmail.com",
+      "password": "7654321",
+      "roles": {
+        "admin": true
+      }
+    },
+    {
+      "id": "u_002",
+      "email": "blabliblu@gmail.com",
+      "password": "987654",
+      "roles": {
+        "admin": false
+      }
+    },
+    {
+      "id": "u_003",
+      "email": "olakase@gmail.com",
+      "password": "1234567",
+      "roles": {
+        "admin": false
+      }
+    },
+    {
+      "id": "256.746",
+      "email": "slaa.lourdesmerino@gmail.com",
+      "roles": {
+        "admin": false
+      },
+      "password": "asdsasdc"
+    },
+    {
+      "id": "71.171",
+      "email": "luli_1996_15@hotmail.com",
+      "password": "qwerewerew",
+      "roles": {
+        "admin": false
+      }
+    },
+    {
+      "id": "867.963",
+      "email": "sam.lourdesmerino@gmail.com",
+      "password": "aaaaaaaaaaaaaaa",
+      "roles": {
+        "admin": false
+      }
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -33,4 +83,5 @@
       "date": "2020-07-16"
     }
   ]
+
 }
