@@ -3,17 +3,17 @@ import React from 'react'
 const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, handleCancel, display }) => {
   return (
     <form className="form-modal">
-      <div className="form-container">
+      <div className="form-container fc-product">
         <div className="field-p">
           <label htmlFor="input-name" className="label-text">Nombre:</label>
           <div className="box-input">
             <input 
               value={product.name}
               id ="input-name" 
-              placeholder="Ingrese el nombre" 
               name="name"
               type="text"
               onChange={handleInputChange} 
+              placeholder= {error.price ?  "Campo requerido" : "Ingrese el nombre" }
               className={ error.name ? "input-modal error" : "input-modal" } />
           </div>
         </div>
@@ -24,18 +24,17 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
             <input 
               value={product.price}
               id ="input-price" 
-              placeholder="Ingrese el precio" 
               name="price"
               onChange={handleInputChange}
               type="text"
-              className="input-modal"/>
-              {error.price && <span>contraseña inválida</span>} 
+              placeholder= {error.price ?  "Campo requerido" : "Ingrese el precio" }
+              className= {error.price ?  "input-modal error" : "input-modal" } />
           </div>
         </div>
         <div className="field-p">
           <label htmlFor="input-category" className="label-text">Categoría:</label>
           <div className="box-option">
-            <select id ="input-admin" onChange={handleInputChange} name="type" className="select-modal" value={product.type}>
+            <select id ="input-admin" onChange={handleInputChange} name="type" className="select-modal sm-product" value={product.type}>
               <option value="breakfast">Desayuno</option>
               <option value="burger">Hamburguesa</option>
               <option value="extra">Adicional</option>
@@ -51,8 +50,8 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
               id ="input-date" 
               type="date"
               name="date"
+              className={error.date ? "date d-error" : "date"}
               onChange={handleInputChange} />
-              {error.password && <span>contraseña inválida</span>} 
           </div>
         </div>
         <div className="field-p">
