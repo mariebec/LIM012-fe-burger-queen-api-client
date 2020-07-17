@@ -2,7 +2,7 @@ import React from 'react'
 
 const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
   return (
-    <table className="table">
+    <table className="table t-product">
       <thead className="head-table">
         <tr>
           <th>Id</th>
@@ -24,7 +24,7 @@ const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
               <td>S/. {element.price}</td>
               <td><button>Ver</button></td>
               <td>{element.type}</td>
-              <td>{element.date}</td>
+              <td className="t-date">{element.date}</td>
               <td>
                 <i className="icon edit fas fa-edit" onClick = {()=> handleUpdateUser(element) }/>
                 <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
