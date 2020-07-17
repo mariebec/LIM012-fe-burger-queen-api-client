@@ -28,8 +28,8 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
   const handleSave = () => {
 
     const notValidName = product.name.trim() === '';
-    const notValidPrice = product.name.trim() === '';
-    const notValidDate = product.price === '';
+    const notValidPrice = product.price.trim() === '';
+    const notValidDate = product.date === '';
 
     if (notValidName || notValidPrice || notValidDate) {
       (notValidName) ? setError(prevState => ({ ...prevState, name: true })) : setError(prevState => ({ ...prevState, name: false }));
