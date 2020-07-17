@@ -10,6 +10,7 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
   const [ error, setError ] = useState({
     name: false,
     price: false,
+    date: false,
     api: '',
   });
 
@@ -28,10 +29,12 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
 
     const notValidName = product.name.trim() === '';
     const notValidPrice = product.name.trim() === '';
-  
-    if (notValidName || notValidPrice) {
+    const notValidDate = product.price === '';
+
+    if (notValidName || notValidPrice || notValidDate) {
       (notValidName) ? setError(prevState => ({ ...prevState, name: true })) : setError(prevState => ({ ...prevState, name: false }));
       (notValidPrice) ? setError(prevState => ({ ...prevState, price: true })) : setError(prevState => ({ ...prevState, price: false }));
+      (notValidDate) ? setError(prevState => ({ ...prevState, date: true })) : setError(prevState => ({ ...prevState, date: false }));
     } else { 
       postUser(product)
         .catch((error) => console.log(error))
