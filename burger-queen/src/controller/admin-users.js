@@ -1,5 +1,5 @@
 export const getUsers = () => {
-  return fetch('http://localhost:3002/users', {
+  return fetch('http://localhost:3000/users', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -9,7 +9,7 @@ export const getUsers = () => {
 
 export const postUser = (user) => {
   console.log('Enviando', user);
-  return fetch('http://localhost:3002/users', {
+  return fetch('http://localhost:3000/users', {
     method: 'POST',
     body: JSON.stringify(user),
     headers: {
@@ -25,7 +25,7 @@ export const postUser = (user) => {
 };
 
 export const deleteUser = (id) => {
-  return fetch(`http://localhost:3002/users/${id}`, {
+  return fetch(`http://localhost:3000/users/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export const deleteUser = (id) => {
 
 export const putUser = (user) => {
   console.log(user);
-  return fetch(`http://localhost:3002/users/${user.id}`, {
+  return fetch(`http://localhost:3000/users/${user.id}`, {
     method: 'PUT',
     body: JSON.stringify(user),
     headers: {
