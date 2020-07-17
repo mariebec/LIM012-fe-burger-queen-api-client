@@ -558,7 +558,7 @@
 }
 
 .modal-container .modal-window .form-modal .form-container {
-  width: 75%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -636,6 +636,28 @@
   font-size: 1.2rem;
 }
 
+.modal-container .modal-window .form-modal .form-container div .box-input .error {
+  border-bottom: 2px solid red;
+  -webkit-box-shadow: 5px gray;
+          box-shadow: 5px gray;
+}
+
+.modal-container .modal-window .form-modal .form-container div .box-input .error::-webkit-input-placeholder {
+  color: red;
+}
+
+.modal-container .modal-window .form-modal .form-container div .box-input .error:-ms-input-placeholder {
+  color: red;
+}
+
+.modal-container .modal-window .form-modal .form-container div .box-input .error::-ms-input-placeholder {
+  color: red;
+}
+
+.modal-container .modal-window .form-modal .form-container div .box-input .error::placeholder {
+  color: red;
+}
+
 .modal-container .modal-window .form-modal .form-container div .box-option {
   width: 65%;
 }
@@ -649,6 +671,25 @@
   width: 30%;
   height: 35px;
   border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.modal-container .modal-window .form-modal .form-container div .date {
+  font-size: 1.3rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 3px;
+  height: 35px;
+}
+
+.modal-container .modal-window .form-modal .form-container div .d-error {
+  border: 2px solid red;
+  -webkit-box-shadow: 5px gray;
+          box-shadow: 5px gray;
+}
+
+.modal-container .modal-window .form-modal .form-container div .sm-product {
+  width: 60%;
 }
 
 .modal-container .modal-window .form-modal .form-container div .btn-modal {
@@ -721,6 +762,14 @@
 .table .delete {
   margin-left: 30px;
   color: #960404;
+}
+
+.table .t-date {
+  font-size: 1.1rem;
+}
+
+.t-product {
+  width: 85%;
 }
 
 * {
