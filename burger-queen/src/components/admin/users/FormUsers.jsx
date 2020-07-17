@@ -13,8 +13,9 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
               placeholder="Ingrese un e-mail" 
               name="email" type="email" 
               className="input-modal"
-              onChange={handleInputChange} />
-              {error.email && <span>e-mail inválido</span>} 
+              onChange={handleInputChange}
+              placeholder= {error.email ?  "Campo requerido" : "Ingrese el email" }
+              className={ error.email ? "input-modal error" : "input-modal" } /> 
           </div>
         </div>
         <div>
@@ -26,8 +27,9 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
               placeholder="Ingrese la contraseña" 
               name="password" type="password"
               className="input-modal" 
-              onChange={handleInputChange} />
-              {error.password && <span>contraseña inválida</span>} 
+              onChange={handleInputChange}
+              placeholder= {error.password ?  "Campo requerido" : "Ingrese el password" }
+              className={ error.password ? "input-modal error" : "input-modal" } /> 
           </div>
         </div>
         <div>
