@@ -13,7 +13,7 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
               name="name"
               type="text"
               onChange={handleInputChange} 
-              placeholder= {error.price ?  "Campo requerido" : "Ingrese el nombre" }
+              placeholder= {error.name ?  "Campo requerido" : "Ingrese el nombre" }
               className={ error.name ? "input-modal error" : "input-modal" } />
           </div>
         </div>
