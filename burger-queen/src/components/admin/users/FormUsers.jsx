@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSelectChange, handleSave, handleEdit, handleCancel, button }) => {
+const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleSave, handleEdit, handleCancel, display }) => {
   return (
     <form className="form-modal">
       <div className="form-container">
@@ -14,7 +14,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
               name="email" type="email" 
               className="input-modal"
               onChange={handleInputChange} />
-              {errMail && <span>e-mail inválido</span>} 
+              {error.email && <span>e-mail inválido</span>} 
           </div>
         </div>
         <div>
@@ -27,7 +27,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
               name="password" type="password"
               className="input-modal" 
               onChange={handleInputChange} />
-              {errPass && <span>contraseña inválida</span>} 
+              {error.password && <span>contraseña inválida</span>} 
           </div>
         </div>
         <div>
@@ -42,7 +42,7 @@ const FormUsers = ({ user, errMail, errPass, error, handleInputChange, handleSel
         {error.message !== '' && <span>{error.message}</span>}
         <div>
           <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
-          {button ? (
+          {display.button ? (
             <button type="button" className="btn-modal save" onClick={handleEdit}>Editar</button>
           ) : (
             <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
