@@ -1,36 +1,52 @@
 {
-  "products": [
+  "users": [
     {
-      "id": 1,
-      "name": "Hamburguesa doble",
-      "price": "15",
-      "image": "some URL",
-      "type": "burger",
-      "date": "2020-07-15"
+      "id": "u_001",
+      "email": "kirikiki@gmail.com",
+      "password": "7654321",
+      "roles": {
+        "admin": true
+      }
     },
     {
-      "id": "65.87",
-      "name": "Hamburguesa simple",
-      "price": "10",
-      "image": "",
-      "type": "burger",
-      "date": "2020-07-23"
+      "id": "u_002",
+      "email": "blabliblu@gmail.com",
+      "password": "987654",
+      "roles": {
+        "admin": false
+      }
     },
     {
-      "id": "97.71",
-      "name": "Sandwich de jamón y queso",
-      "price": "10",
-      "image": "",
-      "type": "breakfast",
-      "date": "2020-07-15"
+      "id": "u_003",
+      "email": "olakase@gmail.com",
+      "password": "1234567",
+      "roles": {
+        "admin": false
+      }
     },
     {
-      "id": "75.744",
-      "name": "Papas fritas",
-      "price": "5",
-      "image": "",
-      "type": "extra",
-      "date": "2020-07-16"
+      "id": "256.746",
+      "email": "slaa.lourdesmerino@gmail.com",
+      "roles": {
+        "admin": false
+      },
+      "password": "asdsasdc"
+    },
+    {
+      "id": "71.171",
+      "email": "luli_1996_15@hotmail.com",
+      "password": "qwerewerew",
+      "roles": {
+        "admin": false
+      }
+    },
+    {
+      "id": "867.963",
+      "email": "sam.lourdesmerino@gmail.com",
+      "password": "aaaaaaaaaaaaaaa",
+      "roles": {
+        "admin": false
+      }
     }
   ]
 }
