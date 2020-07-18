@@ -37,8 +37,6 @@ const UserList = () => {
     deleteUser(id).then((resp) => console.log(resp));
   }
 
- 
-
   const handleUpdateUser = (user) => {
     setDisplay({modal: true, button: true});
     setUser({id: user.id,
@@ -51,7 +49,7 @@ const UserList = () => {
   return (
     <>
       <Header title="ADMINISTRADOR" />
-      <main className="container-users">
+      <main className="container-list">
         <div className="btn-container">
           <button onClick={handleAddUser}>Agregar usuario</button>
           {/* Acá pasamos el estado de display y la función para cambiar el estado a false */}

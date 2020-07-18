@@ -7,7 +7,7 @@ import ModalUsers from './ModalProduct';
 
 const UserList = () => {
 
-  const idGenerado = (Math.random() * 100).toFixed(2).toString();
+  const idGenerado = (Math.random() * 1000).toFixed(0).toString();
   const initialState = {
     id: idGenerado,
     name:'',
@@ -53,7 +53,7 @@ const UserList = () => {
   return (
     <>
       <Header title="ADMINISTRADOR" />
-      <main className="container-users">
+      <main className="container-list">
         <div className="btn-container">
           <button onClick={handleAddUser}>Agregar producto</button>
           <ModalUsers display={display} setDisplay={setDisplay} setAllProducts={setAllProducts} 
