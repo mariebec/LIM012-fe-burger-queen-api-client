@@ -18,8 +18,17 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
     setProduct({...product, [e.target.name]: e.target.value});
   } 
 
+  const handleFile = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+
+    reader.onload = (e) => {
+      setProduct({...product, image: e.target.result});
+    }
+  }
+
   const handleCancel = () => { 
-    const idGenerado = (Math.random() * 1000).toFixed(3).toString();
+    const idGenerado = (Math.random() * 1000).toFixed(0).toString();
     setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
     setDisplay(prevState => ({ ...prevState, modal: false }));
     setError({ name:false, price:false, api: '' });
@@ -41,7 +50,7 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
         .then((resp) => {
           setAllProducts([...allProducts, resp]); 
         });
-      const idGenerado = (Math.random() * 100).toFixed(2).toString();
+      const idGenerado = (Math.random() * 10).toFixed(2).toString();
       setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
       setDisplay(prevState => ({ ...prevState, modal: false }));
       setError({ name:false, price:false, api: '' });
@@ -51,7 +60,7 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
   const handleEdit = () => {
     putUser(product).then((resp) => {
       setAllProducts(allProducts.map((user) => user.id === resp.id? resp : user));
-      const idGenerado = (Math.random() * 1000).toFixed(3).toString();
+      const idGenerado = (Math.random() * 1000).toFixed(0).toString();
       setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
       setDisplay(prevState => ({ ...prevState, modal: false }));
       setError({ name:false, price:false, api: '' });
@@ -73,6 +82,7 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
             handleInputChange={handleInputChange}
             handleSave={handleSave}
             handleEdit={handleEdit}
+            handleFile={handleFile}
             handleCancel={handleCancel}
             display={display}/>
         </div>

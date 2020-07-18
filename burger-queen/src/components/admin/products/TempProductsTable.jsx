@@ -22,7 +22,7 @@ const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
               <td>{element.id}</td>
               <td>{element.name}</td>
               <td>S/. {element.price}</td>
-              <td><button>Ver</button></td>
+              <td>{element.image ? <img src={element.image} alt="product" className="t-img"/> : 'not' }</td>
               <td>{element.type}</td>
               <td className="t-date">{element.date}</td>
               <td>

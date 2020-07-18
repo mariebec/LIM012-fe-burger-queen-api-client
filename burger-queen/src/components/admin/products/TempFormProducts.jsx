@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, handleCancel, display }) => {
+const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, handleFile, handleCancel, display }) => {
   return (
     <form className="form-modal">
       <div className="form-container fc-product">
@@ -26,7 +26,7 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
               id ="input-price" 
               name="price"
               onChange={handleInputChange}
-              type="text"
+              type="number"
               placeholder= {error.price ?  "Campo requerido" : "Ingrese el precio" }
               className= {error.price ?  "input-modal error" : "input-modal" } />
           </div>
@@ -57,7 +57,8 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
         <div className="field-p">
           <label htmlFor="input-admin" className="label-text">Imagen:</label>
           <div className="box-option">
-            <button type="button">Adjuntar imagen</button>
+            <input type="file" onChange={handleFile}/>
+            {/* {image && <img src={image} alt="product"/>} */}
           </div>
         </div>
         {error.message !== '' && <span>{error.message}</span>}
