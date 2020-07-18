@@ -41,7 +41,6 @@ export const deleteUser = (id) => {
 };
 
 export const putUser = (user) => {
-  console.log(user);
   return fetch(`http://localhost:3000/products/${user.id}`, {
     method: 'PUT',
     body: JSON.stringify(user),
