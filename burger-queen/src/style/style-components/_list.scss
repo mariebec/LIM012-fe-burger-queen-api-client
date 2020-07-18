@@ -3,7 +3,7 @@ $brown: #411515;
 $font-pridi: 'Pridi', serif;
 $font-prompt: 'Prompt', sans-serif;
 
-.container-users{
+.container-list{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,10 +33,4 @@ $font-prompt: 'Prompt', sans-serif;
       font-weight: bold;
     }
   }
-
-  
 }
-
-
-
-
