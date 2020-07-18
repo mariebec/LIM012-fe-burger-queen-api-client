@@ -1,8 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import UserList from '../components/admin/UserList';
+import UserList from '../components/admin/users/UserList';
 
 describe('FormUsers', () => {
+
+  test('Debería encontrar "Agregar usuarios" en el componente', () => {
+    render (<UserList/>);
+    screen.getByText('Agregar usuario');
+  })
 
   test('Debería encontrar "Lista de usuarios" en el componente', () => {
     render(<UserList />);
