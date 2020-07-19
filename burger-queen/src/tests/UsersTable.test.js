@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
-import UsersTable from '../components/admin/products/TempProductsTable';
+import UsersTable from '../components/admin/users/UsersTable';
 
-describe('App', () => {
-  test('verificar que no existe un elemento', () => {
+
+const allUsers = [];
+
+describe('UserTable', () => {
+  test('verificar que no existen usuarios', () => {
     const div = document.createElement("div");
-    ReactDOM.render(<UsersTable/>, div)
+    render(<UsersTable allUsers={allUsers}/>)
  
-    // // fails
-    // expect(screen.queryByText(/Searches for JavaScript/)).toBeNull();
-    // console.log(renderResult)
-
-
-
+    expect(screen.getByText('No hay usuarios registrados')).toBeInTheDocument();
   });
 });
