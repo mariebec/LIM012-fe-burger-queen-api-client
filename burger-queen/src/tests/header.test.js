@@ -10,7 +10,7 @@ describe('<Header/>', () => {
     expect(getByText(title)).toBeInTheDocument();
   })
 
-  test('Debería encontrar "Lista de usuarios" en el componente', () => {
+  test('Debería encontrar "Pedro Campbell" en el componente', () => {
     render(<Header />);
     expect(screen.getByText('Pedro Campbell')).toBeInTheDocument();
   });
