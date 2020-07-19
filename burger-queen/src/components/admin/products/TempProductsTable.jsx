@@ -32,7 +32,7 @@ const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
             </tr>
           )) : (
             <tr>
-              <td>No hay usuarios registrados</td>
+              <td>No hay productos agregados</td>
             </tr>
           )
         }
