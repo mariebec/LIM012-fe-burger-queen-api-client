@@ -4,7 +4,6 @@ import TempFormProducts from './TempFormProducts';
 import { postProduct, putProduct } from '../../../controller/admin-products';
 
 
-// Obtenemos el estado de display y la función closeModal
 const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setProduct, product}) => {
   
   const [ error, setError ] = useState({
@@ -16,7 +15,7 @@ const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setPro
 
    const handleInputChange = (e) => {
     setProduct({...product, [e.target.name]: e.target.value});
-  } 
+  };
 
   const handleFile = (e) => {
     const reader = new FileReader();
@@ -24,18 +23,17 @@ const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setPro
 
     reader.onload = (e) => {
       setProduct({...product, image: e.target.result});
-    }
-  }
+    };
+  };
 
-  const handleCancel = () => { 
+  const closeModal = () => { 
     const idGenerado = (Math.random() * 1000).toFixed(0).toString();
     setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
     setDisplay(prevState => ({ ...prevState, modal: false }));
     setError({ name:false, price:false, api: '' });
-  }
+  };
 
-  const handleSave = () => {
-
+  const handleRequest = (request) => {
     const notValidName = product.name.trim() === '';
     const notValidPrice = product.price.trim() === '';
     const notValidDate = product.date === '';
@@ -45,29 +43,23 @@ const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setPro
       (notValidPrice) ? setError(prevState => ({ ...prevState, price: true })) : setError(prevState => ({ ...prevState, price: false }));
       (notValidDate) ? setError(prevState => ({ ...prevState, date: true })) : setError(prevState => ({ ...prevState, date: false }));
     } else { 
-      postProduct(product)
-        .catch((error) => console.log(error))
+      if (request === 'POST') {
+        postProduct(product)
         .then((resp) => {
           setAllProducts([...allProducts, resp]); 
+          closeModal();
+        }).catch((error) => {
+          setError(error);
         });
-      const idGenerado = (Math.random() * 10).toFixed(2).toString();
-      setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
-      setDisplay(prevState => ({ ...prevState, modal: false }));
-      setError({ name:false, price:false, api: '' });
-    }
-  }
-
-  const handleEdit = () => {
-    putProduct(product).then((resp) => {
-      setAllProducts(allProducts.map((product) => product.id === resp.id? resp : product));
-      const idGenerado = (Math.random() * 1000).toFixed(0).toString();
-      setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
-      setDisplay(prevState => ({ ...prevState, modal: false }));
-      setError({ name:false, price:false, api: '' });
-    })
-    .catch((error) => {
-      setError(error)
-    });
+      } else {
+        putProduct(product).then((resp) => {
+          setAllProducts(allProducts.map((product) => product.id === resp.id? resp : product));
+          closeModal();
+        }).catch((error) => {
+          setError(error);
+        });
+      };
+    };
   };
 
   const modalRoot = document.createElement('div');
@@ -84,10 +76,9 @@ const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setPro
             product={product} 
             error={error}
             handleInputChange={handleInputChange}
-            handleSave={handleSave}
-            handleEdit={handleEdit}
+            handleRequest={handleRequest}
             handleFile={handleFile}
-            handleCancel={handleCancel}
+            closeModal={closeModal}
             display={display}/>
         </div>
       </section>, document.getElementById("modal")
