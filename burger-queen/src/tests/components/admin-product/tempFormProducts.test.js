@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TempFormProducts from '../components/admin/products/TempFormProducts';
+import TempFormProducts from '../../../components/admin/products/TempFormProducts';
 
 const product = {
   id: '1',
@@ -53,7 +53,7 @@ describe('Eventos', () => {
 
     render(<TempFormProducts product={product} error={error} display={display}/>);
 
-    userEvent.selectOptions(screen.getByRole('combobox'), 'Bebida');
+    userEvent.selectOptions(screen.getByRole('combobox'), 'drink');
     expect(screen.getByText('Bebida').selected).toBe(true);
   });
 

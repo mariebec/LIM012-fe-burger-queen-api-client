@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import FormUsers from '../components/admin/users/FormUsers';
+import FormUsers from '../../../components/admin/users/FormUsers';
 
 const user = {
   id: 'u_01',

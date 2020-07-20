@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ProductList from '../components/admin/products/ProductList';
+import ProductList from '../../../components/admin/products/ProductList';
 
 describe('ProductList ', () => {
   

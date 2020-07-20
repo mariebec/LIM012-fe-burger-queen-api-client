@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import UserList from '../components/admin/users/UserList';
+import UserList from '../../../components/admin/users/UserList';
 import userEvent from '@testing-library/user-event';
 
 describe('Render', () => {
