@@ -53,6 +53,7 @@ describe('Eventos', () => {
 
     render(<FormUsers user={user} error={error} display={display}/>);
 
+    expect(screen.getByText('NO').selected).toBe(false);
     userEvent.selectOptions(screen.getByRole('combobox'), 'NO');
     expect(screen.getByText('NO').selected).toBe(true);
   });
