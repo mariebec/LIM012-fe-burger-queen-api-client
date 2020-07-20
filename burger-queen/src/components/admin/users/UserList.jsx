@@ -17,10 +17,10 @@ const UserList = () => {
  
   const [user, setUser] = useState(initialState);
   const [allUsers, setAllUsers ] = useState([]);
-  const [display, setDisplay] = useState([{
+  const [display, setDisplay] = useState({
     modal: false,
     button: false
-  }]);
+  });
 
   useEffect(() => {
     getUsers().then((resp) => setAllUsers(resp));
