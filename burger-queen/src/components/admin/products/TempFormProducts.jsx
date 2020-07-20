@@ -34,7 +34,7 @@ const TempFormProducts = ({ product, error, handleInputChange, handleSave, handl
         <div className="field-p">
           <label htmlFor="input-category" className="label-text">Categoría:</label>
           <div className="box-option">
-            <select id ="input-admin" onChange={handleInputChange} name="type" className="select-modal sm-product" value={product.type}>
+            <select id ="input-admin" onChange={handleInputChange} name="type" className="select-modal sm-product" defaultValue={product.type}>
               <option value="breakfast">Desayuno</option>
               <option value="burger">Hamburguesa</option>
               <option value="extra">Adicional</option>
@@ -46,7 +46,7 @@ const TempFormProducts = ({ product, error, handleInputChange, handleSave, handl
           <label htmlFor="input-date" className="label-text">Fecha:</label>
           <div className="box-option">
             <input 
-              value={product.date}
+              defaultValue={product.date}
               id ="input-date" 
               type="date"
               name="date"
