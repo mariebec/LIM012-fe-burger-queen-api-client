@@ -1,4 +1,4 @@
-export const getUsers = () => {
+export const getProducts = () => {
   return fetch('http://localhost:3000/products', {
     method: 'GET',
     headers: {
@@ -7,11 +7,11 @@ export const getUsers = () => {
   }).then((resp) => resp.json());
 };
 
-export const postUser = (user) => {
+export const postProduct = (product) => {
   // console.log('Enviando', user);
   return fetch('http://localhost:3000/products', {
     method: 'POST',
-    body: JSON.stringify(user),
+    body: JSON.stringify(product),
     headers: {
       'Content-Type': 'application/json'
     }
@@ -24,7 +24,7 @@ export const postUser = (user) => {
   });
 };
 
-export const deleteUser = (id) => {
+export const deleteProduct = (id) => {
   return fetch(`http://localhost:3000/products/${id}`, {
     method: 'DELETE',
     headers: {
@@ -40,10 +40,10 @@ export const deleteUser = (id) => {
   });
 };
 
-export const putUser = (user) => {
-  return fetch(`http://localhost:3000/products/${user.id}`, {
+export const putProduct = (product) => {
+  return fetch(`http://localhost:3000/products/${product.id}`, {
     method: 'PUT',
-    body: JSON.stringify(user),
+    body: JSON.stringify(product),
     headers: {
       'Content-Type': 'application/json'
     }
