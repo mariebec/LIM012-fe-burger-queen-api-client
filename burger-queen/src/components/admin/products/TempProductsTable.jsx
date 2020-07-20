@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
+const TempProductsTable = ({ allProducts, handleDeleteProduct, handleUpdateProduct }) => {
   return (
     <table className="table t-product">
       <thead className="head-table">
@@ -26,8 +26,8 @@ const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
               <td>{element.type}</td>
               <td className="t-date">{element.date}</td>
               <td>
-                <i className="icon edit fas fa-edit" onClick = {()=> handleUpdateUser(element) }/>
-                <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
+                <i className="icon edit fas fa-edit" onClick = {()=> handleUpdateProduct(element) }/>
+                <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteProduct(element.id) } />
               </td>
             </tr>
           )) : (
@@ -41,4 +41,4 @@ const UsersTable = ({ allProducts, handleDeleteUser, handleUpdateUser }) => {
   )
 }
 
-export default UsersTable;
+export default TempProductsTable;
