@@ -26,11 +26,6 @@ const UserList = () => {
     getUsers().then((resp) => setAllUsers(resp));
   }, []);
 
-  // El botón agregar usuario cambia el estado de display a true
-  const handleAddUser = () => {
-    setDisplay({modal: true, button: false})
-  }
-
   const handleDeleteUser = (id) => {
     // console.log('se va a borrar', id)
     setAllUsers(allUsers.filter((user) => user.id !== id))
@@ -51,7 +46,7 @@ const UserList = () => {
       <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={handleAddUser}>Agregar usuario</button>
+          <button onClick={() => setDisplay({modal: true, button: false})}>Agregar usuario</button>
           {/* Acá pasamos el estado de display y la función para cambiar el estado a false */}
           <ModalUsers display={display} setDisplay={setDisplay} setAllUsers={setAllUsers} 
           allUsers={allUsers} setUser={setUser} user={user}/>
