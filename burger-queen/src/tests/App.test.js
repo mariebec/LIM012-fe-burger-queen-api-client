@@ -37,8 +37,4 @@ describe ('App', () => {
     render (<ProductList/>);
     screen.debug();
   });
-
-
-
-
 });
