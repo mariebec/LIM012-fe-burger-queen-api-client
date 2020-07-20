@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import TempFormProducts from '../components/admin/products/TempFormProducts';
 
 const product = {
@@ -29,6 +29,40 @@ describe('Render', () => {
     render(<TempFormProducts product={product} error={error} display={display}/>);
     expect(product.name).toBe('Hamburguesa doble');
   });
+  test('Debería mostrar el botón de Editar', () => {
+    render(<TempFormProducts product={product} error={error} display={display}/>);
+    expect(screen.getByText('Editar')).toBeInTheDocument();
+  });
+
+  test('No debería mostrar el botón de Guardar', () => {
+    render(<TempFormProducts product={product} error={error} display={display}/>);
+    expect(screen.queryByText('Guardar')).not.toBeInTheDocument();
+  });
+
+  test('Debería mostrar "Hamburguesa" en categoria', () => {
+    render(<TempFormProducts product={product} error={error} display={display}/>);
+    expect(screen.queryByDisplayValue('Hamburguesa')).toBeInTheDocument();
+  });
 
   
+});
+
+
+describe('Eventos', () => {
+  test('Debería debería cambiar el value del select', () => {
+
+    render(<TempFormProducts product={product} error={error} display={display}/>);
+
+    userEvent.selectOptions(screen.getByRole('combobox'), 'Bebida');
+    expect(screen.getByText('Bebida').selected).toBe(true);
+  });
+
+  test('Debería llamar al evento handleInputChange la cantidad de veces que se tipea', async () => {
+    const handleInputChange = jest.fn();
+
+    render(<TempFormProducts product={product} error={error} display={display} handleInputChange={handleInputChange}/>);
+
+    await userEvent.type(screen.getByRole('textbox'), 'hamburguesa');
+    expect(handleInputChange).toHaveBeenCalledTimes(11);
+  });
 });
