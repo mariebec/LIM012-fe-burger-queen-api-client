@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import TempProductsTable from '../components/admin/products/TempProductsTable';
+import TempProductsTable from '../../../components/admin/products/TempProductsTable';
 
 
 const allProducts = [

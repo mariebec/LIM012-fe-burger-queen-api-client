@@ -62,7 +62,11 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user})
     .catch((error) => {
       setError(error)
     });
-  }
+  };
+
+  const modalRoot = document.createElement('div');
+  modalRoot.setAttribute('id', 'modal');
+  document.body.append(modalRoot);
 
   if(display.modal) {
     return ReactDOM.createPortal(
@@ -81,7 +85,7 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user})
             display={display}/>
         </div>
       </section>, document.getElementById("modal")
-    )
+    );
   }
   return null;
 }

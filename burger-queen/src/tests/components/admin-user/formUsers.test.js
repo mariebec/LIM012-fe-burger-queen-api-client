@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import FormUsers from '../components/admin/users/FormUsers';
+import FormUsers from '../../../components/admin/users/FormUsers';
 
 const user = {
   id: 'u_01',
@@ -53,6 +53,7 @@ describe('Eventos', () => {
 
     render(<FormUsers user={user} error={error} display={display}/>);
 
+    expect(screen.getByText('NO').selected).toBe(false);
     userEvent.selectOptions(screen.getByRole('combobox'), 'NO');
     expect(screen.getByText('NO').selected).toBe(true);
   });

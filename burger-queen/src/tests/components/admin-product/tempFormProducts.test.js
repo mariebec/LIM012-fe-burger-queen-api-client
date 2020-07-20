@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TempFormProducts from '../components/admin/products/TempFormProducts';
+import TempFormProducts from '../../../components/admin/products/TempFormProducts';
 
 const product = {
   id: '1',
