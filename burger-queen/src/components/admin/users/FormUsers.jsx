@@ -8,9 +8,8 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
           <label htmlFor="input-email" className="label-text">E-MAIL:</label>
           <div className="box-input">
             <input 
-              value={user.email}
+              defaultValue={user.email}
               id ="input-email" 
-              placeholder="Ingrese un e-mail" 
               name="email" type="email" 
               className="input-modal"
               onChange={handleInputChange}
@@ -22,7 +21,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
           <label htmlFor="input-password" className="label-text">CLAVE:</label>
           <div className="box-input">
             <input 
-              value={user.password}
+              defaultValue={user.password}
               id ="input-password" 
               placeholder="Ingrese la contraseña" 
               name="password" type="password"
@@ -35,7 +34,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
         <div>
           <label htmlFor="input-admin" className="label-text">ADMIN:</label>
           <div className="box-option">
-            <select id ="input-admin" onChange={handleSelectChange} className="select-modal" value={user.roles.admin ? "SI" : "NO"}>
+            <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={user.roles.admin ? "SI" : "NO"}>
               <option value="NO">NO</option>
               <option value="SI">SI</option>
             </select>
