@@ -39,14 +39,6 @@
       "roles": {
         "admin": false
       }
-    },
-    {
-      "id": "867.963",
-      "email": "sam.lourdesmerino@gmail.com",
-      "password": "aaaaaaaaaaaaaaa",
-      "roles": {
-        "admin": false
-      }
     }
   ],
   "products": [
@@ -83,5 +75,4 @@
       "date": "2020-07-16"
     }
   ]
-
 }

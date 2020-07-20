@@ -1,24 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import img from '../../assets/logo-fondoblanco.png';
+import FormLogin from '../login/FormLogin';
 
-const LoginView = () => (
-  <section className="container-login">
+const LoginView = () => {
+
+  const [ user, setUser ] = useState({
+    userEmail: '',
+    userContraseña: ''
+  }); 
+
+  const handleChangeUser = (e) => {
+    setUser({...user, [e.target.name]: e.target.value});
+  }
+
+  const handleGetLogin = () => {
+    let account = { user}
+    if (account) {
+      console.log ('account', account)
+    }
+  }
+
+  return(
+    <section className="container-login">
     <div className="box-login">
       <img src={img} alt="logo" className="logo" />
-        <form className="login-form">
-          <p>Inicia sesión</p>
-          <div className="box-user">
-            <i className="user-icon fas fa-user"></i>
-            <input placeholder="Usuario" className="user" />
-          </div>
-          <div className="box-user">
-          <i className="user-icon fas fa-lock"></i>
-            <input placeholder="Contraseña" className="user" type="password"/>
-          </div>
-          <button type="button" className="btn-login">INGRESAR</button>
-        </form>
+      <FormLogin
+      handleChangeUser={handleChangeUser}
+      handleGetLogin={handleGetLogin}/>  
     </div>
   </section>
-);
+  )
+
+}
+
 
 export default LoginView;
