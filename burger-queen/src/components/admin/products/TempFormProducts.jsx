@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, handleFile, handleCancel, display }) => {
+const TempFormProducts = ({ product, error, handleInputChange, handleSave, handleEdit, handleFile, handleCancel, display }) => {
   return (
     <form className="form-modal">
       <div className="form-container fc-product">
@@ -8,7 +8,7 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
           <label htmlFor="input-name" className="label-text">Nombre:</label>
           <div className="box-input">
             <input 
-              value={product.name}
+              defaultValue={product.name}
               id ="input-name" 
               name="name"
               type="text"
@@ -22,7 +22,7 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
           <p className="label-text">S/.</p>
           <div className="box-input">
             <input 
-              value={product.price}
+              defaultValue={product.price}
               id ="input-price" 
               name="price"
               onChange={handleInputChange}
@@ -75,4 +75,4 @@ const FormUsers = ({ product, error, handleInputChange, handleSave, handleEdit, 
   )
 }
 
-export default FormUsers;
+export default TempFormProducts;
