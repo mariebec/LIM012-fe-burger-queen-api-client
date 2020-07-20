@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../Header';
-import UsersTable from './TempProductsTable';
-import { getUsers, deleteUser } from '../../../controller/admin-products';
-import ModalUsers from './ModalProduct';
+import TempProductsTable from './TempProductsTable';
+import { getProducts, deleteProduct } from '../../../controller/admin-products';
+import ModalProducts from './ModalProducts';
 
 
-const UserList = () => {
+const ProductList = () => {
 
   const idGenerado = (Math.random() * 1000).toFixed(0).toString();
   const initialState = {
@@ -14,7 +14,7 @@ const UserList = () => {
     price: '',
     image: '',
     type: 'breakfast',
-    date: '',
+    date: ''
   };
 
   const [ product, setProduct ] = useState(initialState);
@@ -25,20 +25,16 @@ const UserList = () => {
   }]);
 
   useEffect(() => {
-    getUsers().then((resp) => setAllProducts(resp));
+    getProducts().then((resp) => setAllProducts(resp));
   }, []);
 
-  const handleAddUser = () => {
-    setDisplay({ modal: true, button: false });
-  }
-
-  const handleDeleteUser = (id) => {
+  const handleDeleteProduct = (id) => {
     // console.log('se va a borrar', id)
-    setAllProducts(allProducts.filter((user) => user.id !== id))
-    deleteUser(id);
+    setAllProducts(allProducts.filter((product) => product.id !== id))
+    deleteProduct(id);
   }
 
-  const handleUpdateUser = (product) => {
+  const handleUpdateProduct = (product) => {
     setDisplay({ modal: true, button: true });
     setProduct({ 
       id: product.id, 
@@ -55,16 +51,16 @@ const UserList = () => {
       <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={handleAddUser}>Agregar producto</button>
-          <ModalUsers display={display} setDisplay={setDisplay} setAllProducts={setAllProducts} 
+          <button onClick={()=> setDisplay({ modal: true, button: false })} >Agregar producto</button>
+          <ModalProducts display={display} setDisplay={setDisplay} setAllProducts={setAllProducts} 
           allProducts={allProducts} setProduct={setProduct} product={product}/>
         </div>
         <h2>Lista de productos</h2>
-        <UsersTable allProducts={allProducts} handleDeleteUser={handleDeleteUser} handleUpdateUser={handleUpdateUser}/>
+        <TempProductsTable allProducts={allProducts} handleDeleteProduct={handleDeleteProduct} handleUpdateProduct={handleUpdateProduct}/>
 
       </main>
     </>
   )
 }
 
-export default UserList;
+export default ProductList;
