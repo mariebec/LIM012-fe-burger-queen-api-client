@@ -11,7 +11,6 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
               defaultValue={user.email}
               id ="input-email" 
               name="email" type="email" 
-              className="input-modal"
               onChange={handleInputChange}
               placeholder= {error.email ?  "Campo requerido" : "Ingrese el email" }
               className={ error.email ? "input-modal error" : "input-modal" } /> 
@@ -23,9 +22,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
             <input 
               defaultValue={user.password}
               id ="input-password" 
-              placeholder="Ingrese la contraseña" 
               name="password" type="password"
-              className="input-modal" 
               onChange={handleInputChange}
               placeholder= {error.password ?  "Campo requerido" : "Ingrese el password" }
               className={ error.password ? "input-modal error" : "input-modal" } /> 

@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom'
 import TempFormProducts from './TempFormProducts';
-import { postUser, putUser } from '../../../controller/admin-products';
+import { postProduct, putProduct } from '../../../controller/admin-products';
 
 
 // Obtenemos el estado de display y la función closeModal
-const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduct, product}) => {
+const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setProduct, product}) => {
   
   const [ error, setError ] = useState({
     name: false,
     price: false,
     date: false,
-    api: '',
+    api: ''
   });
 
    const handleInputChange = (e) => {
@@ -45,7 +45,7 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
       (notValidPrice) ? setError(prevState => ({ ...prevState, price: true })) : setError(prevState => ({ ...prevState, price: false }));
       (notValidDate) ? setError(prevState => ({ ...prevState, date: true })) : setError(prevState => ({ ...prevState, date: false }));
     } else { 
-      postUser(product)
+      postProduct(product)
         .catch((error) => console.log(error))
         .then((resp) => {
           setAllProducts([...allProducts, resp]); 
@@ -58,8 +58,8 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
   }
 
   const handleEdit = () => {
-    putUser(product).then((resp) => {
-      setAllProducts(allProducts.map((user) => user.id === resp.id? resp : user));
+    putProduct(product).then((resp) => {
+      setAllProducts(allProducts.map((product) => product.id === resp.id? resp : product));
       const idGenerado = (Math.random() * 1000).toFixed(0).toString();
       setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
       setDisplay(prevState => ({ ...prevState, modal: false }));
@@ -68,7 +68,11 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
     .catch((error) => {
       setError(error)
     });
-  }
+  };
+
+  const modalRoot = document.createElement('div');
+  modalRoot.setAttribute('id', 'modal');
+  document.body.append(modalRoot);
 
   if(display.modal) {
     return ReactDOM.createPortal(
@@ -92,4 +96,4 @@ const ModalUsers = ({display, setDisplay, setAllProducts, allProducts, setProduc
   return null;
 }
 
-export default ModalUsers;
+export default ModalProducts;

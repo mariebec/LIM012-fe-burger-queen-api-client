@@ -4,12 +4,12 @@ import ProductList from '../components/admin/products/ProductList';
 
 describe('ProductList ', () => {
   
-  test('renders learn react link', () => {
+  test('Debería encontrar "Agregar usuarios" en el componente', () => {
     render(<ProductList />); 
     expect(screen.getByText('Agregar producto')).toBeInTheDocument();
   });
 
-  test('renders learn react link', () => {
+  test('Debería encontrar "Lista de productos" en el componente', () => {
     render(<ProductList />); 
     expect(screen.getByText('Lista de productos')).toBeInTheDocument();
   });
