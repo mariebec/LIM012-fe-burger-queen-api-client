@@ -16,7 +16,7 @@ const UserList = () => {
   };
  
   const [user, setUser] = useState(initialState);
-  const [allUsers, setAllUsers ] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   const [display, setDisplay] = useState({
     modal: false,
     button: false
@@ -27,10 +27,9 @@ const UserList = () => {
   }, []);
 
   const handleDeleteUser = (id) => {
-    // console.log('se va a borrar', id)
-    setAllUsers(allUsers.filter((user) => user.id !== id))
-    deleteUser(id).then((resp) => console.log(resp));
-  }
+    setAllUsers(allUsers.filter((user) => user.id !== id));
+    deleteUser(id);
+  };
 
   const handleUpdateUser = (user) => {
     setDisplay({modal: true, button: true});
@@ -39,7 +38,7 @@ const UserList = () => {
        password: user.password,
        roles: {admin: user.roles.admin}
       });
-  }
+  };
 
   return (
     <>
@@ -57,6 +56,6 @@ const UserList = () => {
       </main>
     </>
   )
-}
+};
 
 export default UserList;
