@@ -2,24 +2,23 @@ export const getUsers = () => {
   return fetch('http://localhost:3000/users', {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }
   }).then((resp) => resp.json());
 };
 
 export const postUser = (user) => {
-  console.log('Enviando', user);
   return fetch('http://localhost:3000/users', {
     method: 'POST',
     body: JSON.stringify(user),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }
   }).then((resp) => {
     if (resp.status === 201) {
       return resp.json();
     } if (resp.status === 400){
-      return Promise.reject(console.log('email and password is required'));
+      return Promise.reject({ message: 'Email o contraseña son requeridos' });
     }
   });
 };
@@ -32,16 +31,14 @@ export const deleteUser = (id) => {
     }
   }).then((resp) => {
     if (resp.status === 204) {
-    // return resp.json() 
-    console.log(resp)
+    return resp.json(); 
     } if (resp.status === 400){
-      return Promise.reject(console.log('no existe el usuario'));
+      return Promise.reject({ message: 'Usuario no encontrado' });
     }
   });
 };
 
 export const putUser = (user) => {
-  console.log(user);
   return fetch(`http://localhost:3000/users/${user.id}`, {
     method: 'PUT',
     body: JSON.stringify(user),
@@ -59,14 +56,5 @@ export const putUser = (user) => {
   });
 };
 
-// const baseUrl = 'http://localhost:3002';
 
-// const fetchFunction = (url) => fetch(baseUrl + 'users', )
-
-// export const getUser = () => fetchFunction('/users', {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   }).then((resp) => resp.json());
 
