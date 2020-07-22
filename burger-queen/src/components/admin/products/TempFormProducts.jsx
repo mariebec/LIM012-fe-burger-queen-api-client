@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TempFormProducts = ({ product, error, handleInputChange, handleSave, handleEdit, handleFile, handleCancel, display }) => {
+const TempFormProducts = ({ product, error, handleInputChange, handleRequest, handleFile, closeModal, display }) => {
   return (
     <form className="form-modal">
       <div className="form-container fc-product">
@@ -58,16 +58,15 @@ const TempFormProducts = ({ product, error, handleInputChange, handleSave, handl
           <label htmlFor="input-admin" className="label-text">Imagen:</label>
           <div className="box-option">
             <input type="file" onChange={handleFile}/>
-            {/* {image && <img src={image} alt="product"/>} */}
           </div>
         </div>
         {error.message !== '' && <span>{error.message}</span>}
         <div>
-          <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
+          <button type="button" className="btn-modal cancel" onClick={closeModal}>Cancelar</button>
           {display.button ? (
-            <button type="button" className="btn-modal save" onClick={handleEdit}>Editar</button>
+            <button type="button" className="btn-modal save" onClick={() => handleRequest('PUT')}>Editar</button>
           ) : (
-            <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
+            <button type="button" className="btn-modal save" onClick={() => handleRequest('POST')}>Guardar</button>
           )}
         </div>
       </div>
