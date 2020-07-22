@@ -20,8 +20,8 @@ const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
               <td>{element.email}</td>
               <td>{element.roles.admin ? "SI" : "NO" }</td>
               <td>
-                <i className="icon edit fas fa-edit" onClick = {()=> handleUpdateUser(element) }/>
-                <i className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
+                <i data-testid="edit" className="icon edit fas fa-edit" onClick = {()=> handleUpdateUser(element) }/>
+                <i data-testid="delete" className="icon delete fas fa-trash-alt" onClick = {()=> handleDeleteUser(element.id) } />
               </td>
             </tr>
           )) : (
