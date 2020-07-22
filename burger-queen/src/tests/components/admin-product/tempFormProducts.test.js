@@ -49,7 +49,7 @@ describe('Render', () => {
 
 
 describe('Eventos', () => {
-  test('Debería debería cambiar el value del select', () => {
+  test('Debería cambiar el value del select', () => {
 
     render(<TempFormProducts product={product} error={error} display={display}/>);
 
