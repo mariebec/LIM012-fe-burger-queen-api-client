@@ -12,7 +12,9 @@ const Header = ({ title, userName, admin }) => {
         <div className="user-logged">
           <p className="user-name">{userName}</p>
           <i className="user-icon fas fa-user"></i>
-          <i className="menu-icon fas fa-bars" onClick={() => display ? setDisplay(false) : setDisplay(true)}></i>
+          <div className={ display ? "active menu-icon-container" : "menu-icon-container"}>
+            <i className="menu-icon fas fa-bars" onClick={() => display ? setDisplay(false) : setDisplay(true)}></i>
+          </div>
         </div>
       </div>
       { display && 
