@@ -3,6 +3,7 @@ export const getUsers = () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => resp.json());
 };
@@ -13,6 +14,7 @@ export const postUser = (user) => {
     body: JSON.stringify(user),
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => {
     if (resp.status === 201) {
@@ -27,7 +29,8 @@ export const deleteUser = (id) => {
   return fetch(`http://localhost:3000/users/${id}`, {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => {
     if (resp.status === 204) {
@@ -43,7 +46,8 @@ export const putUser = (user) => {
     method: 'PUT',
     body: JSON.stringify(user),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => {
     if (resp.status === 200) {
