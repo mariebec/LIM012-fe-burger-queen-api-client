@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleSave, handleEdit, handleCancel, display }) => {
+const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleRequest, closeModal, display }) => {
   return (
     <form className="form-modal">
       <div className="form-container">
@@ -39,11 +39,11 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleS
         </div>
         {error.message !== '' && <span>{error.message}</span>}
         <div>
-          <button type="button" className="btn-modal cancel" onClick={handleCancel}>Cancelar</button>
+          <button type="button" className="btn-modal cancel" onClick={closeModal}>Cancelar</button>
           {display.button ? (
-            <button type="button" className="btn-modal save" onClick={handleEdit}>Editar</button>
+            <button type="button" className="btn-modal save" onClick={() => handleRequest('PUT')}>Editar</button>
           ) : (
-            <button type="button" className="btn-modal save" onClick={handleSave}>Guardar</button>
+            <button type="button" className="btn-modal save" onClick={() => handleRequest('POST')}>Guardar</button>
           )}
         </div>
       </div>
