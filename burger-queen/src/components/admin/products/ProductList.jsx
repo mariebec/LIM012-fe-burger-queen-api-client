@@ -46,14 +46,24 @@ const ProductList = () => {
     });
   }
 
+  const modalRoot = document.createElement('div');
+  modalRoot.setAttribute('id', 'modal');
+
+  const handleAdd = () => {
+    document.body.append(modalRoot);
+    setDisplay({ modal: true, button: false })
+  };
+
   return (
     <>
       <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={()=> setDisplay({ modal: true, button: false })} >Agregar producto</button>
+          <button onClick={handleAdd} >Agregar producto</button>
+          {display.modal && 
           <ModalProducts display={display} setDisplay={setDisplay} setAllProducts={setAllProducts} 
           allProducts={allProducts} setProduct={setProduct} product={product}/>
+          }
         </div>
         <h2>Lista de productos</h2>
         <TempProductsTable allProducts={allProducts} handleDeleteProduct={handleDeleteProduct} handleUpdateProduct={handleUpdateProduct}/>
