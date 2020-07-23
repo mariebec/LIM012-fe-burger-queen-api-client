@@ -1,5 +1,6 @@
 $gold: #DABC4F;
 $brown: #411515;
+$gray: #5C5C5C;
 $font-pridi: 'Pridi', serif;
 $font-prompt: 'Prompt', sans-serif;
 
@@ -133,4 +134,123 @@ $font-prompt: 'Prompt', sans-serif;
       }
     }
   }
+
+  .orders-placed{
+    background: $gray;
+    width: 40%;
+
+    .title {
+      text-align: center;
+      font-family: $font-pridi;
+      color: white;
+      font-size: 1.9rem;
+      font-weight: bold;
+    }
+
+    .cliente {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border-top: 3px solid $gold;
+      padding: 10px;
+
+      .letter{
+        text-align: center;
+        font-family: $font-pridi;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .name-user{
+        background: transparentize($color: #000000, $amount: 0.7);
+        border: none;
+        padding: 5px;
+        margin: 10px;
+        border-radius: 5px;
+        width: 60%;
+        height: 25px;
+      }
+    }
+
+    table{
+      width: 100%;
+      font-family: $font-prompt;
+      text-align: center;
+      border-spacing: 0;
+      margin-bottom: 30%;
+
+      .head-order{
+        background: $gold;
+        font-size: 1.3rem;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+
+        th{
+          color: $brown;
+          height: 40px;
+        }
+      }
+
+      td{
+        color: white;
+        font-size: 1.2rem;
+        border-bottom: 2px solid gray;
+        height: 45px;
+
+        i{
+          color: rgb(214, 117, 117);
+          margin-right: 10px;
+
+        }
+      }
+    }
+
+    .total{
+      background: $gold;
+      font-size: 1.3rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      height: 45px;
+      font-family: $font-pridi;
+      font-weight: bold;
+    }
+
+    .options-button{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      height: 25%;
+
+      .cancel{
+        background: #C4C4C4;
+        border-radius: 9px;
+        width: 43%;
+        padding: 5px 0;
+        color: black;
+        font-family: "Pridi", gitserif;
+        font-size: 20px;
+        height: 60px;
+        font-weight: bold;
+      }
+
+      .send-cook{
+        background: #78D84C;
+        border-radius: 9px;
+        width: 43%;
+        padding: 5px 0;
+        color: black;
+        font-family: "Pridi", gitserif;
+        font-size: 20px;
+        height: 60px;
+        font-weight: bold;
+      }
+    }
+  }
+  
 }
+
+
