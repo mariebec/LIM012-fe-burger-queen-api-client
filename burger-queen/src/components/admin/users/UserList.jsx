@@ -42,7 +42,7 @@ const UserList = () => {
 
   return (
     <>
-      <Header title="ADMINISTRADOR" />
+      <Header title="ADMINISTRADOR" userName="Fulana" admin={true} />
       <main className="container-list">
         <div className="btn-container">
           <button onClick={() => setDisplay({modal: true, button: false})}>Agregar usuario</button>

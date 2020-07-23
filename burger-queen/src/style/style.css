@@ -162,6 +162,34 @@
 }
 
 .header-menu {
+  position: relative;
+}
+
+.nav {
+  position: absolute;
+  top: 95px;
+  right: 0;
+  width: 30%;
+  background-color: #DABC4F;
+  text-align: left;
+}
+
+.nav li {
+  list-style: none;
+  line-height: 70px;
+  border-top: 0.5px solid #FFF;
+  font-family: "Prompt", sans-serif;
+  color: #411515;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 0 20px;
+}
+
+.nav a:link, .nav a:visited, .nav a:active {
+  text-decoration: none;
+}
+
+.principal-menu {
   background-color: #DABC4F;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,20 +204,21 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 95px;
 }
 
-.header-menu .logo-Header {
+.principal-menu .logo-Header {
   padding: 8px;
   margin-left: 10px;
 }
 
-.header-menu .title {
+.principal-menu .title {
   font-size: 35px;
   color: #411515;
   opacity: 0.8;
 }
 
-.header-menu .user-logged {
+.principal-menu .user-logged {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,13 +226,11 @@
       -ms-flex-align: center;
           align-items: center;
   font-family: "Prompt", sans-serif;
-  padding: 15px;
-  margin: 10px;
   font-size: 25px;
   color: #411515;
 }
 
-.header-menu .user-icon {
+.principal-menu .user-icon {
   font-size: 1.4rem;
   margin-left: 10px;
   padding: 7px;
@@ -211,9 +238,26 @@
   border-radius: 50%;
 }
 
-.header-menu .menu-icon {
+.principal-menu .menu-icon-container {
+  height: 95px;
+  padding: 0 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+
+.principal-menu .menu-icon-container .menu-icon {
+  display: block;
   font-size: 2.5rem;
-  margin-left: 25px;
+}
+
+.principal-menu .active {
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .container-orders {

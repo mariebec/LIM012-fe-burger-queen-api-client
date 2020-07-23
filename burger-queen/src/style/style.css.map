@@ -4,6 +4,7 @@
     "sources": [
         "style.scss",
         "style-components/_login.scss",
+        "style-components/_header.scss",
         "style-components/_menu.scss",
         "style-components/_list.scss",
         "style-components/_modal.scss",

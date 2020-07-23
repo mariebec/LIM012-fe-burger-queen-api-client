@@ -11,36 +11,30 @@ const LoginView = () => {
     login: false
   }); 
 
-  const [ error, setError ] = useState({
-    userEmail: false,
-    userContraseña: false,
-  });
+  const [ error, setError ] = useState('');
 
   const handleChangeUser = (e) => {
     setUser({...user, [e.target.name]: e.target.value});
   }
 
   const handleGetLogin = () => {
-    // let account = { user}
-    if (user) {
-      postAuth(user).then((resp) => {
-        console.warm('resp', resp)
-        localStorage.setItem('login', JSON.stringify ({
-          login:true,
-          token:resp.token
-        })) 
-    }).catch((error) => {
-      setError(error) 
-      .setUser({login:true})
+    postAuth(user).then((resp) => {
+      console.warm('resp', resp)
+      localStorage.setItem('login', JSON.stringify ({
+        login:true,
+        token:resp.token
+      })) 
+    }).catch((err) => {
+      setError(err); 
     });
-    }
   }
-
+  console.log(error);
   return(
     <section className="container-login">
     <div className="box-login">
       <img src={img} alt="logo" className="logo" /> 
       <FormLogin
+      error={error}
       handleChangeUser={handleChangeUser}
       handleGetLogin={handleGetLogin}/>  
     </div>
