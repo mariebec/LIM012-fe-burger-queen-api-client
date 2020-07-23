@@ -31,8 +31,12 @@ const UserList = () => {
     deleteUser(id);
   };
 
+  const modalRoot = document.createElement('div');
+  modalRoot.setAttribute('id', 'modal');
+
   const handleUpdateUser = (user) => {
     setDisplay({modal: true, button: true});
+    document.body.append(modalRoot);
     setUser({id: user.id,
        email: user.email, 
        password: user.password,
@@ -40,12 +44,17 @@ const UserList = () => {
       });
   };
 
+  const handleAdd = () => {
+    document.body.append(modalRoot);
+    setDisplay({ modal: true, button: false })
+  };
+
   return (
     <>
       <Header title="ADMINISTRADOR" userName="Fulana" admin={true} />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={() => setDisplay({modal: true, button: false})}>Agregar usuario</button>
+          <button onClick={handleAdd}>Agregar usuario</button>
           {/* Acá pasamos el estado de display y la función para cambiar el estado a false */}
           <ModalUsers display={display} setDisplay={setDisplay} setAllUsers={setAllUsers} 
           allUsers={allUsers} setUser={setUser} user={user}/>
