@@ -34,7 +34,11 @@ const ProductList = () => {
     deleteProduct(id);
   }
 
+  const modalRoot = document.createElement('div');
+  modalRoot.setAttribute('id', 'modal');
+
   const handleUpdateProduct = (product) => {
+    document.body.append(modalRoot);
     setDisplay({ modal: true, button: true });
     setProduct({ 
       id: product.id, 
@@ -45,9 +49,6 @@ const ProductList = () => {
       date: product.date
     });
   }
-
-  const modalRoot = document.createElement('div');
-  modalRoot.setAttribute('id', 'modal');
 
   const handleAdd = () => {
     document.body.append(modalRoot);
