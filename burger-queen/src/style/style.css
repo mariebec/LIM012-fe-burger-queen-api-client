@@ -451,6 +451,7 @@
   border-radius: 5px;
   width: 60%;
   height: 25px;
+  outline: none;
 }
 
 .container-orders .orders-placed table {
