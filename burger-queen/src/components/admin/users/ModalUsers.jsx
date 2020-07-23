@@ -21,11 +21,11 @@ const ModalUsers = ({display, setDisplay, setAllUsers, allUsers, setUser, user})
   };
 
   const closeModal = () => {
-    document.body.removeChild(document.getElementById("modal"));
     const idGenerado = (Math.random() * 1000).toFixed(3).toString();
     setUser({id: idGenerado, email: '', password: '', roles: {admin: false}});
     setDisplay(prevState => ({ ...prevState, modal: false }));
     setError({ email:false, password:false, api: '' }); 
+    document.body.removeChild(document.getElementById("modal"));
   };
 
   const handleRequest = (request) => {
