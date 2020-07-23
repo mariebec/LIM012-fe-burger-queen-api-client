@@ -1,47 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getProducts } from '../../controller/admin-products';
 import Header from '../Header';
-import photos from './product-img';
 
-const MenuView = () => (
-  <>
+const MenuView = () => {
+  const [ allProducts, setAllProducts ] = useState({
+    id: 0,
+    name:'',
+    price: '',
+    image: '',
+    type: '',
+    date: ''
+  });
+
+  const [ products, setProducts ] = useState({
+    id: 0,
+    name:'',
+    price: '',
+    image: '',
+    type: '',
+    date: ''
+  });
+
+  useEffect(() => {
+    getProducts().then((resp) => {
+      setProducts(resp);
+      setAllProducts(resp);
+    });
+  }, []);
+
+  const handleType = (type) => {
+    setProducts(allProducts.filter((product) => product.type === type));
+  };
+
+  return (
+    <>
     <Header title="TOMAR PEDIDOS"/>
     <main className="container-orders">
       <section className="products-options">
         <div className="options-header">
-          <button className="options-food">Desayuno</button>
-          <button className="options-food">Almuerzo o Cena</button>
+          <button onClick={() => handleType('breakfast')} className="options-food">Desayuno</button>
+          <button onClick={() => setProducts(allProducts.filter((product) => product.type !== 'breakfast'))} className="options-food">Almuerzo o Cena</button>
         </div>
         <div className="box-photos">
           <div className="box-btn-food">
-            <button className="btn-food">Hamburguesas</button>
-            <button className="btn-food">Adicionales</button>
-            <button className="btn-food">Bebidas</button>
+            <button onClick={() => handleType('burger')} className="btn-food">Hamburguesas</button>
+            <button onClick={() => handleType('extra')} className="btn-food">Adicionales</button>
+            <button onClick={() => handleType('drink')} className="btn-food">Bebidas</button>
           </div>
           <div className="box-option-food">
-            <div className="box-food">
-              <img src={photos.hsimple} alt="logo" className="img-food" /> 
-              <p>Hamburguesas simple</p>
-            </div>
-            <div className="box-food"> 
-              <img src={photos.hdouble} alt="logo" className="img-food" /> 
-              <p>Hamburguesas dobles</p>
-            </div>
-            <div className="box-food">
-              <img src={photos.fries} alt="logo" className="img-food" /> 
-              <p>Papas fritas</p>
-            </div>
-            <div className="box-food"> 
-              <img src={photos.onion} alt="logo" className="img-food" />
-              <p>Aros de cebolla</p> 
-            </div>
-            <div className="box-food">
-              <img src={photos.water500} alt="logo" className="img-food" /> 
-              <p>Agua 500ml</p>
-            </div>
-            <div className="box-food"> 
-              <img src={photos.water750} alt="logo" className="img-food" /> 
-              <p>Agua 750ml</p>
-            </div>
+            { 
+              products.length > 0 ?
+              products.map((element) => (
+                <div key={element.id} className="box-food">
+                  <img src={element.image} alt="logo" className="img-food" /> 
+                  <p>{element.name}</p>
+              </div>
+              )) : (
+                <div className="box-food">
+                  <p>No hay productos</p>
+              </div>
+              )
+            }
           </div>
         </div>
       </section>
@@ -98,8 +117,7 @@ const MenuView = () => (
       </aside>
     </main>
   </>
-
-)
+  )
+};
     
-
 export default MenuView;
