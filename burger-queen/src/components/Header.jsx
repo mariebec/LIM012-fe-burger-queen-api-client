@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import img from '../assets/logo-fondomarron.png';
 
 const Header = ({ title, userName, admin }) => {
@@ -20,14 +21,20 @@ const Header = ({ title, userName, admin }) => {
       { display && 
       <nav className="nav">
         <ul>
+          <Link to="/menu">
+            <li>Menú</li>
+          </Link>
           <li>Pedidos listos</li>
           <li>Cocina</li>
-          {admin && 
-          <>
+          {/* {admin && 
+          <> */}
+          <Link to="/userlist">
             <li>Administrar usuarios</li>
+          </Link>
+          <Link to="/productlist">
             <li>Administrar productos</li>
-          </>}
-          
+          </Link>
+          {/* </>} */}
         </ul>
       </nav>
       }
