@@ -45,24 +45,55 @@ const MenuView = () => (
           </div>
         </div>
       </section>
-      <aside className="che">
-        <p>Consumo</p>
-        <div>
-          <p>Cliente</p>
-          <input placeholder="Nombres"/>
-          <p>N° de mesa</p>
-          <input type="number" />
+      <aside className="orders-placed">
+        <p className="title">Consumo</p>
+        <div className="cliente">
+          <p className="letter">Cliente</p>
+          <input className="name-user"placeholder="Nombres"/>
         </div>
-        <ul>
-          <li></li>
-        </ul>
-        <div>
+        <table >
+      <thead className="head-order">
+        <tr>
+          <th>Cant.</th>
+          <th>Product</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody className="body-order">
+      <tr>
+          <td>1</td>
+          <td>Hamburguesa Doble</td>
+          <td>s/15</td>
+          <td><i className="icon delete fas fa-trash-alt" /></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Hamburguesa Simple</td>
+          <td>s/10</td>
+          <td><i className="icon delete fas fa-trash-alt" /></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Aros de cebolla</td>
+          <td>s/2</td>
+          <td><i className="icon delete fas fa-trash-alt" /></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Papas fritas </td>
+          <td>s/5</td>
+          <td><i className="icon delete fas fa-trash-alt" /></td>
+        </tr>
+      </tbody>
+    </table>
+        <div className="total">
           <p>Total a pagar</p>
           <div>$45</div>
         </div>
-        <div>
-          <button>Cancelar</button>
-          <button>Enviar a cocina</button>
+        <div className="options-button">
+          <button className="cancel">Cancelar</button>
+          <button className="send-cook">Enviar a cocina</button>
         </div>
       </aside>
     </main>

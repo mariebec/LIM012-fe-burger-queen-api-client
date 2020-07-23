@@ -405,6 +405,146 @@
   font-weight: bold;
 }
 
+.container-orders .orders-placed {
+  background: #5C5C5C;
+  width: 40%;
+}
+
+.container-orders .orders-placed .title {
+  text-align: center;
+  font-family: "Pridi", serif;
+  color: white;
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+
+.container-orders .orders-placed .cliente {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 3px solid #DABC4F;
+  padding: 10px;
+}
+
+.container-orders .orders-placed .cliente .letter {
+  text-align: center;
+  font-family: "Pridi", serif;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.container-orders .orders-placed .cliente .name-user {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 60%;
+  height: 25px;
+}
+
+.container-orders .orders-placed table {
+  width: 100%;
+  font-family: "Prompt", sans-serif;
+  text-align: center;
+  border-spacing: 0;
+  margin-bottom: 30%;
+}
+
+.container-orders .orders-placed table .head-order {
+  background: #DABC4F;
+  font-size: 1.3rem;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+
+.container-orders .orders-placed table .head-order th {
+  color: #411515;
+  height: 40px;
+}
+
+.container-orders .orders-placed table td {
+  color: white;
+  font-size: 1.2rem;
+  border-bottom: 2px solid gray;
+  height: 45px;
+}
+
+.container-orders .orders-placed table td i {
+  color: #d67575;
+  margin-right: 10px;
+}
+
+.container-orders .orders-placed .total {
+  background: #DABC4F;
+  font-size: 1.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 45px;
+  font-family: "Pridi", serif;
+  font-weight: bold;
+}
+
+.container-orders .orders-placed .options-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 25%;
+}
+
+.container-orders .orders-placed .options-button .cancel {
+  background: #C4C4C4;
+  border-radius: 9px;
+  width: 43%;
+  padding: 5px 0;
+  color: black;
+  font-family: "Pridi", gitserif;
+  font-size: 20px;
+  height: 60px;
+  font-weight: bold;
+}
+
+.container-orders .orders-placed .options-button .send-cook {
+  background: #78D84C;
+  border-radius: 9px;
+  width: 43%;
+  padding: 5px 0;
+  color: black;
+  font-family: "Pridi", gitserif;
+  font-size: 20px;
+  height: 60px;
+  font-weight: bold;
+}
+
 .container-list {
   display: -webkit-box;
   display: -ms-flexbox;
