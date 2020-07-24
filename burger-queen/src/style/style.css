@@ -161,6 +161,55 @@
   background-color: #b1973b;
 }
 
+.container-category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 85vh;
+  background-image: url(../assets/category.jpg);
+  width: 100%;
+  background-size: cover;
+}
+
+.container-category .waiter-choise, .container-category .admin-choise {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 40%;
+}
+
+.container-category .waiter-choise a, .container-category .admin-choise a {
+  background: #DABC4F;
+  border-radius: 9px;
+  width: 70%;
+  padding: 20px;
+  color: #411515;
+  font-family: "Pridi", gitserif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  outline: none;
+  text-decoration: none;
+}
+
 .header-menu {
   position: relative;
 }
@@ -497,6 +546,27 @@
 .container-orders .orders-placed table td i {
   color: #d67575;
   margin-right: 10px;
+}
+
+.container-orders .orders-placed table .button-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-orders .orders-placed table .button-edit i {
+  color: #78D84C;
+  margin: 5px;
 }
 
 .container-orders .orders-placed .total {
