@@ -3,23 +3,23 @@ import { getProducts } from '../../controller/admin-products';
 import Header from '../Header';
 
 const MenuView = () => {
-  const [ allProducts, setAllProducts ] = useState({
-    id: 0,
-    name:'',
-    price: '',
-    image: '',
-    type: '',
-    date: ''
-  });
 
-  const [ products, setProducts ] = useState({
+  const initialState = {
     id: 0,
     name:'',
     price: '',
     image: '',
     type: '',
     date: ''
-  });
+  };
+  
+  const [ allProducts, setAllProducts ] = useState(initialState);
+  const [ products, setProducts ] = useState(initialState);
+
+  const [ display, setDisplay ] = useState({
+    btnMenu: 'all',
+    btnType: true
+  })
 
   useEffect(() => {
     getProducts().then((resp) => {
@@ -29,7 +29,23 @@ const MenuView = () => {
   }, []);
 
   const handleType = (type) => {
-    setProducts(allProducts.filter((product) => product.type === type));
+    switch (type) {
+      case 'menu':
+          setProducts(allProducts.filter((product) => product.type !== 'breakfast'));
+          setDisplay({btnMenu: type, btnType: true});
+        break;
+      case 'all':
+          setProducts(allProducts);
+          setDisplay({btnMenu: type, btnType: true});
+        break;
+      case 'breakfast':
+        setProducts(allProducts.filter((product) => product.type === type));
+        setDisplay({btnMenu: type, btnType: false});
+      break;
+      default: 
+        setProducts(allProducts.filter((product) => product.type === type));
+      break;
+    }
   };
 
   return (
@@ -37,16 +53,24 @@ const MenuView = () => {
     <Header title="TOMAR PEDIDOS"/>
     <main className="container-orders">
       <section className="products-options">
-        <div className="options-header">
-          <button onClick={() => handleType('breakfast')} className="options-food">Desayuno</button>
-          <button onClick={() => setProducts(allProducts.filter((product) => product.type !== 'breakfast'))} className="options-food">Almuerzo o Cena</button>
+        <div className="options-type">
+          <button onClick={() => handleType('all')} className={display.btnMenu === 'all' ? "btn-active options-food" : "options-food"}>
+            Todos
+          </button>
+          <button onClick={() => handleType('breakfast')} className={display.btnMenu === 'breakfast' ? "btn-active options-food" : "options-food"}>
+            Desayuno
+          </button>
+          <button onClick={() => handleType('menu')} className={display.btnMenu === 'menu' ? "btn-active options-food" : "options-food"}>
+            Menú
+          </button>
         </div>
         <div className="box-photos">
+          { display.btnType &&
           <div className="box-btn-food">
             <button onClick={() => handleType('burger')} className="btn-food">Hamburguesas</button>
             <button onClick={() => handleType('extra')} className="btn-food">Adicionales</button>
             <button onClick={() => handleType('drink')} className="btn-food">Bebidas</button>
-          </div>
+          </div>}
           <div className="box-option-food">
             { 
               products.length > 0 ?
