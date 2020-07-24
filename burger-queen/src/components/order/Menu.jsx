@@ -62,25 +62,25 @@ const MenuView = () => (
       </thead>
       <tbody className="body-order">
       <tr>
-          <td>1</td>
+          <td className="button-edit"><i className="option fas fa-plus-circle"></i>1<i className="option fas fa-minus-circle"></i></td>
           <td>Hamburguesa Doble</td>
           <td>s/15</td>
           <td><i className="icon delete fas fa-trash-alt" /></td>
         </tr>
         <tr>
-          <td>1</td>
+          <td className="button-edit"><i className="option fas fa-plus-circle"></i>1<i className="option fas fa-minus-circle"></i></td>
           <td>Hamburguesa Simple</td>
           <td>s/10</td>
           <td><i className="icon delete fas fa-trash-alt" /></td>
         </tr>
         <tr>
-          <td>2</td>
+          <td className="button-edit"><i className="option fas fa-plus-circle"></i>2<i className="option fas fa-minus-circle"></i></td>
           <td>Aros de cebolla</td>
           <td>s/2</td>
           <td><i className="icon delete fas fa-trash-alt" /></td>
         </tr>
         <tr>
-          <td>1</td>
+          <td className="button-edit"><i className="option fas fa-plus-circle"></i>1<i className="option fas fa-minus-circle"></i></td>
           <td>Papas fritas </td>
           <td>s/5</td>
           <td><i className="icon delete fas fa-trash-alt" /></td>
