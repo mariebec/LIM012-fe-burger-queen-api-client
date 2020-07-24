@@ -196,7 +196,7 @@
   width: 40%;
 }
 
-.container-category .waiter-choise a, .container-category .admin-choise a {
+.container-category .waiter-choise button, .container-category .waiter-choise a, .container-category .admin-choise button, .container-category .admin-choise a {
   background: #DABC4F;
   border-radius: 9px;
   width: 70%;
