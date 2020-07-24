@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import img from '../../assets/logo-fondoblanco.png';
 import FormLogin from '../login/FormLogin';
-import {postAuth } from '../../controller/auth';
+import {postAuth, getUserByEmail } from '../../controller/auth';
 
 const LoginView = () => {
 
@@ -18,17 +18,24 @@ const LoginView = () => {
   }
 
   const handleGetLogin = () => {
-    postAuth(user).then((resp) => {
-      console.warm('resp', resp)
-      localStorage.setItem('login', JSON.stringify ({
+    const email = user.userEmail;
+    const password = user.userContraseña
+    console.log (email, password)
+    postAuth({email, password}).then((resp) => {
+      sessionStorage.setItem('login', JSON.stringify ({
         login:true,
         token:resp.token
       })) 
+      getUserByEmail(email).then((user) => {
+        console.log(user)
+        sessionStorage.setItem('currentUser', JSON.stringify ({
+          currentUser: user
+        })) 
+      })
     }).catch((err) => {
       setError(err); 
     });
   }
-  console.log(error);
   return(
     <section className="container-login">
     <div className="box-login">
