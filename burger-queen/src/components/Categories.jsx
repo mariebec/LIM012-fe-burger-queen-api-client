@@ -8,14 +8,13 @@ const Categories = () => {
     <Header title="CATEGORIAS"/>
     <section className="container-category">
       <div className="waiter-choise"> 
-      {/* <button className="menu" ><Link to="/menu">Menú</Link></button> */}
-      <a className="category"  href="/menu">Menú</a>
-      <a className="category"  href="/menu">Pedidos Listos</a>
-      <a className="category"  href="/menu">Cocina</a>
+      <Link to="/menu"><div className="category" >Menú</div> </Link>
+      <Link to="/menu"><div className="category" >Pedidos Listos</div> </Link>
+      <Link to="/menu"><div className="category" >Cocina</div> </Link>
       </div>
       <div className="admin-choise">
-      <a className="category" href="/userlist">Admin Usuarios</a>
-      <a className="category" href="/productlist">Admin Productos</a>
+      <Link to="/userlist"><div className="category" >Admin Usuarios</div> </Link>
+      <Link to="/productlist"><div className="category" >Admin Productos</div> </Link>  
       </div>
     </section>
     </>
