@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import LogIn from './components/login/LogIn';
+import Categories from './components/Categories';
 import Menu from './components/order/Menu';
 import UserList from './components/admin/users/UserList';
 import ProductList from './components/admin/products/ProductList';
@@ -21,6 +22,9 @@ function App() {
             <Route path="/"  exact>
                 <LogIn />
             </Route> 
+            <Route path="/categories" >
+                <Categories />
+            </Route>
             <Route path="/menu" >
                 <Menu />
             </Route>
