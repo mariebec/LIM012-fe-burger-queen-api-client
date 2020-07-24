@@ -173,8 +173,9 @@
       -ms-flex-pack: center;
           justify-content: center;
   height: 85vh;
-  background-image: url(../assets/fondo-hu1.png);
+  background-image: url(../assets/category.jpg);
   width: 100%;
+  background-size: cover;
 }
 
 .container-category .waiter-choise, .container-category .admin-choise {
