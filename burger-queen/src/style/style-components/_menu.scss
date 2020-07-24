@@ -13,23 +13,32 @@ $font-prompt: 'Prompt', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     background-image: url(../assets/fondo-hu1.png);
     width: 65%;
 
-    .options-header{
+    .options-type{
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
+      width: 85%;
 
       .options-food{
         border-radius: 9px;
         background: transparentize($color: #000000, $amount: 0.2);
-        width: 33%;
+        width: 30%;
         padding: 15px 0;
         color: white;
         font-family: $font-pridi;
         font-size: 25px;
+        border: none;
+        outline: none;
+      }
+
+      .btn-active{
+        border: 3px solid $gold;
+        font-weight: bold;
       }
     }
 
@@ -40,7 +49,6 @@ $font-prompt: 'Prompt', sans-serif;
       background: transparentize($color: #000000, $amount: 0.2);
       width: 85%;
       height: 70%;
-      margin-left: 50px;
       border-radius: 9px;
 
       .box-btn-food{
@@ -51,12 +59,15 @@ $font-prompt: 'Prompt', sans-serif;
 
         .btn-food{
           background: #DABC4F;
+          border: none;
+          outline: none;
           border-radius: 9px;
-          width: 25%;
+          width: 30%;
           padding: 5px 0;
           color: #411515;
           font-family: "Pridi", gitserif;
           font-size: 20px;
+          margin-top: 10px;
         }
       }
 
