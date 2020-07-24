@@ -27,11 +27,11 @@ const ModalProducts = ({display, setDisplay, setAllProducts, allProducts, setPro
   };
 
   const closeModal = () => { 
-    document.body.removeChild(document.getElementById("modal"));
     const idGenerado = (Math.random() * 1000).toFixed(0).toString();
     setProduct({id: idGenerado, name:'', price: '', image: '', type: 'breakfast', date: ''});
     setDisplay(prevState => ({ ...prevState, modal: false }));
     setError({ name:false, price:false, api: '' });
+    document.body.removeChild(document.getElementById("modal"));
   };
 
   const handleRequest = (request) => {

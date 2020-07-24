@@ -1,47 +1,90 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getProducts } from '../../controller/admin-products';
 import Header from '../Header';
-import photos from './product-img';
 
-const MenuView = () => (
-  <>
+const MenuView = () => {
+
+  const initialState = {
+    id: 0,
+    name:'',
+    price: '',
+    image: '',
+    type: '',
+    date: ''
+  };
+  
+  const [ allProducts, setAllProducts ] = useState(initialState);
+  const [ products, setProducts ] = useState(initialState);
+
+  const [ display, setDisplay ] = useState({
+    btnMenu: 'all',
+    btnType: true
+  })
+
+  useEffect(() => {
+    getProducts().then((resp) => {
+      setProducts(resp);
+      setAllProducts(resp);
+    });
+  }, []);
+
+  const handleType = (type) => {
+    switch (type) {
+      case 'menu':
+          setProducts(allProducts.filter((product) => product.type !== 'breakfast'));
+          setDisplay({btnMenu: type, btnType: true});
+        break;
+      case 'all':
+          setProducts(allProducts);
+          setDisplay({btnMenu: type, btnType: true});
+        break;
+      case 'breakfast':
+        setProducts(allProducts.filter((product) => product.type === type));
+        setDisplay({btnMenu: type, btnType: false});
+      break;
+      default: 
+        setProducts(allProducts.filter((product) => product.type === type));
+      break;
+    }
+  };
+
+  return (
+    <>
     <Header title="TOMAR PEDIDOS"/>
     <main className="container-orders">
       <section className="products-options">
-        <div className="options-header">
-          <button className="options-food">Desayuno</button>
-          <button className="options-food">Almuerzo o Cena</button>
+        <div className="options-type">
+          <button onClick={() => handleType('all')} className={display.btnMenu === 'all' ? "btn-active options-food" : "options-food"}>
+            Todos
+          </button>
+          <button onClick={() => handleType('breakfast')} className={display.btnMenu === 'breakfast' ? "btn-active options-food" : "options-food"}>
+            Desayuno
+          </button>
+          <button onClick={() => handleType('menu')} className={display.btnMenu === 'menu' ? "btn-active options-food" : "options-food"}>
+            Menú
+          </button>
         </div>
         <div className="box-photos">
+          { display.btnType &&
           <div className="box-btn-food">
-            <button className="btn-food">Hamburguesas</button>
-            <button className="btn-food">Adicionales</button>
-            <button className="btn-food">Bebidas</button>
-          </div>
+            <button onClick={() => handleType('burger')} className="btn-food">Hamburguesas</button>
+            <button onClick={() => handleType('extra')} className="btn-food">Adicionales</button>
+            <button onClick={() => handleType('drink')} className="btn-food">Bebidas</button>
+          </div>}
           <div className="box-option-food">
-            <div className="box-food">
-              <img src={photos.hsimple} alt="logo" className="img-food" /> 
-              <p>Hamburguesas simple</p>
-            </div>
-            <div className="box-food"> 
-              <img src={photos.hdouble} alt="logo" className="img-food" /> 
-              <p>Hamburguesas dobles</p>
-            </div>
-            <div className="box-food">
-              <img src={photos.fries} alt="logo" className="img-food" /> 
-              <p>Papas fritas</p>
-            </div>
-            <div className="box-food"> 
-              <img src={photos.onion} alt="logo" className="img-food" />
-              <p>Aros de cebolla</p> 
-            </div>
-            <div className="box-food">
-              <img src={photos.water500} alt="logo" className="img-food" /> 
-              <p>Agua 500ml</p>
-            </div>
-            <div className="box-food"> 
-              <img src={photos.water750} alt="logo" className="img-food" /> 
-              <p>Agua 750ml</p>
-            </div>
+            { 
+              products.length > 0 ?
+              products.map((element) => (
+                <div key={element.id} className="box-food">
+                  <img src={element.image} alt="logo" className="img-food" /> 
+                  <p>{element.name}</p>
+              </div>
+              )) : (
+                <div className="box-food">
+                  <p>No hay productos</p>
+              </div>
+              )
+            }
           </div>
         </div>
       </section>
@@ -98,8 +141,7 @@ const MenuView = () => (
       </aside>
     </main>
   </>
-
-)
+  )
+};
     
-
 export default MenuView;
