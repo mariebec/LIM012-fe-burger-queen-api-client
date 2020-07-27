@@ -18,7 +18,7 @@ const MenuView = () => {
 
   const [ display, setDisplay ] = useState({
     btnMenu: 'all',
-    btnType: true
+    btnType: false
   })
 
   useEffect(() => {
@@ -34,10 +34,10 @@ const MenuView = () => {
           setProducts(allProducts.filter((product) => product.type !== 'breakfast'));
           setDisplay({btnMenu: type, btnType: true});
         break;
-      case 'all':
-          setProducts(allProducts);
-          setDisplay({btnMenu: type, btnType: true});
-        break;
+      // case 'all':
+      //     setProducts(allProducts);
+      //     setDisplay({btnMenu: type, btnType: false});
+      //   break;
       case 'breakfast':
         setProducts(allProducts.filter((product) => product.type === type));
         setDisplay({btnMenu: type, btnType: false});
@@ -54,9 +54,9 @@ const MenuView = () => {
     <main className="container-orders">
       <section className="products-options">
         <div className="options-type">
-          <button onClick={() => handleType('all')} className={display.btnMenu === 'all' ? "btn-active options-food" : "options-food"}>
+          {/* <button onClick={() => handleType('all')} className={display.btnMenu === 'all' ? "btn-active options-food" : "options-food"}>
             Todos
-          </button>
+          </button> */}
           <button onClick={() => handleType('breakfast')} className={display.btnMenu === 'breakfast' ? "btn-active options-food" : "options-food"}>
             Desayuno
           </button>

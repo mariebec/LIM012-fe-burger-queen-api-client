@@ -1,6 +1,33 @@
-import React from 'react'
+import React from 'react';
+import { deleteUser } from '../../../controller/admin-users';
 
-const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
+const UsersTable = ({ state, setState, modalRoot }) => {
+
+  const handleDeleteUser = (id) => {
+    setState(prevState => ({
+      ...prevState,
+      allUsers: state.allUsers.filter((user) => user.id !== id),
+    }));
+    deleteUser(id);
+  };
+  
+  const handleUpdateUser = (user) => {
+    document.body.append(modalRoot);
+    setState(prevState => ({
+      ...prevState,
+      userData: {
+        id: user.id,
+        email: user.email,
+        password: user.password,
+        roles: { admin: user.roles.admin }
+      },
+      display: {
+        modal: true,
+        btnEdit: true
+      },
+    }));
+  };
+
   return (
     <table className="table">
       <thead className="head-table">
@@ -13,8 +40,9 @@ const UsersTable = ({ allUsers, handleDeleteUser, handleUpdateUser }) => {
       </thead>
       <tbody className="body-table">
         { 
-          allUsers.length > 0 ?
-          allUsers.map((element) => (
+          state.allUsers.length > 0 ?
+          state.allUsers.map((element) => (
+            // console.log(element) ||
             <tr key={element.id}>
               <td>{element.id}</td>
               <td>{element.email}</td>
