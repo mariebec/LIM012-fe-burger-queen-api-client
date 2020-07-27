@@ -1,6 +1,88 @@
-import React from 'react'
+import React, {useState} from 'react';
+import { postUser, putUser } from '../../../controller/admin-users';
 
-const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleRequest, closeModal, display }) => {
+const FormUsers = ({ state, setState }) => {
+  const [ error, setError ] = useState({
+    email: false,
+    password: false,
+    api: '' 
+  });
+
+  const handleInputChange = (e) => {
+    const input = e.target.name;
+    const data = e.target.value
+    setState(prevState => ({
+      ...prevState,
+      userData: {
+        ...state.userData,
+        [input]: data
+      } 
+    }));
+  };
+
+  const handleSelectChange = (e) => {
+    const select = e.target;
+    setState(prevState => ({
+      ...prevState,
+      userData: {
+        ...state.userData,
+        roles: { admin: select.value === 'SI' ? true : false }
+      } 
+    }));
+  };
+
+  const closeModal = () => {
+    const idGenerado = (Math.random() * 1000).toFixed(3).toString();
+    setState(prevState => ({
+      ...prevState,
+      userData: {
+        id: idGenerado,
+        email: '',
+        password: '',
+        roles: { admin: false }
+      },
+      display: {
+        ...state.userData,
+        modal:false
+      }
+    }));
+    setError({ email:false, password:false, api: '' }); 
+    document.body.removeChild(document.getElementById("modal"));
+  };
+
+  const handleRequest = (request) => {
+    const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+    const validEmail = state.userData.email.trim() === '' || !exRegEmail.test(state.userData.email.trim());
+    const validPassword = state.userData.password.trim() === '' || state.userData.password.trim().length < 6;
+  
+    if (validEmail || validPassword) {
+      (validEmail) ? setError(prevState => ({ ...prevState, email: true })) : setError(prevState => ({ ...prevState, email: false }));
+      (validPassword) ? setError(prevState => ({ ...prevState, password: true })) : setError(prevState => ({ ...prevState, password: false }));
+    } else { 
+      if (request === 'POST') {
+        postUser(state.userData).then((resp) => {
+          setState(prevState => ({
+            ...prevState,
+            allUsers: [...state.allUsers, resp]
+          }));
+          closeModal();
+        }).catch((error) => {
+          setError(error);
+        });
+      } else {
+        putUser(state.userData).then((resp) => {
+          setState(prevState => ({
+            ...prevState,
+            allUsers: state.allUsers.map((user) => user.id === resp.id ? resp : user),
+          }));
+          closeModal();
+        }).catch((error) => {
+          setError(error);
+        });
+      };
+    };
+  };
+ 
   return (
     <form className="form-modal">
       <div className="form-container">
@@ -8,7 +90,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleR
           <label htmlFor="input-email" className="label-text">E-MAIL:</label>
           <div className="box-input">
             <input 
-              defaultValue={user.email}
+              defaultValue={state.userData.email}
               id ="input-email" 
               name="email" type="email" 
               onChange={handleInputChange}
@@ -20,7 +102,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleR
           <label htmlFor="input-password" className="label-text">CLAVE:</label>
           <div className="box-input">
             <input 
-              defaultValue={user.password}
+              defaultValue={state.userData.password}
               id ="input-password" 
               name="password" type="password"
               onChange={handleInputChange}
@@ -31,7 +113,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleR
         <div>
           <label htmlFor="input-admin" className="label-text">ADMIN:</label>
           <div className="box-option">
-            <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={user.roles.admin ? "SI" : "NO"}>
+            <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={state.userData.roles.admin ? "SI" : "NO"}>
               <option value="NO">NO</option>
               <option value="SI">SI</option>
             </select>
@@ -40,7 +122,7 @@ const FormUsers = ({ user, error, handleInputChange, handleSelectChange, handleR
         {error.message !== '' && <span>{error.message}</span>}
         <div>
           <button type="button" className="btn-modal cancel" onClick={closeModal}>Cancelar</button>
-          {display.button ? (
+          {state.display.btnEdit ? (
             <button type="button" className="btn-modal save" onClick={() => handleRequest('PUT')}>Editar</button>
           ) : (
             <button type="button" className="btn-modal save" onClick={() => handleRequest('POST')}>Guardar</button>
