@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import img from '../../assets/logo-fondoblanco.png';
 import FormLogin from '../login/FormLogin';
 import {postAuth, getUserByEmail } from '../../controller/auth';
+import { useHistory } from "react-router-dom";
 
 const LoginView = () => {
+  let history = useHistory();
 
   const [ user, setUser ] = useState({
     userEmail: '',
     userContraseña: '',
-    login: false
   }); 
 
   const [ error, setError ] = useState('');
@@ -20,17 +21,12 @@ const LoginView = () => {
   const handleGetLogin = () => {
     const email = user.userEmail;
     const password = user.userContraseña
-    console.log (email, password)
     postAuth({email, password}).then((resp) => {
-      sessionStorage.setItem('login', JSON.stringify ({
-        login:true,
-        token:resp.token
-      })) 
+      history.push("/categories");
+      sessionStorage.setItem('login', resp.token);
       getUserByEmail(email).then((user) => {
-        console.log(user)
-        sessionStorage.setItem('currentUser', JSON.stringify ({
-          currentUser: user
-        })) 
+        sessionStorage.setItem('currentRol', user.roles.admin);
+        sessionStorage.setItem('currentEmail', user.email);
       })
     }).catch((err) => {
       setError(err); 
@@ -49,6 +45,5 @@ const LoginView = () => {
   )
 
 }
-
 
 export default LoginView;
