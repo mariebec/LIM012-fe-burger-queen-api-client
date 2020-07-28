@@ -24,8 +24,12 @@ const Header = ({ title, userName, admin }) => {
           <Link to="/menu">
             <li>Menú</li>
           </Link>
+          <Link to="/orders">
           <li>Pedidos listos</li>
-          <li>Cocina</li>
+          </Link>
+          <Link to="/kitchen">
+          <li>Cocina</li> 
+          </Link>
           {/* {admin && 
           <> */}
           <Link to="/userlist">
