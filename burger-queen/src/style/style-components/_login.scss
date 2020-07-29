@@ -73,14 +73,16 @@ $gold-2: #b1973b;
         font-family: $font-prompt;
         font-size: 1.1rem;
       }
-      .error{
+      .errors{
         border-bottom: 2px solid red;
         box-shadow: 5px gray;
         &::placeholder{
           color: red;
         }
       }
+      
     }
+    
     // estilo para los iconos
     .user-icon{
       font-size: 1.5rem;

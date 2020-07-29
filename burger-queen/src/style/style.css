@@ -116,25 +116,25 @@
   font-size: 1.1rem;
 }
 
-.login-form .box-user .user .error {
+.login-form .box-user .user .errors {
   border-bottom: 2px solid red;
   -webkit-box-shadow: 5px gray;
           box-shadow: 5px gray;
 }
 
-.login-form .box-user .user .error::-webkit-input-placeholder {
+.login-form .box-user .user .errors::-webkit-input-placeholder {
   color: red;
 }
 
-.login-form .box-user .user .error:-ms-input-placeholder {
+.login-form .box-user .user .errors:-ms-input-placeholder {
   color: red;
 }
 
-.login-form .box-user .user .error::-ms-input-placeholder {
+.login-form .box-user .user .errors::-ms-input-placeholder {
   color: red;
 }
 
-.login-form .box-user .user .error::placeholder {
+.login-form .box-user .user .errors::placeholder {
   color: red;
 }
 
@@ -317,7 +317,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  height: 88vh;
+  height: 85vh;
 }
 
 .container-orders .products-options {
@@ -627,6 +627,195 @@
   font-size: 20px;
   height: 60px;
   font-weight: bold;
+}
+
+.kitchen-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 85vh;
+  background: #2F1718;
+}
+
+.kitchen-container .kitchen-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 75%;
+  height: 35%;
+  border: 3px solid #DABC4F;
+  margin: 50px 15px 0px 120px;
+  border-radius: 9px;
+}
+
+.kitchen-container .kitchen-card .header-card {
+  background: #DABC4F;
+  width: 100%;
+  font-family: "Prompt", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0px 10px 0px;
+  font-size: 20px;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.kitchen-container .kitchen-card .body-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  height: 80%;
+}
+
+.kitchen-container .kitchen-card .body-card .list {
+  width: 70%;
+  background: #5C5C5C;
+  height: 100%;
+  position: relative;
+}
+
+.kitchen-container .kitchen-card .body-card .list td {
+  border-bottom: 1px solid gray;
+  color: white;
+  font-size: 20px;
+  font-family: "Prompt", sans-serif;
+}
+
+.kitchen-container .kitchen-card .body-card .order-ready {
+  width: 30%;
+  background: #78D84C;
+  color: black;
+  border: 2px solid black;
+  font-size: 30px;
+  font-family: "Pridi", serif;
+  font-weight: bold;
+}
+
+.container-orderReady {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url(../assets/fondo-hu1.png);
+  width: 100%;
+  height: 670px;
+  background-size: cover;
+}
+
+.container-orderReady .container-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background: rgba(0, 0, 0, 0.8);
+  width: 45%;
+  height: 90%;
+  border-radius: 9px;
+}
+
+.container-orderReady .container-div .card-scroll {
+  height: 80%;
+  overflow: auto;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .title {
+  font-family: "Pridi", serif;
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order {
+  font-size: 20px;
+  border: 2px solid black;
+  width: 90%;
+  color: black;
+  font-family: "Pridi", serif;
+  margin: 10px 20px;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .header-card-order, .container-orderReady .container-div .card-scroll .card-orders .list-Order .foot-card-order {
+  background: #DABC4F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order table td {
+  background: #5C5C5C;
+  width: 5%;
+  padding: 2px;
+  border-bottom: 1px solid #333333;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order table tfoot {
+  background: #DABC4F;
 }
 
 .container-list {

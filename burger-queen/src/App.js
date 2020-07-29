@@ -7,6 +7,8 @@ import {
 import LogIn from './components/login/LogIn';
 import Categories from './components/Categories';
 import Menu from './components/order/Menu';
+import KitchenOrder from './components/kitchen/KitchenOrder';
+import OrderReady from './components/order/OrderReady';
 import UserList from './components/admin/users/UserList';
 import ProductList from './components/admin/products/ProductList';
 import NotFound from './components/login/NotFound'
@@ -27,6 +29,12 @@ function App() {
             </Route>
             <Route path="/menu" >
                 <Menu />
+            </Route>
+            <Route path="/kitchen" >
+                <KitchenOrder />
+            </Route>
+            <Route path="/orders" >
+                <OrderReady />
             </Route>
             <Route path="/userlist" >
                 <UserList />
