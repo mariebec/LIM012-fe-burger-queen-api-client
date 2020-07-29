@@ -49,7 +49,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 9px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.55);
   width: 35%;
   padding: 25px 0;
 }
@@ -116,32 +116,34 @@
   font-size: 1.1rem;
 }
 
-.login-form .box-user .user .errors {
-  border-bottom: 2px solid red;
-  -webkit-box-shadow: 5px gray;
-          box-shadow: 5px gray;
+.login-form .box-user .errors::-webkit-input-placeholder {
+  color: red;
+  font-weight: bold;
 }
 
-.login-form .box-user .user .errors::-webkit-input-placeholder {
+.login-form .box-user .errors:-ms-input-placeholder {
   color: red;
+  font-weight: bold;
 }
 
-.login-form .box-user .user .errors:-ms-input-placeholder {
+.login-form .box-user .errors::-ms-input-placeholder {
   color: red;
+  font-weight: bold;
 }
 
-.login-form .box-user .user .errors::-ms-input-placeholder {
+.login-form .box-user .errors::placeholder {
   color: red;
-}
-
-.login-form .box-user .user .errors::placeholder {
-  color: red;
+  font-weight: bold;
 }
 
 .login-form .box-user .user-icon {
   font-size: 1.5rem;
   color: white;
   margin: 0 10px;
+}
+
+.login-form .box-error {
+  border: 2px solid red;
 }
 
 .login-form .btn-login {

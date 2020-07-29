@@ -33,7 +33,7 @@ $gold-2: #b1973b;
   align-items: center;
   justify-content: center;
   border-radius: 9px;
-  background: transparentize($color: #000000, $amount: 0.5);
+  background: transparentize($color: #000000, $amount: 0.45);
   width: 35%;
   padding: 25px 0;
 
@@ -73,14 +73,13 @@ $gold-2: #b1973b;
         font-family: $font-prompt;
         font-size: 1.1rem;
       }
-      .errors{
-        border-bottom: 2px solid red;
-        box-shadow: 5px gray;
-        &::placeholder{
-          color: red;
-        }
+    }
+    .errors{
+      // box-shadow: 5px gray;
+      &::placeholder{
+        color: red;
+        font-weight: bold;
       }
-      
     }
     
     // estilo para los iconos
@@ -89,6 +88,10 @@ $gold-2: #b1973b;
       color: white;
       margin: 0 10px;
     }
+  }
+
+  .box-error{
+    border: 2px solid red;
   }
 
 .btn-login{

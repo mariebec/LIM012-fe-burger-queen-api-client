@@ -4,7 +4,7 @@ const FormLogin = ({handleChangeUser, handleGetLogin, error, user}) => {
   return (
     <form className="login-form">
           <p>Inicia sesión</p>
-          <div className="box-user">
+          <div className={ error.userEmail ? "box-user box-error" : "box-user" }>
             <i className="user-icon fas fa-user"></i>
             <input 
                   defaultValue={user.userEmail} 
@@ -14,7 +14,7 @@ const FormLogin = ({handleChangeUser, handleGetLogin, error, user}) => {
                   placeholder= {error.userEmail ?  "Campo requerido" : "Ingrese el email" }
                   className={ error.userEmail ? "user errors" : "user" }/>
           </div>
-          <div className="box-user">
+          <div className={ error.userContraseña ? "box-user box-error" : "box-user" }>
           <i className="user-icon fas fa-lock"></i>
             <input defaultValue={user.userContraseña} 
                   id="userContraseña" 
