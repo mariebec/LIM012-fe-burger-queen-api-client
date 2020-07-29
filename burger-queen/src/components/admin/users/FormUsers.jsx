@@ -10,7 +10,7 @@ const FormUsers = ({ state, setState }) => {
 
   const handleInputChange = (e) => {
     const input = e.target.name;
-    const data = e.target.value
+    const data = e.target.value;
     setState(prevState => ({
       ...prevState,
       userData: {
@@ -21,12 +21,12 @@ const FormUsers = ({ state, setState }) => {
   };
 
   const handleSelectChange = (e) => {
-    const select = e.target;
+    const select = e.target.value;
     setState(prevState => ({
       ...prevState,
       userData: {
         ...state.userData,
-        roles: { admin: select.value === 'SI' ? true : false }
+        roles: { admin: select === 'SI' ? true : false }
       } 
     }));
   };

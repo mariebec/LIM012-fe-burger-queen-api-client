@@ -10,9 +10,7 @@ const ModalUsers = ({ state, setState }) => {
         <div className="background-modal"></div>
         <div className="modal-window">
           <p className="title-modal">Agregar usuario</p>
-          <FormUsers 
-            state={state} 
-            setState={setState}/>
+          <FormUsers state={state} setState={setState}/>
         </div>
       </section>, document.getElementById("modal")
     );
