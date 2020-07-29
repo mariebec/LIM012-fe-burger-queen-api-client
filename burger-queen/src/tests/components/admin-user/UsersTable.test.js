@@ -1,20 +1,20 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// import { server } from '../../../__mock__/server';
-import {rest} from 'msw'
-import {setupServer} from 'msw/node'
+import { server } from '../../../__mock__/server';
+// import {rest} from 'msw'
+// import {setupServer} from 'msw/node'
 import userEvent from '@testing-library/user-event';
 import { deleteUser } from '../../../controller/admin-users';
 import UsersTable from '../../../components/admin/users/UsersTable';
 
-const server = setupServer(
-  rest.delete('http://localhost:3000/users/u_001', (req, res, ctx) => {
-    return res(
-      ctx.status(204),
-      ctx.json({ message: 'El usuario ha sido eliminado' }),
-    );
-  }),
-)
+// const server = setupServer(
+//   rest.delete('http://localhost:3000/users/u_001', (req, res, ctx) => {
+//     return res(
+//       ctx.status(204),
+//       ctx.json({ message: 'El usuario ha sido eliminado' }),
+//     );
+//   }),
+// )
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -27,7 +27,7 @@ const allUsers = [{
   roles: { admin: true }
 }];
 
-describe('UserTable', () => {
+describe.only('UserTable', () => {
   test('verificar que no existen usuarios', () => {
     render(<UsersTable allUsers={allUsers}/>);
  
