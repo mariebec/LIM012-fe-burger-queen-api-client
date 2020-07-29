@@ -33,7 +33,6 @@ export const deleteProduct = (id) => {
   }).then((resp) => {
     if (resp.status === 204) {
      return resp.json() 
-    console.log(resp)
     } if (resp.status === 400){
       return Promise.reject(console.log('Producto no encontrado'));
     }
