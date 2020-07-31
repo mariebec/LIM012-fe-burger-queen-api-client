@@ -21,7 +21,7 @@ const LoginView = () => {
     setUser({...user, [e.target.name]: e.target.value});
   }
 
-  const handleGetLogin = (request) => {
+  const handleGetLogin = () => {
     const email = user.userEmail;
     const password = user.userContraseña
 
