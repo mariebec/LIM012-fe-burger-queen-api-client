@@ -1,6 +1,90 @@
-import React from 'react'
+import React, {useState} from 'react';
+import { postProduct, putProduct} from '../../../controller/admin-products';
 
-const TempFormProducts = ({ product, error, handleInputChange, handleRequest, handleFile, closeModal, display }) => {
+const TempFormProducts = ({ product, setProduct }) => {
+  const [ error, setError ] = useState({
+    name: false,
+    price: false,
+    date: false,
+    api: ''
+  });
+
+  const handleInputChange = (e) => {
+    const input = e.target.name;
+    const data = e.target.value;
+    setProduct(prevState => ({
+      ...prevState,
+      productData: {
+        ...product.productData,
+        [input]: data
+      } 
+    }));
+  };
+
+  const handleFile = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+
+    reader.onload = (e) => {
+      setProduct({...product, image: e.target.result});
+    };
+  };
+
+  const closeModal = () => { 
+    const idGenerado = (Math.random() * 1000).toFixed(0).toString();
+    setProduct(prevState => ({
+      ...prevState,
+      productData: {
+        id: idGenerado,
+        name:'',
+        price: '',
+        image: '',
+        type: '',
+        date: ''
+      }, 
+      display: {
+        ...product.productData,
+        modal:false
+      }
+    }));
+    setError({ name:false, price:false, api: '' });
+    document.body.removeChild(document.getElementById("modal"));
+  };
+
+  const handleRequestProduct = (request) => {
+    const validName = product.productData.name.trim() === '';
+    const validPrice = product.productData.price.trim() === '';
+    const validDate = product.productData.date === '';
+
+    if (validName || validPrice || validDate) {
+      (validName) ? setError(prevState => ({ ...prevState, name: true })) : setError(prevState => ({ ...prevState, name: false }));
+      (validPrice) ? setError(prevState => ({ ...prevState, price: true })) : setError(prevState => ({ ...prevState, price: false }));
+      (validDate) ? setError(prevState => ({ ...prevState, date: true })) : setError(prevState => ({ ...prevState, date: false }));
+    } else { 
+      if (request === 'POST') {
+        postProduct(product.productData).then((resp) => {
+          setProduct(prevState => ({
+            ...prevState,
+            allProducts: [...product.allProducts, resp]
+          })) 
+          closeModal();
+        }).catch((error) => {
+          setError(error);
+        });
+      } else {
+        putProduct(product.productData).then((resp) => {
+          setProduct(prevState => ({
+            ...prevState,
+            allProducts: product.allProducts.map((product) => product.id === resp.id ? resp : product),
+          })) 
+          closeModal();
+        }).catch((error) => {
+          setError(error);
+        });
+      };
+    };
+  };
+
   return (
     <form className="form-modal">
       <div className="form-container fc-product">
@@ -8,7 +92,7 @@ const TempFormProducts = ({ product, error, handleInputChange, handleRequest, ha
           <label htmlFor="input-name" className="label-text">Nombre:</label>
           <div className="box-input">
             <input 
-              defaultValue={product.name}
+              defaultValue={product.productData.name}
               id ="input-name" 
               name="name"
               type="text"
@@ -22,7 +106,7 @@ const TempFormProducts = ({ product, error, handleInputChange, handleRequest, ha
           <p className="label-text">S/.</p>
           <div className="box-input">
             <input 
-              defaultValue={product.price}
+              defaultValue={product.productData.price}
               id ="input-price" 
               name="price"
               onChange={handleInputChange}
@@ -34,7 +118,7 @@ const TempFormProducts = ({ product, error, handleInputChange, handleRequest, ha
         <div className="field-p">
           <label htmlFor="input-category" className="label-text">Categoría:</label>
           <div className="box-option">
-            <select id ="input-admin" onChange={handleInputChange} name="type" className="select-modal sm-product" defaultValue={product.type}>
+            <select id ="input-admin" onChange={handleInputChange} name="type" className="select-modal sm-product" defaultValue={product.productData.type}>
               <option value="breakfast">Desayuno</option>
               <option value="burger">Hamburguesa</option>
               <option value="extra">Adicional</option>
@@ -46,7 +130,7 @@ const TempFormProducts = ({ product, error, handleInputChange, handleRequest, ha
           <label htmlFor="input-date" className="label-text">Fecha:</label>
           <div className="box-option">
             <input 
-              defaultValue={product.date}
+              defaultValue={product.productData.date}
               id ="input-date" 
               type="date"
               name="date"
@@ -63,10 +147,10 @@ const TempFormProducts = ({ product, error, handleInputChange, handleRequest, ha
         {error.message !== '' && <span>{error.message}</span>}
         <div>
           <button type="button" className="btn-modal cancel" onClick={closeModal}>Cancelar</button>
-          {display.button ? (
-            <button type="button" className="btn-modal save" onClick={() => handleRequest('PUT')}>Editar</button>
+          {product.display.button ? (
+            <button type="button" className="btn-modal save" onClick={() => handleRequestProduct('PUT')}>Editar</button>
           ) : (
-            <button type="button" className="btn-modal save" onClick={() => handleRequest('POST')}>Guardar</button>
+            <button type="button" className="btn-modal save" onClick={() => handleRequestProduct('POST')}>Guardar</button>
           )}
         </div>
       </div>
