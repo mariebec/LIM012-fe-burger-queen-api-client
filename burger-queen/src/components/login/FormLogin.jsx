@@ -35,9 +35,9 @@ const FormLogin = () => {
       
     } else{
       postAuth({email, password}).then((resp) => {
-        history.push("/categories");
         sessionStorage.setItem('login', resp.token);
         getUserByEmail(email).then((user) => {
+          history.push("/categories");
           sessionStorage.setItem('currentRol', user.roles.admin);
           sessionStorage.setItem('currentEmail', user.email);
         })
