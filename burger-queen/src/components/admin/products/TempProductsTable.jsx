@@ -1,6 +1,37 @@
-import React from 'react'
+import React from 'react';
+import { deleteProduct} from '../../../controller/admin-products';
 
-const TempProductsTable = ({ allProducts, handleDeleteProduct, handleUpdateProduct }) => {
+
+const TempProductsTable = ({ product, setProduct, modalRoot }) => {
+
+  const handleDeleteProduct = (id) => {
+    setProduct(prevState => ({
+      ...prevState,
+      allProducts: product.allProducts.filter((product) => product.id !== id),
+    }));
+    deleteProduct(id);
+  };
+
+
+  const handleUpdateProduct = (product) => {
+    document.body.append(modalRoot);
+    setProduct(prevState => ({
+      ...prevState,
+      productData: {
+        id: product.id,
+        name:product.name,
+        price: product.price,
+        image:product.image,
+        type: product.type,
+        date: product.date
+      },
+      display: {
+        modal: true,
+        button: true
+      },
+    }));
+  };
+
   return (
     <table className="table t-product">
       <thead className="head-table">
@@ -16,8 +47,8 @@ const TempProductsTable = ({ allProducts, handleDeleteProduct, handleUpdateProdu
       </thead>
       <tbody className="body-table">
         { 
-          allProducts.length > 0 ?
-          allProducts.map((element) => (
+          product.allProducts.length > 0 ?
+          product.allProducts.map((element) => (
             <tr key={element.id}>
               <td>{element.id}</td>
               <td>{element.name}</td>
