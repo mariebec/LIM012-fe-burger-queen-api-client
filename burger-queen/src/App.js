@@ -11,7 +11,7 @@ import KitchenOrder from './components/kitchen/KitchenOrder';
 import OrderReady from './components/order/OrderReady';
 import UserList from './components/admin/users/UserList';
 import ProductList from './components/admin/products/ProductList';
-import NotFound from './components/login/NotFound'
+import NotFound from './components/NotFound';
 import './style/style.css';
 
 
