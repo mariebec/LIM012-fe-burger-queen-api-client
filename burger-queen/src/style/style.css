@@ -525,57 +525,84 @@
   outline: none;
 }
 
-.container-orders .orders-placed table {
+.container-orders .orders-placed .order-table {
   width: 100%;
+  height: 55%;
   font-family: "Prompt", sans-serif;
   text-align: center;
-  border-spacing: 0;
-  margin-bottom: 30%;
 }
 
-.container-orders .orders-placed table .head-order {
+.container-orders .orders-placed .order-table .head-order {
   background: #DABC4F;
-  font-size: 1.3rem;
-  border-bottom: 2px solid black;
-  border-top: 2px solid black;
-}
-
-.container-orders .orders-placed table .head-order th {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
   color: #411515;
   height: 40px;
-}
-
-.container-orders .orders-placed table td {
-  color: white;
-  font-size: 1.2rem;
-  border-bottom: 2px solid gray;
-  height: 45px;
-}
-
-.container-orders .orders-placed table td i {
-  color: #d67575;
-  margin-right: 10px;
-}
-
-.container-orders .orders-placed table .button-edit {
+  list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.container-orders .orders-placed table .button-edit i {
+.container-orders .orders-placed .order-table .order-product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  border-bottom: 1px solid #FFF;
+  height: 45px;
+}
+
+.container-orders .orders-placed .order-table .order-product li {
+  color: white;
+  font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container-orders .orders-placed .order-table .order-product li i {
+  color: #d67575;
+  margin-right: 10px;
+}
+
+.container-orders .orders-placed .order-table .order-product .button-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.container-orders .orders-placed .order-table .order-product .button-edit i {
   color: #78D84C;
+  font-size: 1.3rem;
   margin: 5px;
+}
+
+.container-orders .orders-placed .order-table .qty {
+  width: 25%;
+}
+
+.container-orders .orders-placed .order-table .product-name {
+  width: 45%;
+}
+
+.container-orders .orders-placed .order-table .product-price {
+  width: 20%;
+}
+
+.container-orders .orders-placed .order-table .delete-product {
+  width: 10%;
 }
 
 .container-orders .orders-placed .total {
