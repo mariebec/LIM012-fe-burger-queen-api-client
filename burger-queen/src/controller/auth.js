@@ -9,7 +9,7 @@ export const postAuth = (user) => {
     if (resp.status === 200) {
       return resp.json();
     } if (resp.status === 400){
-      return Promise.reject(console.log('email and password is required'));
+      return Promise.reject('El email y password son requeridos');
     }
   });
 };

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 const Categories = () => {
   const currentUSer = sessionStorage.getItem('currentRol');
-  console.log(typeof currentUSer);
+
   return (
     <>
     <Header title="CATEGORIAS"/>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import img from '../assets/logo-fondomarron.png';
 
-const Header = ({ title, userName, admin }) => {
+const Header = ({ title }) => {
   const [ display, setDisplay ] = useState(false);
+  const currentUSerRol = sessionStorage.getItem('currentRol');
+  const currentUSerEmail = sessionStorage.getItem('currentEmail');
   
   return (
     <header className="header-menu">
@@ -11,7 +13,7 @@ const Header = ({ title, userName, admin }) => {
         <img src={img} alt="logo" className="logo-Header" />
         <p className="title">{title}</p>
         <div className="user-logged">
-          <p className="user-name">{userName}</p>
+          <p className="user-name">{currentUSerEmail}</p>
           <i className="user-icon fas fa-user"></i>
           <div className={ display ? "active menu-icon-container" : "menu-icon-container"}>
             <i className="menu-icon fas fa-bars" onClick={() => display ? setDisplay(false) : setDisplay(true)}></i>
@@ -30,15 +32,15 @@ const Header = ({ title, userName, admin }) => {
           <Link to="/kitchen">
           <li>Cocina</li> 
           </Link>
-          {/* {admin && 
-          <> */}
+          {currentUSerRol === 'true' && 
+          <>
           <Link to="/userlist">
             <li>Administrar usuarios</li>
           </Link>
           <Link to="/productlist">
             <li>Administrar productos</li>
           </Link>
-          {/* </>} */}
+          </>}
         </ul>
       </nav>
       }
