@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ProductsMenu = ({ allProducts, products, setProducts }) => {
+const ProductsMenu = ({ state, setState }) => {
 
   const [ display, setDisplay ] = useState({
     btnMenu: 'all',
@@ -10,7 +10,7 @@ const ProductsMenu = ({ allProducts, products, setProducts }) => {
   const handleType = (type) => {
     switch (type) {
       case 'menu':
-          setProducts(allProducts.filter((product) => product.type !== 'breakfast'));
+          setState(prev => ({...prev, products: state.allProducts.filter((product) => product.type !== 'breakfast')}));
           setDisplay({btnMenu: type, btnType: true});
         break;
       // case 'all':
@@ -18,13 +18,18 @@ const ProductsMenu = ({ allProducts, products, setProducts }) => {
       //     setDisplay({btnMenu: type, btnType: false});
       //   break;
       case 'breakfast':
-        setProducts(allProducts.filter((product) => product.type === type));
+        setState(prev => ({...prev, products: state.allProducts.filter((product) => product.type === type)}));
         setDisplay({btnMenu: type, btnType: false});
       break;
       default: 
-        setProducts(allProducts.filter((product) => product.type === type));
+      setState(prev => ({...prev, products: state.allProducts.filter((product) => product.type === type)}));
       break;
     }
+  };
+
+  const addProduct = (id) => {
+    const item = state.products.filter((product) => product.id === id);
+    setState(prev => ({...prev, clientProducts: [...state.clientProducts, ...item]}));
   };
 
   return (
@@ -49,9 +54,9 @@ const ProductsMenu = ({ allProducts, products, setProducts }) => {
         </div>}
         <div className="box-option-food">
           { 
-            products.length > 0 ?
-            products.map((element) => (
-              <div key={element.id} className="box-food">
+            state.products.length > 0 ?
+            state.products.map((element) => (
+              <div key={element.id} className="box-food" onClick={() => addProduct(element.id)}>
                 <img src={element.image} alt="logo" className="img-food" /> 
                 <p>{element.name}</p>
               </div>
