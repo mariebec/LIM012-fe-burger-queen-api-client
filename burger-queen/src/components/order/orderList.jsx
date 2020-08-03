@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderList = () => {
+const OrderList = ({ state }) => {
 
   return (
     <aside className="orders-placed">
@@ -16,12 +16,21 @@ const OrderList = () => {
           <li className="product-price">Precio</li>
           <li className="delete-product"></li>
         </ul>
-        <ul className="order-product">
-          <li className="qty button-edit"><i className="option fas fa-plus-circle"></i>1<i className="option fas fa-minus-circle"></i></li>
-          <li className="product-name">Sandwich de jamón y queso</li>
-          <li className="product-price">s/15</li>
-          <li className="delete-product"><i className="icon delete fas fa-trash-alt" /></li>
-        </ul>
+        <div className="product-list-container">
+          {
+            state.clientProducts.length > 0 ?
+            state.clientProducts.map((element) => (
+            <ul className="order-product" key={element.id}>
+              <li className="qty button-edit"><i className="option fas fa-plus-circle"></i>1<i className="option fas fa-minus-circle"></i></li>
+              <li className="product-name">{element.name}</li>
+              <li className="product-price">{element.price}</li>
+              <li className="delete-product"><i className="icon delete fas fa-trash-alt" /></li>
+            </ul>
+            )) : (
+              <p>No hay productos agregados</p>
+            )
+          }
+        </div>
       </section>
       <div className="total">
         <p>Total a pagar</p>
