@@ -527,7 +527,6 @@
 
 .container-orders .orders-placed .order-table {
   width: 100%;
-  height: 55%;
   font-family: "Prompt", sans-serif;
   text-align: center;
 }
@@ -547,6 +546,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.container-orders .orders-placed .order-table .product-list-container {
+  overflow: auto;
+  height: 40vh;
+}
+
+.container-orders .orders-placed .order-table .product-list-container p {
+  color: #FFF;
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .container-orders .orders-placed .order-table .order-product {

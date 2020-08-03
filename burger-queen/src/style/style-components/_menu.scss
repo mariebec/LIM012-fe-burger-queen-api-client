@@ -148,7 +148,6 @@ $font-prompt: 'Prompt', sans-serif;
 
     .order-table{
       width: 100%;
-      height: 55%;
       font-family: $font-prompt;
       text-align: center;
 
@@ -165,7 +164,17 @@ $font-prompt: 'Prompt', sans-serif;
         align-items: center;
       }
 
-      .order-product {
+      .product-list-container{
+        overflow: auto;
+        height: 40vh;
+        p{
+          color: #FFF;
+          font-size: 1.2rem;
+          margin-top: 1rem;
+        }
+      }
+
+      .order-product{
         display: flex;
         align-items: center;
         list-style: none;
