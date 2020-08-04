@@ -34,10 +34,12 @@ const FormLogin = () => {
       (notValidPassword) ? setError(prevState => ({ ...prevState, password: true })) : setError(prevState => ({ ...prevState, password: false }));
       
     } else{
+      console.log(email, password)
       postAuth({email, password}).then((resp) => {
-        history.push("/categories");
-        sessionStorage.setItem('login', resp.token);
+        console.log('Lo que retorna la API', resp);
+        // sessionStorage.setItem('login', resp.token);
         getUserByEmail(email).then((user) => {
+          history.push("/categories");
           sessionStorage.setItem('currentRol', user.roles.admin);
           sessionStorage.setItem('currentEmail', user.email);
         })
