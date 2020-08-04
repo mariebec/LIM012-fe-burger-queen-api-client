@@ -1,6 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const OrderList = ({ state }) => {
+const OrderList = ({ state, setState }) => {
+  // const [ quantity, setQuantity ] = useState(state.productsList.qty);
+  const total = state.productsList.reduce((acc, element) => acc + (element.qty * element.product.price), 0);
+
+  const increase = (index) => {
+    // setState(prev => ({ 
+    //   ...prev, 
+    //   productsList: [...state.productsList, { ...state.productsList[index], qty: state.productsList[index].qty + 1 }]
+    // }));
+    // console.log(state.productsList)
+  };
+
+  const decrease = (index) => {
+    // setState(prev => ({ 
+    //   ...prev, 
+    //   productsList: [...state.productsList[index], { qty: state.productsList[index].qty - 1 }]
+    // }));
+  };
 
   return (
     <aside className="orders-placed">
@@ -18,12 +35,16 @@ const OrderList = ({ state }) => {
         </ul>
         <div className="product-list-container">
           {
-            state.clientProducts.length > 0 ?
-            state.clientProducts.map((element) => (
-            <ul className="order-product" key={element.id}>
-              <li className="qty button-edit"><i className="option fas fa-plus-circle"></i>1<i className="option fas fa-minus-circle"></i></li>
-              <li className="product-name">{element.name}</li>
-              <li className="product-price">{element.price}</li>
+            state.productsList.length > 0 ?
+            state.productsList.map((element, index) => (
+            <ul className="order-product" key={element.product.id}>
+              <li className="qty button-edit">
+                <i className="option fas fa-plus-circle" onClick={() => increase(index)}/>
+                  {element.qty}
+                <i className="option fas fa-minus-circle" onClick={() => decrease(index)}/>
+              </li>
+              <li className="product-name">{element.product.name}</li>
+              <li className="product-price">S/. {element.product.price}</li>
               <li className="delete-product"><i className="icon delete fas fa-trash-alt" /></li>
             </ul>
             )) : (
@@ -34,7 +55,7 @@ const OrderList = ({ state }) => {
       </section>
       <div className="total">
         <p>Total a pagar</p>
-        <div>$45</div>
+        <div>S/. {total}</div>
       </div>
       <div className="options-button">
         <button className="cancel">Cancelar</button>
