@@ -160,7 +160,14 @@
 }
 
 .login-form .btn-login:hover {
+  outline: none;
   background-color: #b1973b;
+}
+
+.login-form span {
+  color: red;
+  font-family: "Prompt", sans-serif;
+  font-weight: bold;
 }
 
 .container-category {
