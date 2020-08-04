@@ -1,34 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../Header';
 import TempProductsTable from './TempProductsTable';
 import { getProducts } from '../../../controller/admin-products';
 import ModalProducts from './ModalProducts';
 
-
 const ProductList = () => {
-
   const idGenerado = (Math.random() * 1000).toFixed(0).toString();
-  const [ product, setProduct ] = useState ({
+  const [product, setProduct] = useState({
     allProducts: [],
     productData: {
       id: idGenerado,
-      name:'',
+      name: '',
       price: '',
       image: '',
       type: '',
-      date: ''
-    }, 
-    display:{
+      date: '',
+    },
+    display: {
       modal: false,
-      button: false
-    }
+      button: false,
+    },
   });
 
-
   useEffect(() => {
-    getProducts().then((resp) => setProduct(prevState => ({
+    getProducts().then((resp) => setProduct((prevState) => ({
       ...prevState,
-      allProducts: resp
+      allProducts: resp,
     })));
   }, []);
 
@@ -37,12 +34,12 @@ const ProductList = () => {
 
   const handleAdd = () => {
     document.body.append(modalRoot);
-    setProduct(prevState => ({
+    setProduct((prevState) => ({
       ...prevState,
-      display:{
+      display: {
         modal: true,
-        button: false
-      }
+        button: false,
+      },
     }));
   };
 
@@ -51,15 +48,14 @@ const ProductList = () => {
       <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={handleAdd} >Agregar producto</button>
-          <ModalProducts product={product} setProduct={setProduct}/>
+          <button onClick={handleAdd} type="button">Agregar producto</button>
+          <ModalProducts product={product} setProduct={setProduct} />
         </div>
         <h2>Lista de productos</h2>
-        <TempProductsTable product={product} setProduct={setProduct} modalRoot={modalRoot}/>
-
+        <TempProductsTable product={product} setProduct={setProduct} modalRoot={modalRoot} />
       </main>
     </>
-  )
-}
+  );
+};
 
 export default ProductList;

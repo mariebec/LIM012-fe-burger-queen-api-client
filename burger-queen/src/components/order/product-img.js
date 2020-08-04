@@ -12,6 +12,6 @@ const photos = {
   onion,
   water500,
   water750,
-}
+};
 
 export default photos;

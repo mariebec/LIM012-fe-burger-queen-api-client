@@ -60,7 +60,7 @@ const FormUsers = ({ state, setState }) => {
     if (validEmail || validPassword) {
       if (validEmail) setError((prevState) => ({ ...prevState, email: true }));
       else setError((prevState) => ({ ...prevState, email: false }));
-      if (validEmail) setError((prevState) => ({ ...prevState, password: true }));
+      if (validPassword) setError((prevState) => ({ ...prevState, password: true }));
       else setError((prevState) => ({ ...prevState, password: false }));
     } else if (request === 'POST') {
       postUser(state.userData).then((resp) => {
