@@ -1,11 +1,14 @@
 export const postAuth = (user) => {
-  return fetch('http://localhost:8000/auth', {
+  return fetch('https://burger-queen-apilab.herokuapp.com/auth', {
     method: 'POST',
     body: JSON.stringify(user),
+    mode: 'no-cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      // 'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => {
+    console.log(resp);
     if (resp.status === 200) {
       return resp.json();
     } if (resp.status === 400){
@@ -15,17 +18,18 @@ export const postAuth = (user) => {
 };
 
 export const getUserByEmail = (email) => {
-  return fetch(`http://localhost:8000/users/${email}`, {
+  return fetch(`https://burger-queen-apilab.herokuapp.com/users/${email}`, {
     method: 'GET',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
-      // 'Authorization': 'Bearer ' + localStorage.getItem('token')
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   }).then((resp) => {
     if (resp.status === 200) {
     return resp.json(); 
     } if (resp.status === 400){
-      return Promise.reject({ message: 'Usuario no encontrado' });
+      return Promise.reject( 'Usuario no encontrado' );
     }
   });
 };
