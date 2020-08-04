@@ -103,31 +103,27 @@ const FormUsers = ({ state, setState }) => {
           </div>
         </div>
         <div>
-          <label htmlFor="input-password" className="label-text">
-            CLAVE:
-            <div className="box-input">
-              <input
-                defaultValue={state.userData.password}
-                id="input-password"
-                name="password"
-                type="password"
-                onChange={handleInputChange}
-                placeholder={error.password ? 'Campo requerido' : 'Ingrese el password'}
-                className={error.password ? 'input-modal error' : 'input-modal'}
-              />
-            </div>
-          </label>
+          <label htmlFor="input-password" className="label-text">CLAVE:</label>
+          <div className="box-input">
+            <input
+              defaultValue={state.userData.password}
+              id="input-password"
+              name="password"
+              type="password"
+              onChange={handleInputChange}
+              placeholder={error.password ? 'Campo requerido' : 'Ingrese el password'}
+              className={error.password ? 'input-modal error' : 'input-modal'}
+            />
+          </div>
         </div>
         <div>
-          <label htmlFor="input-admin" className="label-text">
-            ADMIN:
-            <div className="box-option">
-              <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={state.userData.roles.admin ? 'SI' : 'NO'}>
-                <option value="NO">NO</option>
-                <option value="SI">SI</option>
-              </select>
-            </div>
-          </label>
+          <label htmlFor="input-admin" className="label-text">ADMIN:</label>
+          <div className="box-option">
+            <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={state.userData.roles.admin ? 'SI' : 'NO'}>
+              <option value="NO">NO</option>
+              <option value="SI">SI</option>
+            </select>
+          </div>
         </div>
         {error.message !== '' && <span>{error.message}</span>}
         <div>
