@@ -76,7 +76,7 @@ const TempFormProducts = ({ product, setProduct }) => {
       putProduct(product.productData).then((resp) => {
         setProduct((prevState) => ({
           ...prevState,
-          allProducts: product.allProducts.map((prod) => (prod.id === resp.id ? resp : product)),
+          allProducts: product.allProducts.map((prod) => (prod.id === resp.id ? resp : prod)),
         }));
         closeModal();
       }).catch((err) => {
