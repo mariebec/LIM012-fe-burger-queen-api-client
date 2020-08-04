@@ -28,8 +28,19 @@ const ProductsMenu = ({ state, setState }) => {
   };
 
   const addProduct = (id) => {
+    //Obteniendo producto al que se le hizo click
     const item = state.products.filter((product) => product.id === id);
-    setState(prev => ({...prev, clientProducts: [...state.clientProducts, ...item]}));
+    //Hay que buscar si ya está en el array de la orden
+    const result = state.productsList.find(element => element.product.id === id);
+
+    if (!result) {
+      setState(prev => ({ 
+        ...prev, 
+        productsList: [...state.productsList, { qty: 1, product: item[0] }]
+      }));
+    } else {
+      console.log('ya está agregado');
+    }
   };
 
   return (
@@ -70,6 +81,6 @@ const ProductsMenu = ({ state, setState }) => {
       </div>
     </section>
   )
-}
+};
 
 export default ProductsMenu;
