@@ -1,8 +1,9 @@
 export const postAuth = (user) => {
-  return fetch('https://burger-queen-apilab.herokuapp.com/auth', {
+  // return fetch('https://burger-queen-apilab.herokuapp.com/auth', {
+    return fetch('http://localhost:8000/auth', {
     method: 'POST',
     body: JSON.stringify(user),
-    mode: 'no-cors',
+    // mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
       // 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -18,9 +19,10 @@ export const postAuth = (user) => {
 };
 
 export const getUserByEmail = (email) => {
-  return fetch(`https://burger-queen-apilab.herokuapp.com/users/${email}`, {
+  // return fetch(`https://burger-queen-apilab.herokuapp.com/users/${email}`, {
+    return fetch(`http://localhost:8000/users/${email}`, {
     method: 'GET',
-    mode: 'no-cors',
+    // mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('token')

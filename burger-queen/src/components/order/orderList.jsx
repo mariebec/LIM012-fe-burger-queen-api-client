@@ -1,22 +1,56 @@
 import React, {useState} from 'react';
 
 const OrderList = ({ state, setState }) => {
-  // const [ quantity, setQuantity ] = useState(state.productsList.qty);
+
+  const [ order, setOrder ] = useState({
+    _id: 'provisorio',
+    client: '',
+    products: []
+  });
+
+  const handleInputChange = (e) => {
+    const data = e.target.value;
+    setOrder(prevState => ({
+      ...prevState,
+      client: data
+    }));
+  };
+  // Obteniendo el total del costo de la orden
   const total = state.productsList.reduce((acc, element) => acc + (element.qty * element.product.price), 0);
 
-  const increase = (index) => {
-    // setState(prev => ({ 
-    //   ...prev, 
-    //   productsList: [...state.productsList, { ...state.productsList[index], qty: state.productsList[index].qty + 1 }]
-    // }));
-    // console.log(state.productsList)
+  const increase = (id) => {
+    const arr = state.productsList.map((item) => {
+      if(item.product.id === id){
+        item.qty = item.qty + 1;
+      }
+      return item;
+    });
+    setState(prev => ({ 
+      ...prev, 
+      productsList: arr.flat()
+    }));
   };
 
-  const decrease = (index) => {
-    // setState(prev => ({ 
-    //   ...prev, 
-    //   productsList: [...state.productsList[index], { qty: state.productsList[index].qty - 1 }]
-    // }));
+  const decrease = (id) => {
+    const arr = state.productsList.map((item) => {
+      if(item.product.id === id){
+        if(item.qty > 1) item.qty = item.qty - 1;
+      }
+      return item;
+    });
+    setState(prev => ({ 
+      ...prev, 
+      productsList: arr.flat()
+    }));
+  };
+
+  const delProduct = (id) => {
+    setState(prev => ({ ...prev, productsList: state.productsList.filter((item) => item.product.id !== id) }));
+  };
+
+  const cancelOrder = () => {
+    setState(prev => ({ ...prev, productsList:[] }));
+    setOrder(prev => ({ ...prev, client: '' }));
   };
 
   return (
@@ -24,7 +58,7 @@ const OrderList = ({ state, setState }) => {
       <p className="title">Consumo</p>
       <div className="cliente">
         <p className="letter">Cliente</p>
-        <input className="name-user"placeholder="Nombres"/>
+        <input value={order.client} className="name-user"placeholder="Nombres" onChange={handleInputChange}/>
       </div>
       <section className="order-table">
         <ul className="head-order">
@@ -36,16 +70,16 @@ const OrderList = ({ state, setState }) => {
         <div className="product-list-container">
           {
             state.productsList.length > 0 ?
-            state.productsList.map((element, index) => (
+            state.productsList.map((element) => (
             <ul className="order-product" key={element.product.id}>
               <li className="qty button-edit">
-                <i className="option fas fa-plus-circle" onClick={() => increase(index)}/>
+                <i className="option fas fa-plus-circle" onClick={() => increase(element.product.id)}/>
                   {element.qty}
-                <i className="option fas fa-minus-circle" onClick={() => decrease(index)}/>
+                <i className="option fas fa-minus-circle" onClick={() => decrease(element.product.id)}/>
               </li>
               <li className="product-name">{element.product.name}</li>
               <li className="product-price">S/. {element.product.price}</li>
-              <li className="delete-product"><i className="icon delete fas fa-trash-alt" /></li>
+              <li className="delete-product"><i className="icon delete fas fa-trash-alt" onClick={() => delProduct(element.product.id)}/></li>
             </ul>
             )) : (
               <p>No hay productos agregados</p>
@@ -58,7 +92,7 @@ const OrderList = ({ state, setState }) => {
         <div>S/. {total}</div>
       </div>
       <div className="options-button">
-        <button className="cancel">Cancelar</button>
+        <button className="cancel" onClick={cancelOrder}>Cancelar</button>
         <button className="send-cook">Enviar a cocina</button>
       </div>
     </aside>

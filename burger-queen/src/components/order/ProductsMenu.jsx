@@ -27,16 +27,16 @@ const ProductsMenu = ({ state, setState }) => {
     }
   };
 
-  const addProduct = (id) => {
+  const addProduct = (item) => {
     //Obteniendo producto al que se le hizo click
-    const item = state.products.filter((product) => product.id === id);
+    // const item = state.products.filter((product) => product.id === id);
     //Hay que buscar si ya está en el array de la orden
-    const result = state.productsList.find(element => element.product.id === id);
+    const result = state.productsList.find(element => element.product.id === item.id);
 
     if (!result) {
       setState(prev => ({ 
         ...prev, 
-        productsList: [...state.productsList, { qty: 1, product: item[0] }]
+        productsList: [...state.productsList, { qty: 1, product: item }]
       }));
     } else {
       console.log('ya está agregado');
@@ -67,7 +67,7 @@ const ProductsMenu = ({ state, setState }) => {
           { 
             state.products.length > 0 ?
             state.products.map((element) => (
-              <div key={element.id} className="box-food" onClick={() => addProduct(element.id)}>
+              <div key={element.id} className="box-food" onClick={() => addProduct(element)}>
                 <img src={element.image} alt="logo" className="img-food" /> 
                 <p>{element.name}</p>
               </div>
