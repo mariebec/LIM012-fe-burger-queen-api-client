@@ -5,28 +5,27 @@ import ProductsMenu from './ProductsMenu';
 import OrderList from './orderList';
 
 const MenuView = () => {
-
-  const [ state, setState ] = useState({
+  const [state, setState] = useState({
     allProducts: [],
     products: [],
-    productsList: []
+    productsList: [],
   });
 
   useEffect(() => {
     getProducts().then((resp) => {
-      setState(prevState => ({ ...prevState, allProducts: resp, products: resp}));
+      setState((prevState) => ({ ...prevState, allProducts: resp, products: resp }));
     });
   }, []);
 
   return (
     <>
-    <Header title="TOMAR PEDIDOS"/>
-    <main className="container-orders">
-      <ProductsMenu state={state} setState={setState}/>
-      <OrderList state={state} setState={setState}/>
-    </main>
-  </>
-  )
+      <Header title="TOMAR PEDIDOS" />
+      <main className="container-orders">
+        <ProductsMenu state={state} setState={setState} />
+        <OrderList state={state} setState={setState} />
+      </main>
+    </>
+  );
 };
-    
+
 export default MenuView;

@@ -1,123 +1,133 @@
-import React, {useState} from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 import { postUser, putUser } from '../../../controller/admin-users';
 
 const FormUsers = ({ state, setState }) => {
-  const [ error, setError ] = useState({
+  const [error, setError] = useState({
     email: false,
     password: false,
-    api: '' 
+    api: '',
   });
 
   const handleInputChange = (e) => {
     const input = e.target.name;
     const data = e.target.value;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       userData: {
         ...state.userData,
-        [input]: data
-      } 
+        [input]: data,
+      },
     }));
   };
 
   const handleSelectChange = (e) => {
     const select = e.target.value;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       userData: {
         ...state.userData,
-        roles: { admin: select === 'SI' ? true : false }
-      } 
+        roles: { admin: select === 'SI' },
+      },
     }));
   };
 
   const closeModal = () => {
     const idGenerado = (Math.random() * 1000).toFixed(3).toString();
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       userData: {
         id: idGenerado,
         email: '',
         password: '',
-        roles: { admin: false }
+        roles: { admin: false },
       },
       display: {
         ...state.userData,
-        modal:false
-      }
+        modal: false,
+      },
     }));
-    setError({ email:false, password:false, api: '' }); 
-    document.body.removeChild(document.getElementById("modal"));
+    setError({ email: false, password: false, api: '' });
+    document.body.removeChild(document.getElementById('modal'));
   };
 
   const handleRequest = (request) => {
     const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
     const validEmail = state.userData.email.trim() === '' || !exRegEmail.test(state.userData.email.trim());
     const validPassword = state.userData.password.trim() === '' || state.userData.password.trim().length < 6;
-  
+
     if (validEmail || validPassword) {
-      (validEmail) ? setError(prevState => ({ ...prevState, email: true })) : setError(prevState => ({ ...prevState, email: false }));
-      (validPassword) ? setError(prevState => ({ ...prevState, password: true })) : setError(prevState => ({ ...prevState, password: false }));
-    } else { 
-      if (request === 'POST') {
-        postUser(state.userData).then((resp) => {
-          setState(prevState => ({
-            ...prevState,
-            allUsers: [...state.allUsers, resp]
-          }));
-          closeModal();
-        }).catch((error) => {
-          setError(error);
-        });
-      } else {
-        putUser(state.userData).then((resp) => {
-          setState(prevState => ({
-            ...prevState,
-            allUsers: state.allUsers.map((user) => user.id === resp.id ? resp : user),
-          }));
-          closeModal();
-        }).catch((error) => {
-          setError(error);
-        });
-      };
-    };
+      if (validEmail) setError((prevState) => ({ ...prevState, email: true }));
+      else setError((prevState) => ({ ...prevState, email: false }));
+      if (validEmail) setError((prevState) => ({ ...prevState, password: true }));
+      else setError((prevState) => ({ ...prevState, password: false }));
+    } else if (request === 'POST') {
+      postUser(state.userData).then((resp) => {
+        setState((prevState) => ({
+          ...prevState,
+          allUsers: [...state.allUsers, resp],
+        }));
+        closeModal();
+      }).catch((err) => {
+        setError(err);
+      });
+    } else {
+      putUser(state.userData).then((resp) => {
+        setState((prevState) => ({
+          ...prevState,
+          allUsers: state.allUsers.map((user) => (user.id === resp.id ? resp : user)),
+        }));
+        closeModal();
+      }).catch((err) => {
+        setError(err);
+      });
+    }
   };
- 
+
   return (
     <form className="form-modal">
       <div className="form-container">
         <div>
           <label htmlFor="input-email" className="label-text">E-MAIL:</label>
           <div className="box-input">
-            <input 
+            <input
               defaultValue={state.userData.email}
-              id ="input-email" 
-              name="email" type="email" 
+              id="input-email"
+              name="email"
+              type="email"
               onChange={handleInputChange}
-              placeholder= {error.email ?  "Campo requerido" : "Ingrese el email" }
-              className={ error.email ? "input-modal error" : "input-modal" } /> 
+              placeholder={error.email ? 'Campo requerido' : 'Ingrese el email'}
+              className={error.email ? 'input-modal error' : 'input-modal'}
+            />
           </div>
         </div>
         <div>
-          <label htmlFor="input-password" className="label-text">CLAVE:</label>
-          <div className="box-input">
-            <input 
-              defaultValue={state.userData.password}
-              id ="input-password" 
-              name="password" type="password"
-              onChange={handleInputChange}
-              placeholder= {error.password ?  "Campo requerido" : "Ingrese el password" }
-              className={ error.password ? "input-modal error" : "input-modal" } /> 
-          </div>
+          <label htmlFor="input-password" className="label-text">
+            CLAVE:
+            <div className="box-input">
+              <input
+                defaultValue={state.userData.password}
+                id="input-password"
+                name="password"
+                type="password"
+                onChange={handleInputChange}
+                placeholder={error.password ? 'Campo requerido' : 'Ingrese el password'}
+                className={error.password ? 'input-modal error' : 'input-modal'}
+              />
+            </div>
+          </label>
         </div>
         <div>
-          <label htmlFor="input-admin" className="label-text">ADMIN:</label>
-          <div className="box-option">
-            <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={state.userData.roles.admin ? "SI" : "NO"}>
-              <option value="NO">NO</option>
-              <option value="SI">SI</option>
-            </select>
-          </div>
+          <label htmlFor="input-admin" className="label-text">
+            ADMIN:
+            <div className="box-option">
+              <select id="input-admin" onChange={handleSelectChange} className="select-modal" defaultValue={state.userData.roles.admin ? 'SI' : 'NO'}>
+                <option value="NO">NO</option>
+                <option value="SI">SI</option>
+              </select>
+            </div>
+          </label>
         </div>
         {error.message !== '' && <span>{error.message}</span>}
         <div>
@@ -130,7 +140,7 @@ const FormUsers = ({ state, setState }) => {
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
 
 export default FormUsers;
