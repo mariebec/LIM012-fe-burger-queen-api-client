@@ -9,7 +9,7 @@ const MenuView = () => {
   const [ state, setState ] = useState({
     allProducts: [],
     products: [],
-    clientProducts: []
+    productsList: []
   });
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const MenuView = () => {
     <Header title="TOMAR PEDIDOS"/>
     <main className="container-orders">
       <ProductsMenu state={state} setState={setState}/>
-      <OrderList state={state}/>
+      <OrderList state={state} setState={setState}/>
     </main>
   </>
   )
