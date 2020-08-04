@@ -1,31 +1,29 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../Header';
 import UsersTable from './UsersTable';
 import { getUsers } from '../../../controller/admin-users';
 import ModalUsers from './ModalUsers';
 
-
 const UserList = () => {
-
   const idGenerado = (Math.random() * 1000).toFixed(3).toString();
-  const [ state, setState ] = useState({
+  const [state, setState] = useState({
     allUsers: [],
     userData: {
       id: idGenerado,
-      email:'',
-      password:'',
-      roles: { admin: false }
+      email: '',
+      password: '',
+      roles: { admin: false },
     },
     display: {
       modal: false,
-      btnEdit: false
-    }
+      btnEdit: false,
+    },
   });
 
   useEffect(() => {
-    getUsers().then((resp) => setState(prevState => ({
+    getUsers().then((resp) => setState((prevState) => ({
       ...prevState,
-      allUsers: resp
+      allUsers: resp,
     })));
   }, []);
 
@@ -34,29 +32,29 @@ const UserList = () => {
 
   const handleAdd = () => {
     document.body.append(modalRoot);
-    setState(prevState => ({ 
+    setState((prevState) => ({
       ...prevState,
       display: {
         modal: true,
-        btnEdit: false
-      }
+        btnEdit: false,
+      },
     }));
   };
 
   return (
     <>
-      <Header title="ADMINISTRADOR" userName="Fulana" admin={true} />
+      <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={handleAdd}>Agregar usuario</button>
-          <ModalUsers state={state} setState={setState}/>
+          <button type="button" onClick={handleAdd}>Agregar usuario</button>
+          <ModalUsers state={state} setState={setState} />
         </div>
         <h2>Lista de usuarios</h2>
-        <UsersTable state={state} setState={setState} modalRoot={modalRoot}/>
+        <UsersTable state={state} setState={setState} modalRoot={modalRoot} />
 
       </main>
     </>
-  )
+  );
 };
 
 export default UserList;

@@ -1,45 +1,43 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
 const ProductsMenu = ({ state, setState }) => {
-
-  const [ display, setDisplay ] = useState({
+  const [display, setDisplay] = useState({
     btnMenu: 'all',
-    btnType: false
+    btnType: false,
   });
 
   const handleType = (type) => {
     switch (type) {
       case 'menu':
-          setState(prev => ({...prev, products: state.allProducts.filter((product) => product.type !== 'breakfast')}));
-          setDisplay({btnMenu: type, btnType: true});
+        setState((prev) => ({ ...prev, products: state.allProducts.filter((product) => product.type !== 'breakfast') }));
+        setDisplay({ btnMenu: type, btnType: true });
         break;
       // case 'all':
       //     setProducts(allProducts);
       //     setDisplay({btnMenu: type, btnType: false});
       //   break;
       case 'breakfast':
-        setState(prev => ({...prev, products: state.allProducts.filter((product) => product.type === type)}));
-        setDisplay({btnMenu: type, btnType: false});
-      break;
-      default: 
-      setState(prev => ({...prev, products: state.allProducts.filter((product) => product.type === type)}));
-      break;
+        setState((prev) => ({ ...prev, products: state.allProducts.filter((product) => product.type === type) }));
+        setDisplay({ btnMenu: type, btnType: false });
+        break;
+      default:
+        setState((prev) => ({ ...prev, products: state.allProducts.filter((product) => product.type === type) }));
+        break;
     }
   };
 
   const addProduct = (item) => {
-    //Obteniendo producto al que se le hizo click
-    // const item = state.products.filter((product) => product.id === id);
-    //Hay que buscar si ya está en el array de la orden
-    const result = state.productsList.find(element => element.product.id === item.id);
+    // Hay que buscar si ya está en el array de la orden
+    const result = state.productsList.find((element) => element.product.id === item.id);
 
     if (!result) {
-      setState(prev => ({ 
-        ...prev, 
-        productsList: [...state.productsList, { qty: 1, product: item }]
+      setState((prev) => ({
+        ...prev,
+        productsList: [...state.productsList, { qty: 1, product: item }],
       }));
-    } else {
-      console.log('ya está agregado');
     }
   };
 
@@ -49,38 +47,40 @@ const ProductsMenu = ({ state, setState }) => {
         {/* <button onClick={() => handleType('all')} className={display.btnMenu === 'all' ? "btn-active options-food" : "options-food"}>
           Todos
         </button> */}
-        <button onClick={() => handleType('breakfast')} className={display.btnMenu === 'breakfast' ? "btn-active options-food" : "options-food"}>
+        <button type="button" onClick={() => handleType('breakfast')} className={display.btnMenu === 'breakfast' ? 'btn-active options-food' : 'options-food'}>
           Desayuno
         </button>
-        <button onClick={() => handleType('menu')} className={display.btnMenu === 'menu' ? "btn-active options-food" : "options-food"}>
+        <button type="button" onClick={() => handleType('menu')} className={display.btnMenu === 'menu' ? 'btn-active options-food' : 'options-food'}>
           Menú
         </button>
       </div>
       <div className="box-photos">
-        { display.btnType &&
+        { display.btnType
+        && (
         <div className="box-btn-food">
-          <button onClick={() => handleType('burger')} className="btn-food">Hamburguesas</button>
-          <button onClick={() => handleType('extra')} className="btn-food">Adicionales</button>
-          <button onClick={() => handleType('drink')} className="btn-food">Bebidas</button>
-        </div>}
+          <button type="button" onClick={() => handleType('burger')} className="btn-food">Hamburguesas</button>
+          <button type="button" onClick={() => handleType('extra')} className="btn-food">Adicionales</button>
+          <button type="button" onClick={() => handleType('drink')} className="btn-food">Bebidas</button>
+        </div>
+        )}
         <div className="box-option-food">
-          { 
-            state.products.length > 0 ?
-            state.products.map((element) => (
-              <div key={element.id} className="box-food" onClick={() => addProduct(element)}>
-                <img src={element.image} alt="logo" className="img-food" /> 
-                <p>{element.name}</p>
-              </div>
-            )) : (
-              <div className="box-food">
-                <p>No hay productos</p>
-              </div>
-            )
+          {
+            state.products.length > 0
+              ? state.products.map((element) => (
+                <div key={element.id} className="box-food" onClick={() => addProduct(element)} role="button" tabIndex={0}>
+                  <img src={element.image} alt="logo" className="img-food" />
+                  <p>{element.name}</p>
+                </div>
+              )) : (
+                <div className="box-food">
+                  <p>No hay productos</p>
+                </div>
+              )
           }
         </div>
       </div>
     </section>
-  )
+  );
 };
 
 export default ProductsMenu;

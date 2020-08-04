@@ -1,10 +1,9 @@
-import React from 'react'
-import Header from '../Header'
+import React from 'react';
+import Header from '../Header';
 
-const KitchenOrder = () => {
-  return (
-    <> 
-    <Header title="COCINA"/>
+const KitchenOrder = () => (
+  <>
+    <Header title="COCINA" />
     <section className="kitchen-container">
       <div className="kitchen-card">
         <div className="header-card">
@@ -18,7 +17,7 @@ const KitchenOrder = () => {
                 <td>1</td>
                 <td>Hamburguesa Doble</td>
               </tr>
-              <tr> 
+              <tr>
                 <td>1</td>
                 <td>Aros de Cebolla</td>
               </tr>
@@ -31,9 +30,9 @@ const KitchenOrder = () => {
                 <td>Hamburguesa Simple</td>
               </tr>
             </tbody>
-              
+
           </table>
-          <button className="order-ready"> LISTO </button>
+          <button type="button" className="order-ready"> LISTO </button>
         </div>
       </div>
 
@@ -49,7 +48,7 @@ const KitchenOrder = () => {
                 <td>1</td>
                 <td>Hamburguesa Doble</td>
               </tr>
-              <tr> 
+              <tr>
                 <td>1</td>
                 <td>Aros de Cebolla</td>
               </tr>
@@ -62,19 +61,16 @@ const KitchenOrder = () => {
                 <td>Hamburguesa Simple</td>
               </tr>
             </tbody>
-              
+
           </table>
-          <button className="order-ready"> LISTO </button>
+          <button type="button" className="order-ready"> LISTO </button>
         </div>
       </div>
-  
+
     </section>
-    
-    </>
-    
 
-  )
-};
+  </>
 
+);
 
 export default KitchenOrder;
