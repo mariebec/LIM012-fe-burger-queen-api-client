@@ -49,18 +49,16 @@ const OrderList = ({ state, setState }) => {
   };
 
   const cancelOrder = () => {
-    setState(prev => ({ 
-      ...prev, 
-      productsList:[]
-    }));
-  }
+    setState(prev => ({ ...prev, productsList:[] }));
+    setOrder(prev => ({ ...prev, client: '' }));
+  };
 
   return (
     <aside className="orders-placed">
       <p className="title">Consumo</p>
       <div className="cliente">
         <p className="letter">Cliente</p>
-        <input className="name-user"placeholder="Nombres" onChange={handleInputChange}/>
+        <input value={order.client} className="name-user"placeholder="Nombres" onChange={handleInputChange}/>
       </div>
       <section className="order-table">
         <ul className="head-order">
