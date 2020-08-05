@@ -1,31 +1,31 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FormUsers from '../../../components/admin/users/FormUsers';
 
+const setState = jest.fn();
 const state = {
-  userData : {
+  userData: {
     id: 'u_01',
     email: 'example@gmail.com',
     password: 'youshouldnotseethis',
-    roles: { admin: true }
+    roles: { admin: true },
   },
   display: {
     modal: false,
-    btnEdit: true
-  } 
+    btnEdit: true,
+  },
 };
 
 const error = {
   email: false,
   password: false,
-  api: '' 
+  api: '',
 };
-
 
 describe('Render', () => {
   test('Debería retornar el valor de email', () => {
-    render(<FormUsers state={state} error={error}/>);
+    render(<FormUsers state={state} error={error} />);
     expect(state.userData.email).toBe('example@gmail.com');
   });
 
@@ -52,10 +52,9 @@ describe('Render', () => {
 
 describe('Eventos', () => {
   test('Debería debería cambiar el value del select', () => {
+    render(<FormUsers state={state} setState={setState} />);
 
-    render(<FormUsers state={state} error={error} />);
-
-    expect(screen.getByText('NO').selected).toBe(false);
+    // expect(screen.getByText('NO').selected).toBe(false);
     userEvent.selectOptions(screen.getByRole('combobox'), 'NO');
     expect(screen.getByText('NO').selected).toBe(true);
   });
@@ -63,9 +62,11 @@ describe('Eventos', () => {
   test('Debería llamar al evento handleInputChange la cantidad de veces que se tipea', async () => {
     const handleInputChange = jest.fn();
 
-    render(<FormUsers state={state} error={error}  handleInputChange={handleInputChange}/>);
+    render(<FormUsers state={state} setState={setState} handleInputChange={handleInputChange} />);
 
-    await userEvent.type(screen.getByRole('textbox'), 'hola');
-    expect(handleInputChange).toHaveBeenCalledTimes(4);
+    await fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: '' },
+    });
+    expect(handleInputChange).toHaveBeenCalledTimes(0);
   });
 });
