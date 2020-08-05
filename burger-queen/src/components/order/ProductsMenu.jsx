@@ -51,7 +51,7 @@ const ProductsMenu = ({ state, setState }) => {
           Desayuno
         </button>
         <button type="button" onClick={() => handleType('menu')} className={display.btnMenu === 'menu' ? 'btn-active options-food' : 'options-food'}>
-          Menú
+          Almuerzo y cena
         </button>
       </div>
       <div className="box-photos">
