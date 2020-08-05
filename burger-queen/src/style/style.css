@@ -365,7 +365,7 @@
 .container-orders .products-options .options-type .options-food {
   border-radius: 9px;
   background: rgba(0, 0, 0, 0.8);
-  width: 30%;
+  width: 45%;
   padding: 15px 0;
   color: white;
   font-family: "Pridi", serif;
@@ -514,7 +514,7 @@
   font-size: 1.2rem;
 }
 
-.container-orders .orders-placed .cliente .name-user {
+.container-orders .orders-placed .cliente .name-client {
   background: rgba(0, 0, 0, 0.3);
   border: none;
   padding: 5px;
@@ -523,6 +523,9 @@
   width: 60%;
   height: 25px;
   outline: none;
+  color: #FFF;
+  font-size: 1rem;
+  padding-left: 10px;
 }
 
 .container-orders .orders-placed .order-table {

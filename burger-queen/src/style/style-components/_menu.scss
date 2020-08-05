@@ -27,7 +27,7 @@ $font-prompt: 'Prompt', sans-serif;
       .options-food{
         border-radius: 9px;
         background: transparentize($color: #000000, $amount: 0.2);
-        width: 30%;
+        width: 45%;
         padding: 15px 0;
         color: white;
         font-family: $font-pridi;
@@ -134,7 +134,7 @@ $font-prompt: 'Prompt', sans-serif;
         font-size: 1.2rem;
       }
 
-      .name-user{
+      .name-client{
         background: transparentize($color: #000000, $amount: 0.7);
         border: none;
         padding: 5px;
@@ -143,6 +143,9 @@ $font-prompt: 'Prompt', sans-serif;
         width: 60%;
         height: 25px;
         outline: none;
+        color:#FFF;
+        font-size: 1rem;
+        padding-left: 10px;
       }
     }
 
