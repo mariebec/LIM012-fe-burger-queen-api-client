@@ -57,7 +57,7 @@ const OrderList = ({ state, setState }) => {
   const handlePost = () => {
     const arrProduct = state.productsList.map((item) => ({
       qty: item.qty,
-      product: item.product.id,
+      productId: item.product.id,
     }));
     const obj = {
       _id: 'id_003',
@@ -73,7 +73,7 @@ const OrderList = ({ state, setState }) => {
       <p className="title">Consumo</p>
       <div className="cliente">
         <p className="letter">Cliente</p>
-        <input value={clientName} className="name-user" placeholder="Nombres" onChange={handleInputChange} />
+        <input value={clientName} className="name-client" placeholder="Nombres" onChange={handleInputChange} />
       </div>
       <section className="order-table">
         <ul className="head-order">
