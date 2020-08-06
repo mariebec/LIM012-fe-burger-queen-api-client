@@ -40,12 +40,12 @@ describe('Render', () => {
   });
 
   test('Debería mostrar el valor "SI" en admin', () => {
-    render(<FormUsers state={state} error={error} />);
+    render(<FormUsers state={state} />);
     expect(screen.queryByDisplayValue('SI')).toBeInTheDocument();
   });
 
   test('Debería ser null para "NO"', () => {
-    render(<FormUsers state={state} error={error} />);
+    render(<FormUsers state={state} />);
     expect(screen.queryByDisplayValue('NO')).toBeNull();
   });
 });
@@ -54,19 +54,15 @@ describe('Eventos', () => {
   test('Debería debería cambiar el value del select', () => {
     render(<FormUsers state={state} setState={setState} />);
 
-    // expect(screen.getByText('NO').selected).toBe(false);
+    expect(screen.getByText('NO').selected).toBe(false);
     userEvent.selectOptions(screen.getByRole('combobox'), 'NO');
     expect(screen.getByText('NO').selected).toBe(true);
   });
 
   test('Debería llamar al evento handleInputChange la cantidad de veces que se tipea', async () => {
-    const handleInputChange = jest.fn();
-
-    render(<FormUsers state={state} setState={setState} handleInputChange={handleInputChange} />);
-
-    await fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: '' },
-    });
-    expect(handleInputChange).toHaveBeenCalledTimes(0);
+    render(<FormUsers state={state} setState={setState} />);
+    await fireEvent.change(screen.getByTestId('email'),
+      { target: { value: 'correo' } });
+    expect(screen.getByText('correo')).toBeInTheDocument();
   });
 });
