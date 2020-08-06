@@ -51,7 +51,7 @@ const OrderReady = () => (
       <div className="container-div">
         <div className="card-scroll">
           <div className="card-orders">
-            <p className="title">Pedidos para Entregar</p>
+            <p className="title">Pedidos Entregados</p>
             <div className="list-Order">
               <div className="header-card-order">
                 <p>Order N° 512-9</p>
