@@ -8,3 +8,10 @@ export default (order) => {
 //   },
 // }).then((resp) => resp.json());
 };
+
+export const getOrders = () => fetch('http://localhost:8000/orders', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+}).then((resp) => resp.json());
