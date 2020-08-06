@@ -68,7 +68,9 @@ const OrderList = ({ state, setState }) => {
         client: clientName,
         products: arrProduct,
       };
-      postOrder(obj);
+      postOrder(obj).then((resp) => {
+        console.log(resp.message);
+      });
       cancelOrder();
     } else {
       setError(true);
