@@ -5,8 +5,13 @@ export const getProducts = () => fetch('http://localhost:3000/products', {
   headers: {
     'Content-Type': 'application/json',
   },
-}).then((resp) => resp.json());
-
+}).then((resp) => {
+  if (resp.status === 201) {
+    return resp.json();
+  } if (resp.status === 401) {
+    return new Error('No hay cabecera de autenticación');
+  }
+});
 export const postProduct = (product) => fetch('http://localhost:3000/products', {
   // console.log('Enviando', user);
   method: 'POST',
@@ -18,7 +23,13 @@ export const postProduct = (product) => fetch('http://localhost:3000/products', 
   if (resp.status === 201) {
     return resp.json();
   } if (resp.status === 400) {
-    return Promise.reject('email and password is required');
+    return new Error('Faltan el nombre o precio');
+  } if (resp.status === 401) {
+    return new Error('No hay cabecera de autenticación');
+  } if (resp.status === 403) {
+    return new Error('No tiene permiso para realizar esta acción');
+  } if (resp.status === 404) {
+    return new Error('No existe un producto con ese Id');
   }
 });
 export const deleteProduct = (id) => fetch(`http://localhost:3000/products/${id}`, {
@@ -29,8 +40,12 @@ export const deleteProduct = (id) => fetch(`http://localhost:3000/products/${id}
 }).then((resp) => {
   if (resp.status === 204) {
     return resp.json();
-  } if (resp.status === 400) {
-    return Promise.reject('Producto no encontrado');
+  } if (resp.status === 401) {
+    return new Error('No hay cabecera de autenticación');
+  } if (resp.status === 403) {
+    return new Error('No tiene permiso para realizar la acción');
+  } if (resp.status === 404) {
+    return new Error('Product no encontrado');
   }
 });
 
@@ -44,19 +59,12 @@ export const putProduct = (product) => fetch(`http://localhost:3000/products/${p
   if (resp.status === 200) {
     return resp.json();
   } if (resp.status === 400) {
-    return Promise.reject({ message: 'Debe ingresar email y contraseña' });
+    return new Error('No hay ningún campo a modificar');
+  } if (resp.status === 401) {
+    return new Error('No hay cabecera de autenticación');
+  } if (resp.status === 403) {
+    return new Error('No tiene permiso para realizar la acción');
   } if (resp.status === 404) {
-    return Promise.reject({ message: 'Usuario no encontrado' });
+    return new Error('Producto no encontrado');
   }
 });
-
-// const baseUrl = 'http://localhost:3002';
-
-// const fetchFunction = (url) => fetch(baseUrl + 'users', )
-
-// export const getUser = () => fetchFunction('/users', {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   }).then((resp) => resp.json());
