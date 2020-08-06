@@ -55,7 +55,7 @@ describe('Eventos', () => {
     expect(screen.getByText('Bebida').selected).toBe(true);
   });
 
-  test('Debería llamar al evento handleInputChange la cantidad de veces que se tipea', async () => {
+  test('Debería la palabra tipeada debe estar en el documento', async () => {
     // const handleInputChange = jest.fn();
 
     render(<TempFormProducts product={product} setProduct={setProduct} />);
