@@ -4,7 +4,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import postOrder from '../../controller/order';
+import { postOrder } from '../../controller/order';
 
 const OrderList = ({ state, setState }) => {
   const [clientName, setClientName] = useState('');
