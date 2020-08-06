@@ -6,7 +6,7 @@ export const getProducts = () => fetch('http://localhost:3000/products', {
     'Content-Type': 'application/json',
   },
 }).then((resp) => {
-  if (resp.status === 201) {
+  if (resp.status === 200) {
     return resp.json();
   } if (resp.status === 401) {
     return new Error('No hay cabecera de autenticación');

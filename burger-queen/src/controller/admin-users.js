@@ -1,12 +1,13 @@
 /* eslint-disable consistent-return */
-export const getUsers = () => fetch('http://localhost:3000/users', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-  },
-}).then((resp) => {
-  if (resp.status === 201) {
+export const getUsers = () => fetch('http://localhost:3000/users',
+  {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  }).then((resp) => {
+  if (resp.status === 200) {
     return resp.json();
   } if (resp.status === 401) {
     return new Error('No hay cabecera de autenticación');
