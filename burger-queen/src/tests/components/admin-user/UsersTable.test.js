@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+// import userEvent from '@testing-library/user-event';
 import { server } from '../../../__mock__/server';
-import userEvent from '@testing-library/user-event';
-import { deleteUser } from '../../../controller/admin-users';
+// import { deleteUser } from '../../../controller/admin-users';
 import UsersTable from '../../../components/admin/users/UsersTable';
 
 // const server = setupServer(
@@ -19,32 +19,31 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 const state = {
-  allUsers : [{
-      id: 'u_01',
-      email: 'example@gmail.com',
-      password: '13142dsg',
-      roles: { admin: true }
-    }, {
-      id: 'u_02',
-      email: 'kikiriki@gmail.com',
-      password: '13142dsg',
-      roles: { admin: true }
-    }],
+  allUsers: [{
+    id: 'u_01',
+    email: 'example@gmail.com',
+    password: '13142dsg',
+    roles: { admin: true },
+  }, {
+    id: 'u_02',
+    email: 'kikiriki@gmail.com',
+    password: '13142dsg',
+    roles: { admin: true },
+  }],
   display: {
     modal: false,
-    btnEdit: true
-  } 
+    btnEdit: true,
+  },
 };
 
 describe.only('UserTable', () => {
   test('verificar que no existen usuarios', () => {
-    render(<UsersTable state={state}/>);
+    render(<UsersTable state={state} />);
     expect(screen.getByText('example@gmail.com')).toBeInTheDocument();
-
   });
 
   test('Debería mostrar si el nombre del usuario está en el documento', () => {
-    render(<UsersTable state={state}/>);
+    render(<UsersTable state={state} />);
     expect(screen.queryByText('No hay usuarios registrados')).not.toBeInTheDocument();
   });
 
@@ -54,12 +53,8 @@ describe.only('UserTable', () => {
   //       expect(response.message).toBe('Debería fallar');
   //     });
   //   };
-  //   render(<UsersTable state={state} handleDeleteUser={handleDeleteUser}/>);
+  //   render(<UsersTable state={state} />);
   //   userEvent.click(screen.getByTestId('delete'));
   //   expect(response.message).toBe('Debería fallar');
   // });
-
-   
 });
-
-
