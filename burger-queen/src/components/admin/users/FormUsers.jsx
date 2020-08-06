@@ -93,6 +93,7 @@ const FormUsers = ({ state, setState }) => {
           <div className="box-input">
             <input
               defaultValue={state.userData.email}
+              data-testid="email"
               id="input-email"
               name="email"
               type="email"
