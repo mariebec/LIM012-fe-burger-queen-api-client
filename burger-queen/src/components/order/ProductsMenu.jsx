@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
@@ -20,11 +19,13 @@ const ProductsMenu = ({ state, setState }) => {
       //     setDisplay({btnMenu: type, btnType: false});
       //   break;
       case 'breakfast':
-        setState((prev) => ({ ...prev, products: state.allProducts.filter((product) => product.type === type) }));
+        setState((prev) => (
+          { ...prev, products: state.allProducts.filter((product) => product.type === type) }));
         setDisplay({ btnMenu: type, btnType: false });
         break;
       default:
-        setState((prev) => ({ ...prev, products: state.allProducts.filter((product) => product.type === type) }));
+        setState((prev) => (
+          { ...prev, products: state.allProducts.filter((product) => product.type === type) }));
         break;
     }
   };
@@ -44,9 +45,6 @@ const ProductsMenu = ({ state, setState }) => {
   return (
     <section className="products-options">
       <div className="options-type">
-        {/* <button onClick={() => handleType('all')} className={display.btnMenu === 'all' ? "btn-active options-food" : "options-food"}>
-          Todos
-        </button> */}
         <button type="button" onClick={() => handleType('breakfast')} className={display.btnMenu === 'breakfast' ? 'btn-active options-food' : 'options-food'}>
           Desayuno
         </button>

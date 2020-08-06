@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import UserList from '../../../components/admin/users/UserList';
 import userEvent from '@testing-library/user-event';
+import UserList from '../../../components/admin/users/UserList';
 
 describe('Render', () => {
   test('Debería encontrar "Agregar usuarios" en el componente', () => {
-    render (<UserList/>);
+    render(<UserList />);
     screen.getByText('Agregar usuario');
-  })
+  });
 
   test('Debería encontrar "Lista de usuarios" en el componente', () => {
     render(<UserList />);
@@ -24,7 +24,7 @@ describe('Render', () => {
 
 describe('click', () => {
   test('Debería cambiar el estado de Display modal', () => {
-    render(<UserList/>);
+    render(<UserList />);
 
     expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
     userEvent.click(screen.getByRole('button'));
