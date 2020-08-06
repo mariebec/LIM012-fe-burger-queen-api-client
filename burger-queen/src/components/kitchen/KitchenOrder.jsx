@@ -1,76 +1,62 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import Header from '../Header';
+// import OrderList from '../order/orderList';
+import { getOrders } from '../../controller/order';
 
-const KitchenOrder = () => (
-  <>
-    <Header title="COCINA" />
-    <section className="kitchen-container">
-      <div className="kitchen-card">
-        <div className="header-card">
-          <p>Orden n° 519 | Pedro Campbell</p>
-          <p>Tiempo: 10:25 min</p>
-        </div>
-        <div className="body-card">
-          <table className="list">
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Hamburguesa Doble</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Aros de Cebolla</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Papas fritas</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Hamburguesa Simple</td>
-              </tr>
-            </tbody>
+const KitchenOrder = () => {
+  const [kitOrder, setKitOrder] = useState([]);
 
-          </table>
-          <button type="button" className="order-ready"> LISTO </button>
-        </div>
-      </div>
+  useEffect(() => {
+    getOrders().then((resp) => setKitOrder(resp));
+  }, []);
 
-      <div className="kitchen-card">
-        <div className="header-card">
-          <p>Orden n° 519 | Pedro Campbell</p>
-          <p>Tiempo: 10:25 min</p>
-        </div>
-        <div className="body-card">
-          <table className="list">
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Hamburguesa Doble</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Aros de Cebolla</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Papas fritas</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Hamburguesa Simple</td>
-              </tr>
-            </tbody>
+  const handleOrder = () => {
+    setKitOrder((prev) => ({ ...prev, kitOrder: [] }));
+  };
+  console.log(kitOrder);
 
-          </table>
-          <button type="button" className="order-ready"> LISTO </button>
-        </div>
-      </div>
+  return (
+    <>
+      <Header title="COCINA" />
+      <section className="kitchen-container">
+        {
+        kitOrder.length > 0
+          ? kitOrder.map((element) => (
+            <div className="kitchen-card" key={element.id}>
+              <div className="header-card">
+                <p>
+                  {element.id}
+                  |
+                  {element.client}
+                </p>
+                <p>{element.dateEntry}</p>
+              </div>
+              <div className="body-card">
 
-    </section>
+                <table className="list">
+                  <tbody>
+                    {element.products.map((item) => (
+                      <tr>
+                        <td>{item.qty}</td>
+                        <td>{item.product}</td>
+                      </tr>
+                    )) }
+                  </tbody>
+                </table>
+                <button type="button" className="order-ready" onClick={handleOrder}> LISTO </button>
+              </div>
+            </div>
+          )) : (
+            <p>No hay productos agregados</p>
 
-  </>
+          )
+  }
 
-);
+      </section>
+
+    </>
+  );
+};
 
 export default KitchenOrder;
