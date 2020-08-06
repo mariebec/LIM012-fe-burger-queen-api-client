@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-export default (order) => fetch('http://localhost:8000/orders', {
+export const postOrder = (order) => fetch('http://localhost:8000/orders', {
   method: 'POST',
   body: JSON.stringify(order),
   // mode: 'no-cors',
@@ -16,3 +16,10 @@ export default (order) => fetch('http://localhost:8000/orders', {
     return new Error('No hay cabecera de autenticación');
   }
 });
+
+export const getOrders = () => fetch('http://localhost:8000/orders', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+}).then((resp) => resp.json());
