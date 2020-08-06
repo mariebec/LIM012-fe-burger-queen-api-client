@@ -239,7 +239,7 @@ $font-prompt: 'Prompt', sans-serif;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-      height: 15%;
+      margin: 10px 0;
 
       .cancel{
         background: #C4C4C4;
@@ -251,6 +251,7 @@ $font-prompt: 'Prompt', sans-serif;
         font-size: 20px;
         height: 60px;
         font-weight: bold;
+        outline: none;
       }
 
       .send-cook{
@@ -263,7 +264,13 @@ $font-prompt: 'Prompt', sans-serif;
         font-size: 20px;
         height: 60px;
         font-weight: bold;
+        outline: none;
       }
+    }
+    .error-order{
+      font-family: $font-prompt;
+      text-align: center;
+      color: #FFF;
     }
   }
 }

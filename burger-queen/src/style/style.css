@@ -651,7 +651,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 15%;
+  margin: 10px 0;
 }
 
 .container-orders .orders-placed .options-button .cancel {
@@ -664,6 +664,7 @@
   font-size: 20px;
   height: 60px;
   font-weight: bold;
+  outline: none;
 }
 
 .container-orders .orders-placed .options-button .send-cook {
@@ -676,6 +677,13 @@
   font-size: 20px;
   height: 60px;
   font-weight: bold;
+  outline: none;
+}
+
+.container-orders .orders-placed .error-order {
+  font-family: "Prompt", sans-serif;
+  text-align: center;
+  color: #FFF;
 }
 
 .kitchen-container {
