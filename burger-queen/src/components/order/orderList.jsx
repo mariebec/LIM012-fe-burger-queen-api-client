@@ -8,6 +8,7 @@ import postOrder from '../../controller/order';
 
 const OrderList = ({ state, setState }) => {
   const [clientName, setClientName] = useState('');
+  const [error, setError] = useState(false);
 
   const handleInputChange = (e) => {
     setClientName(e.target.value);
@@ -52,20 +53,26 @@ const OrderList = ({ state, setState }) => {
   const cancelOrder = () => {
     setState((prev) => ({ ...prev, productsList: [] }));
     setClientName('');
+    setError(false);
   };
 
   const handlePost = () => {
-    const arrProduct = state.productsList.map((item) => ({
-      qty: item.qty,
-      productId: item.product.id,
-    }));
-    const obj = {
-      _id: 'id_003',
-      client: clientName,
-      products: arrProduct,
-    };
-    postOrder(obj);
-    cancelOrder();
+    const name = clientName.trim() === '' || clientName.length < 2;
+    if (!name && state.productsList.length > 0) {
+      const arrProduct = state.productsList.map((item) => ({
+        qty: item.qty,
+        productId: item.product.id,
+      }));
+      const obj = {
+        _id: 'id_003',
+        client: clientName,
+        products: arrProduct,
+      };
+      postOrder(obj);
+      cancelOrder();
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -118,6 +125,7 @@ const OrderList = ({ state, setState }) => {
         <button type="button" className="cancel" onClick={cancelOrder}>Cancelar</button>
         <button type="button" className="send-cook" onClick={handlePost}>Enviar a cocina</button>
       </div>
+      { error && <p className="error-order">Debe haber agregar productos o el nombre del cliente</p> }
     </aside>
   );
 };
