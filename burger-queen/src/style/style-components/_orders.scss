@@ -34,6 +34,13 @@ $font-prompt: 'Prompt', sans-serif;
           margin: 30px 0;
         }
 
+        .no-orders{
+          font-family: $font-prompt;
+          font-size: 1.3rem;
+          text-align: center;
+          color: #FFF;
+        }
+
         .list-Order{
           color: black;
           font-family: $font-prompt;  
