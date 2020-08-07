@@ -792,8 +792,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -804,83 +805,108 @@
 }
 
 .container-orderReady .container-div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   background: rgba(0, 0, 0, 0.8);
-  width: 45%;
-  height: 90%;
+  width: 47%;
   border-radius: 9px;
 }
 
 .container-orderReady .container-div .card-scroll {
   height: 80%;
+  height: 80vh;
   overflow: auto;
-}
-
-.container-orderReady .container-div .card-scroll .card-orders {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
 }
 
 .container-orderReady .container-div .card-scroll .card-orders .title {
   font-family: "Pridi", serif;
   font-weight: bold;
   color: white;
-  font-size: 30px;
+  font-size: 2.3rem;
   text-align: center;
+  margin: 30px 0;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .no-orders {
+  font-family: "Prompt", sans-serif;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #FFF;
 }
 
 .container-orderReady .container-div .card-scroll .card-orders .list-Order {
-  font-size: 20px;
-  border: 2px solid black;
-  width: 90%;
   color: black;
-  font-family: "Pridi", serif;
+  font-family: "Prompt", sans-serif;
   margin: 10px 20px;
 }
 
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .header-card-order {
+  height: 60px;
+  border-radius: 10px 10px 0 0;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .header-card-order .fa-check {
+  color: rgba(0, 0, 0, 0.6);
+  -webkit-text-stroke: 1px black;
+  font-size: 2.4rem;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .header-card-order .green {
+  color: #78D84C;
+  -webkit-text-stroke: 1px black;
+  font-size: 2.4rem;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .foot-card-order {
+  height: 45px;
+}
+
 .container-orderReady .container-div .card-scroll .card-orders .list-Order .header-card-order, .container-orderReady .container-div .card-scroll .card-orders .list-Order .foot-card-order {
+  font-size: 1.2rem;
   background: #DABC4F;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 5px 10px;
+  padding: 0 20px;
 }
 
-.container-orderReady .container-div .card-scroll .card-orders .list-Order table {
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .total {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .body-card-order {
   width: 100%;
   border-collapse: collapse;
-}
-
-.container-orderReady .container-div .card-scroll .card-orders .list-Order table td {
   background: #5C5C5C;
-  width: 5%;
-  padding: 2px;
-  border-bottom: 1px solid #333333;
 }
 
-.container-orderReady .container-div .card-scroll .card-orders .list-Order table tfoot {
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .body-card-order tr {
+  height: 40px;
+  border-bottom: 1px solid #474747;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .body-card-order .qty {
+  width: 10%;
+  text-align: center;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .body-card-order .price {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .body-card-order td {
+  font-size: 1.2rem;
+  padding: 2px;
+  color: #FFF;
+}
+
+.container-orderReady .container-div .card-scroll .card-orders .list-Order .body-card-order tfoot {
   background: #DABC4F;
 }
 

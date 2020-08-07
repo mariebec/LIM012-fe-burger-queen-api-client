@@ -32,7 +32,6 @@ export const getOrders = () => fetch('http://localhost:8000/orders', {
   }
 });
 
-
 export const putOrder = (order) => fetch(`http://localhost:8000/orders/${order._id}`, {
   method: 'PUT',
   body: JSON.stringify(order),

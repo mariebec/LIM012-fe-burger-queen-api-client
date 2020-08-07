@@ -69,7 +69,7 @@ const OrderList = ({ state, setState }) => {
         products: arrProduct,
       };
       postOrder(obj).then((resp) => {
-        console.log(resp.message);
+        console.log(resp);
       });
       cancelOrder();
     } else {
