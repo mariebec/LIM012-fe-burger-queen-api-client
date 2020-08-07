@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable consistent-return */
 export const postOrder = (order) => fetch('http://localhost:8000/orders', {
   method: 'POST',
@@ -19,6 +20,14 @@ export const postOrder = (order) => fetch('http://localhost:8000/orders', {
 
 export const getOrders = () => fetch('http://localhost:8000/orders', {
   method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+}).then((resp) => resp.json());
+
+export const putOrder = (order) => fetch(`http://localhost:8000/orders/${order._id}`, {
+  method: 'PUT',
+  body: JSON.stringify(order),
   headers: {
     'Content-Type': 'application/json',
   },
