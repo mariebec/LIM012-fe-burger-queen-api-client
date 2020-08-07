@@ -33,7 +33,7 @@ $gold-2: #b1973b;
   align-items: center;
   justify-content: center;
   border-radius: 9px;
-  background: transparentize($color: #000000, $amount: 0.5);
+  background: transparentize($color: #000000, $amount: 0.45);
   width: 35%;
   padding: 25px 0;
 
@@ -74,6 +74,14 @@ $gold-2: #b1973b;
         font-size: 1.1rem;
       }
     }
+    .errors{
+      // box-shadow: 5px gray;
+      &::placeholder{
+        color: red;
+        font-weight: bold;
+      }
+    }
+    
     // estilo para los iconos
     .user-icon{
       font-size: 1.5rem;
@@ -82,21 +90,32 @@ $gold-2: #b1973b;
     }
   }
 
-.btn-login{
-  color: $brown;
-  font-family: $font-pridi;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 15px;
-  background-color: $gold;
-  height: 50px;
-  width: 80%;
-  border-radius: 9px;
-  border: 0;
-  // estilo para cuando se apriete el boton
-  &:hover{
-    background-color: $gold-2;
+  .box-error{
+    border: 2px solid red;
   }
+
+  .btn-login{
+    color: $brown;
+    font-family: $font-pridi;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    background-color: $gold;
+    height: 50px;
+    width: 80%;
+    border-radius: 9px;
+    border: 0;
+    // estilo para cuando se apriete el boton
+    &:hover{
+      outline: none ;
+      background-color: $gold-2;
+    }
+  }
+
+  span{
+    color: red;
+    font-family: $font-prompt;
+    font-weight: bold;
   }
 }
 
