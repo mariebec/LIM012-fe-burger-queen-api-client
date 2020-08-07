@@ -33,7 +33,7 @@ const KitchenOrder = () => {
 
   return (
     <>
-      <Header title="COCINA" />
+      <Header title=" COCINA " />
       <section className="kitchen-container">
         <div className="scroll-kitchen">
           <div className="box-kitchen">
