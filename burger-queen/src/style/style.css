@@ -822,6 +822,14 @@
   font-weight: bold;
 }
 
+.kitchen-container .scroll-kitchen .box-kitchen .not-order {
+  font-family: "Prompt", sans-serif;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #FFF;
+  margin: 50% 1%;
+}
+
 .container-orderReady {
   display: -webkit-box;
   display: -ms-flexbox;
