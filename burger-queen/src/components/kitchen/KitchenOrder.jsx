@@ -35,7 +35,9 @@ const KitchenOrder = () => {
     <>
       <Header title="COCINA" />
       <section className="kitchen-container">
-        {
+        <div className="scroll-kitchen">
+          <div className="box-kitchen">
+            {
         pending.length > 0
           ? pending.map((element) => (
             <div className="kitchen-card" key={element._id}>
@@ -71,6 +73,9 @@ const KitchenOrder = () => {
 
           )
   }
+          </div>
+
+        </div>
 
       </section>
 
