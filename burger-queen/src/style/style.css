@@ -763,6 +763,15 @@
   color: white;
   font-size: 20px;
   font-family: "Prompt", sans-serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.kitchen-container .kitchen-card .body-card .list td i {
+  -webkit-text-stroke: 1px black;
+  color: #78D84C;
+  margin-left: 25%;
 }
 
 .kitchen-container .kitchen-card .body-card .order-ready {
