@@ -69,7 +69,7 @@ const KitchenOrder = () => {
               </div>
             </div>
           )) : (
-            <p>No hay productos agregados</p>
+            <p className="not-order">No hay productos agregados</p>
 
           )
   }
