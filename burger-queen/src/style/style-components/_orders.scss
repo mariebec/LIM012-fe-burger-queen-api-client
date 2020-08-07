@@ -17,11 +17,11 @@ $font-prompt: 'Prompt', sans-serif;
   .container-div{
     background: rgba(0, 0, 0, 0.8);
     width: 47%;
-    height: 90%;
     border-radius: 9px;
 
     .card-scroll{
       height: 80%;
+      height: 80vh;
       overflow: auto;
       .card-orders{
 
@@ -103,7 +103,5 @@ $font-prompt: 'Prompt', sans-serif;
         }
       }
     }
-
-    
   }   
 }

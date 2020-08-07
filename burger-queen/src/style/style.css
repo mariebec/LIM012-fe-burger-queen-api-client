@@ -798,12 +798,12 @@
 .container-orderReady .container-div {
   background: rgba(0, 0, 0, 0.8);
   width: 47%;
-  height: 90%;
   border-radius: 9px;
 }
 
 .container-orderReady .container-div .card-scroll {
   height: 80%;
+  height: 80vh;
   overflow: auto;
 }
 
