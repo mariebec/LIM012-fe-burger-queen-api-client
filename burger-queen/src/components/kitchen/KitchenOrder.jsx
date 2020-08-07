@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import Header from '../Header';
@@ -37,10 +38,10 @@ const KitchenOrder = () => {
         {
         pending.length > 0
           ? pending.map((element) => (
-            <div className="kitchen-card" key={element.id}>
+            <div className="kitchen-card" key={element._id}>
               <div className="header-card">
                 <p>
-                  {element.id}
+                  {element._id}
                 </p>
                 <p>{element.client}</p>
                 <p>{element.dateEntry}</p>
@@ -50,12 +51,12 @@ const KitchenOrder = () => {
                 <table className="list">
                   <tbody>
                     {element.products.map((item) => (
-                      <tr>
+                      <tr key={item.product._id}>
                         <td>
                           {item.qty}
                         </td>
                         <td>
-                          {item.product}
+                          {item.product.name}
                         </td>
                         <td type="checkbox"><i className="fas fa-check" /></td>
                       </tr>
