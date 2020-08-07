@@ -1,17 +1,32 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { putOrder } from '../../controller/order';
 
-const DeliverSection = ({ title, arr, check }) => {
+const DeliverSection = ({ arr, check }) => {
+  // Si check es false es delivering si es true es delivered
   const totalPrice = (order) => order.reduce((acc, element) => (
     acc + (element.qty * element.product.price)), 0);
+
+  const handleStatus = (order) => {
+    if (order.status === 'delivering') {
+      const obj = {
+        ...order,
+        status: 'delivered',
+      };
+      // console.log(obj);
+      putOrder(obj).then((resp) => console.log(resp));
+    }
+  };
 
   return (
     <div className="container-div">
       <div className="card-scroll">
         <div className="card-orders">
-          <p className="title">{title}</p>
+          <p className="title">{check ? 'Pedidos entregados' : 'Pedidos para entregar'}</p>
           { arr.length > 0
             ? arr.map((order) => (
               <div className="list-Order" key={order._id}>
@@ -24,7 +39,12 @@ const DeliverSection = ({ title, arr, check }) => {
                     {' '}
                     {order.client}
                   </p>
-                  <i className={check ? 'fas fa-check green' : 'fas fa-check'} />
+                  <i
+                    className={check ? 'fas fa-check green' : 'fas fa-check'}
+                    onClick={() => handleStatus(order)}
+                    role="button"
+                    tabIndex={0}
+                  />
                 </div>
                 <table className="body-card-order">
                   <tbody>
@@ -50,7 +70,7 @@ const DeliverSection = ({ title, arr, check }) => {
                 </div>
               </div>
             )) : (
-              <p>No hay productos para entregar</p>
+              <p className="no-orders">{check ? 'No hay pedidos entregados' : 'No hay pedidos para entregar'}</p>
             )}
         </div>
       </div>
@@ -59,7 +79,6 @@ const DeliverSection = ({ title, arr, check }) => {
 };
 
 DeliverSection.propTypes = {
-  title: PropTypes.string.isRequired,
   arr: PropTypes.array.isRequired,
   check: PropTypes.bool.isRequired,
 };
