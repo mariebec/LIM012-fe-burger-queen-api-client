@@ -59,10 +59,11 @@ describe('Eventos', () => {
     expect(screen.getByText('NO').selected).toBe(true);
   });
 
-  test('Debería llamar al evento handleInputChange la cantidad de veces que se tipea', async () => {
+  test('Debería llamar al evento onChange del input', () => {
     render(<FormUsers state={state} setState={setState} />);
-    await fireEvent.change(screen.getByTestId('email'),
-      { target: { value: 'correo' } });
-    expect(screen.getByText('correo')).toBeInTheDocument();
+    const input = screen.getByTestId('email');
+
+    fireEvent.change(input);
+    expect(setState).toHaveBeenCalled();
   });
 });
