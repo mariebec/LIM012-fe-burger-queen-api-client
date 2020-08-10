@@ -1,32 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import { server } from '../../../__mock__/server';
-// import { deleteUser } from '../../../controller/admin-users';
 import UsersTable from '../../../components/admin/users/UsersTable';
-
-// const server = setupServer(
-//   rest.delete('http://localhost:3000/users/u_001', (req, res, ctx) => {
-//     return res(
-//       ctx.status(204),
-//       ctx.json({ message: 'El usuario ha sido eliminado' }),
-//     );
-//   }),
-// )
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
+const setState = jest.fn();
 const state = {
   allUsers: [{
     id: 'u_01',
     email: 'example@gmail.com',
-    password: '13142dsg',
-    roles: { admin: true },
-  }, {
-    id: 'u_02',
-    email: 'kikiriki@gmail.com',
     password: '13142dsg',
     roles: { admin: true },
   }],
@@ -36,25 +22,21 @@ const state = {
   },
 };
 
-describe.only('UserTable', () => {
+describe('UserTable', () => {
   test('verificar que no existen usuarios', () => {
     render(<UsersTable state={state} />);
     expect(screen.getByText('example@gmail.com')).toBeInTheDocument();
   });
 
-  test('Debería mostrar si el nombre del usuario está en el documento', () => {
+  test('No debería mostrar el mensaje de cuando no hay usuarios', () => {
     render(<UsersTable state={state} />);
     expect(screen.queryByText('No hay usuarios registrados')).not.toBeInTheDocument();
   });
 
-  // test('Debería eliminar usuario', () => {
-  //   const handleDeleteUser = (id) => {
-  //     deleteUser(id).then((response) => {
-  //       expect(response.message).toBe('Debería fallar');
-  //     });
-  //   };
-  //   render(<UsersTable state={state} />);
-  //   userEvent.click(screen.getByTestId('delete'));
-  //   expect(response.message).toBe('Debería fallar');
-  // });
+  test('Debería eliminar usuario', () => {
+    render(<UsersTable state={state} setState={setState} />);
+    userEvent.click(screen.getByTestId('delete'));
+
+    expect(setState).toHaveBeenCalled();
+  });
 });
