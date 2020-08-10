@@ -26,6 +26,7 @@ const FormLogin = () => {
 
     const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
     const notValidEmail = email.trim() === '' || !exRegEmail.test(email.trim());
+    // const notValidEmail = email.trim() === '';
     const notValidPassword = password.trim() === '';
 
     if (notValidEmail || notValidPassword) {
