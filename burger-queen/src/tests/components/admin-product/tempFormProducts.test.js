@@ -55,12 +55,10 @@ describe('Eventos', () => {
     expect(screen.getByText('Bebida').selected).toBe(true);
   });
 
-  test('Debería la palabra tipeada debe estar en el documento', async () => {
-    // const handleInputChange = jest.fn();
-
+  test('Debería llamar al setProduct cuando haya un evento en el onChange', () => {
     render(<TempFormProducts product={product} setProduct={setProduct} />);
-    await fireEvent.change(screen.getByRole('textbox'),
-      { target: { value: 'Hamburguesa' } });
-    expect(screen.getByText('Hamburguesa')).toBeInTheDocument();
+    fireEvent.change(screen.getByRole('textbox'));
+
+    expect(setProduct).toHaveBeenCalled();
   });
 });
