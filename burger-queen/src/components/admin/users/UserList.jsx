@@ -21,16 +21,10 @@ const UserList = () => {
   });
 
   useEffect(() => {
-    // const abortController = new AbortController();
-    // const { signal } = abortController;
-
     getUsers().then((resp) => setState((prevState) => ({
       ...prevState,
       allUsers: resp,
     })));
-    // return () => {
-    //   abortController.abort();
-    // };
   }, []);
 
   const modalRoot = document.createElement('div');
