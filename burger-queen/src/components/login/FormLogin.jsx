@@ -24,8 +24,8 @@ const FormLogin = () => {
     const email = currentUser.currentEmail;
     const password = currentUser.currentPassword;
 
-    const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-    const notValidEmail = email.trim() === '' || !exRegEmail.test(email.trim());
+    // const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+    const notValidEmail = email.trim() === '';
     const notValidPassword = password.trim() === '';
 
     if (notValidEmail || notValidPassword) {
@@ -34,10 +34,10 @@ const FormLogin = () => {
       if (notValidPassword) setError((prevState) => ({ ...prevState, password: true }));
       else setError((prevState) => ({ ...prevState, password: false }));
     } else {
-      // console.log(email, password);
+      console.log(JSON.stringify({ email, password }));
       postAuth({ email, password }).then((resp) => {
-        // console.log('Lo que retorna la API', resp);
-        sessionStorage.setItem('login', resp.token);
+        console.log('Lo que retorna la API', resp);
+        // sessionStorage.setItem('login', resp.token);
         getUserByEmail(email).then((user) => {
           history.push('/categories');
           sessionStorage.setItem('currentRol', user.roles.admin);
