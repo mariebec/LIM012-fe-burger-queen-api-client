@@ -33,6 +33,7 @@ const TempFormProducts = ({ product, setProduct }) => {
   };
 
   const closeModal = () => {
+    setError({ name: false, price: false, api: '' });
     const idGenerado = (Math.random() * 1000).toFixed(0).toString();
     setProduct((prevState) => ({
       ...prevState,
@@ -49,7 +50,6 @@ const TempFormProducts = ({ product, setProduct }) => {
         modal: false,
       },
     }));
-    setError({ name: false, price: false, api: '' });
     document.body.removeChild(document.getElementById('modal'));
   };
 

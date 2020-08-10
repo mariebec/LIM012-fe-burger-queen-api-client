@@ -34,6 +34,7 @@ const FormUsers = ({ state, setState }) => {
   };
 
   const closeModal = () => {
+    setError({ email: false, password: false, api: '' });
     const idGenerado = (Math.random() * 1000).toFixed(3).toString();
     setState((prevState) => ({
       ...prevState,
@@ -48,7 +49,6 @@ const FormUsers = ({ state, setState }) => {
         modal: false,
       },
     }));
-    setError({ email: false, password: false, api: '' });
     document.body.removeChild(document.getElementById('modal'));
   };
 
