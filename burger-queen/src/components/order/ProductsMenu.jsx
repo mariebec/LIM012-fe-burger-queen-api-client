@@ -7,7 +7,6 @@ const ProductsMenu = ({ state, setState }) => {
     btnMenu: 'all',
     btnType: false,
   });
-
   const handleType = (type) => {
     switch (type) {
       case 'menu':

@@ -48,7 +48,7 @@ const ProductList = () => {
       <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button onClick={handleAdd} type="button">Agregar producto</button>
+          <button onClick={handleAdd} data-testid="modal" type="button">Agregar producto</button>
           <ModalProducts product={product} setProduct={setProduct} />
         </div>
         <h2>Lista de productos</h2>

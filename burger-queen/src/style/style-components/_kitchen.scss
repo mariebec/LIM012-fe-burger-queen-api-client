@@ -17,9 +17,10 @@ $font-prompt: 'Prompt', sans-serif;
   display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background: rgba(0, 0, 0, 0.8);
     border-radius: 9px;
     align-items: center;
+    width: 100%;
+    height: 100%;
 
   .box-kitchen {
     display: flex;
@@ -27,6 +28,7 @@ $font-prompt: 'Prompt', sans-serif;
     flex-wrap: wrap;
     justify-content: space-evenly;
     height: 85%;
+    width: 100%;
     overflow: auto;
     align-items: center;
 

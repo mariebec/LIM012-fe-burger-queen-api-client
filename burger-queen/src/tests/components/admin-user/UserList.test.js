@@ -18,16 +18,17 @@ describe('Render', () => {
   test('Debería encontrar un "button" en el componente', () => {
     render(<UserList />);
     // getByRole busca un elemento según su tipo
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getAllByRole('button')).not.toBe([]);
   });
 });
 
 describe('click', () => {
   test('Debería cambiar el estado de Display modal', () => {
     render(<UserList />);
+    const agregar = screen.getByTestId('agregar');
 
     expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
-    userEvent.click(screen.getByRole('button'));
+    userEvent.click(agregar, screen.getAllByRole('button'));
     expect(screen.queryByRole('combobox')).toBeInTheDocument();
   });
 });
