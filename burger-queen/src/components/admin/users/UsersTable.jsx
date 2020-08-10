@@ -44,7 +44,6 @@ const UsersTable = ({ state, setState, modalRoot }) => {
         {
           state.allUsers.length > 0
             ? state.allUsers.map((element) => (
-            // console.log(element) ||
               <tr key={element.id}>
                 <td>{element.id}</td>
                 <td>{element.email}</td>
