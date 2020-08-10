@@ -46,7 +46,7 @@ const UserList = () => {
       <Header title="ADMINISTRADOR" />
       <main className="container-list">
         <div className="btn-container">
-          <button type="button" onClick={handleAdd}>Agregar usuario</button>
+          <button type="button" data-testid="agregar" onClick={handleAdd}>Agregar usuario</button>
           <ModalUsers state={state} setState={setState} />
         </div>
         <h2>Lista de usuarios</h2>
