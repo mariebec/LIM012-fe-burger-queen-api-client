@@ -6,20 +6,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { putOrder } from '../../controller/order';
 
-const DeliverSection = ({ arr, check }) => {
+const DeliverSection = ({
+  arr, setDelivering, setDelivered, check,
+}) => {
   // Si check es false es delivering si es true es delivered
   const totalPrice = (order) => order.reduce((acc, element) => (
     acc + (element.qty * element.product.price)), 0);
 
   const handleStatus = (order) => {
-    if (order.status === 'delivering') {
+    if (!check) {
       const obj = {
-        userId: order.userId,
-        client: order.client,
-        products: order.products,
         status: 'delivered',
       };
       putOrder(obj, order._id).then((resp) => console.log(resp));
+      setDelivering(arr.filter((item) => item._id !== order._id));
+      setDelivered((prev) => ([...prev, order]));
     }
   };
 
@@ -81,6 +82,8 @@ const DeliverSection = ({ arr, check }) => {
 
 DeliverSection.propTypes = {
   arr: PropTypes.array.isRequired,
+  // setDelivering: PropTypes.func,
+  // setDelivered: PropTypes.func.isRequired,
   check: PropTypes.bool.isRequired,
 };
 

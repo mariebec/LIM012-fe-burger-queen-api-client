@@ -20,9 +20,6 @@ const KitchenOrder = () => {
     const arrOrder = pending.find((item) => (item.order === order));
     if (arrOrder.status === 'pending') {
       const obj = {
-        userId: arrOrder.userId,
-        client: arrOrder.client,
-        products: arrOrder.products,
         status: 'delivering',
       };
       putOrder(obj, arrOrder._id).then((resp) => console.log(resp));

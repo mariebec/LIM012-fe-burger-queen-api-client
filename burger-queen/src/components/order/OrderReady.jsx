@@ -21,7 +21,12 @@ const OrderReady = () => {
     <>
       <Header />
       <section className="container-orderReady">
-        <DeliverSection arr={delivering} check={false} />
+        <DeliverSection
+          arr={delivering}
+          setDelivering={setDelivering}
+          setDelivered={setDelivered}
+          check={false}
+        />
         <DeliverSection arr={delivered} check />
       </section>
     </>
