@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
@@ -8,7 +9,7 @@ const TempProductsTable = ({ product, setProduct, modalRoot }) => {
   const handleDeleteProduct = (id) => {
     setProduct((prevState) => ({
       ...prevState,
-      allProducts: product.allProducts.filter((item) => item.id !== id),
+      allProducts: product.allProducts.filter((item) => item._id !== id),
     }));
     deleteProduct(id);
   };
@@ -18,12 +19,12 @@ const TempProductsTable = ({ product, setProduct, modalRoot }) => {
     setProduct((prevState) => ({
       ...prevState,
       productData: {
-        id: item.id,
+        _id: item._id,
         name: item.name,
         price: item.price,
         image: item.image,
         type: item.type,
-        date: item.date,
+        dateEntry: item.dateEntry,
       },
       display: {
         modal: true,
@@ -36,7 +37,7 @@ const TempProductsTable = ({ product, setProduct, modalRoot }) => {
     <table className="table t-product">
       <thead className="head-table">
         <tr>
-          <th>Id</th>
+          {/* <th>Id</th> */}
           <th>Nombre</th>
           <th>Precio</th>
           <th>Imagen</th>
@@ -49,8 +50,8 @@ const TempProductsTable = ({ product, setProduct, modalRoot }) => {
         {
           product.allProducts.length > 0
             ? product.allProducts.map((element) => (
-              <tr key={element.id}>
-                <td>{element.id}</td>
+              <tr key={element._id}>
+                {/* <td>{element._id}</td> */}
                 <td>{element.name}</td>
                 <td>
                   S/.
@@ -58,10 +59,10 @@ const TempProductsTable = ({ product, setProduct, modalRoot }) => {
                 </td>
                 <td>{element.image ? <img src={element.image} alt="product" className="t-img" /> : 'not' }</td>
                 <td>{element.type}</td>
-                <td className="t-date">{element.date}</td>
+                <td className="t-date">{element.dateEntry}</td>
                 <td>
                   <i className="icon edit fas fa-edit" onClick={() => handleUpdateProduct(element)} role="button" tabIndex={0} />
-                  <i className="icon delete fas fa-trash-alt" onClick={() => handleDeleteProduct(element.id)} role="button" tabIndex={0} />
+                  <i className="icon delete fas fa-trash-alt" onClick={() => handleDeleteProduct(element._id)} role="button" tabIndex={0} />
                 </td>
               </tr>
             )) : (

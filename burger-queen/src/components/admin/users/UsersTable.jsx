@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
@@ -8,7 +9,7 @@ const UsersTable = ({ state, setState, modalRoot }) => {
   const handleDeleteUser = (id) => {
     setState((prevState) => ({
       ...prevState,
-      allUsers: state.allUsers.filter((user) => user.id !== id),
+      allUsers: state.allUsers.filter((user) => user._id !== id),
     }));
     deleteUser(id);
   };
@@ -18,7 +19,7 @@ const UsersTable = ({ state, setState, modalRoot }) => {
     setState((prevState) => ({
       ...prevState,
       userData: {
-        id: user.id,
+        _id: user._id,
         email: user.email,
         password: user.password,
         roles: { admin: user.roles.admin },
@@ -44,13 +45,13 @@ const UsersTable = ({ state, setState, modalRoot }) => {
         {
           state.allUsers.length > 0
             ? state.allUsers.map((element) => (
-              <tr key={element.id}>
-                <td>{element.id}</td>
+              <tr key={element._id}>
+                <td>{element._id}</td>
                 <td>{element.email}</td>
                 <td>{element.roles.admin ? 'SI' : 'NO' }</td>
                 <td>
                   <i data-testid="edit" className="icon edit fas fa-edit" onClick={() => handleUpdateUser(element)} role="button" tabIndex={0} />
-                  <i data-testid="delete" className="icon delete fas fa-trash-alt" onClick={() => handleDeleteUser(element.id)} role="button" tabIndex={0} />
+                  <i data-testid="delete" className="icon delete fas fa-trash-alt" onClick={() => handleDeleteUser(element._id)} role="button" tabIndex={0} />
                 </td>
               </tr>
             )) : (
