@@ -39,9 +39,9 @@ const FormLogin = () => {
         console.log('Lo que retorna la API', resp);
         // sessionStorage.setItem('login', resp.token);
         getUserByEmail(email).then((user) => {
-          history.push('/categories');
           sessionStorage.setItem('currentRol', user.roles.admin);
           sessionStorage.setItem('currentEmail', user.email);
+          history.push('/categories');
         });
       }).catch((err) => {
         setError((prevState) => ({ ...prevState, message: err }));
