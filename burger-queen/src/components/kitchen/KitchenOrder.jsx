@@ -23,6 +23,7 @@ const KitchenOrder = () => {
         status: 'delivering',
       };
       putOrder(obj, arrOrder._id).then((resp) => console.log(resp));
+      setPending(pending.filter((item) => item._id !== arrOrder._id));
     }
     // setPending(pending.map((order) => (order.status === 'pending'
     // ? { ...order, status: 'delivering' } : order)));
