@@ -1,30 +1,33 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable consistent-return */
-export const getUsers = () => fetch('http://localhost:3000/users',
-  {
+export const getUsers = () =>
+  // fetch('http://localhost:3000/users',
+  fetch('https://burger-queen-apilab.herokuapp.com/users', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
     },
   }).then((resp) => {
-  if (resp.status === 200) {
-    return resp.json();
-  } if (resp.status === 401) {
-    return new Error('No hay cabecera de autenticación');
-  } if (resp.status === 401) {
-    return new Error('No tiene permiso');
-  }
-});
+    if (resp.status === 200) {
+      return resp.json();
+    } if (resp.status === 401) {
+      return new Error('No hay cabecera de autenticación');
+    } if (resp.status === 403) {
+      return new Error('No tiene permiso');
+    }
+  });
 
-export const postUser = (user) => fetch('http://localhost:3000/users', {
+export const postUser = (user) => fetch('https://burger-queen-apilab.herokuapp.com/users', {
   method: 'POST',
   body: JSON.stringify(user),
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
-  if (resp.status === 201) {
+  if (resp.status === 200) {
     return resp.json();
   } if (resp.status === 400) {
     return new Error('Email o contraseña son requeridos');
@@ -35,14 +38,14 @@ export const postUser = (user) => fetch('http://localhost:3000/users', {
   }
 });
 
-export const deleteUser = (id) => fetch(`http://localhost:3000/users/${id}`, {
+export const deleteUser = (id) => fetch(`https://burger-queen-apilab.herokuapp.com/users/${id}`, {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
-  if (resp.status === 204) {
+  if (resp.status === 200) {
     return resp.json();
   } if (resp.status === 401) {
     return new Error('No hay cabecera de autenticación');
@@ -53,12 +56,12 @@ export const deleteUser = (id) => fetch(`http://localhost:3000/users/${id}`, {
   }
 });
 
-export const putUser = (user) => fetch(`http://localhost:3000/users/${user.id}`, {
+export const putUser = (user, id) => fetch(`https://burger-queen-apilab.herokuapp.com/users/${id}`, {
   method: 'PUT',
   body: JSON.stringify(user),
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
   if (resp.status === 200) {

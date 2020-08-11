@@ -1,9 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable consistent-return */
-export const getProducts = () => fetch('http://localhost:3000/products', {
+export const getProducts = () => fetch('https://burger-queen-apilab.herokuapp.com/products', {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
   if (resp.status === 200) {
@@ -12,15 +14,15 @@ export const getProducts = () => fetch('http://localhost:3000/products', {
     return new Error('No hay cabecera de autenticación');
   }
 });
-export const postProduct = (product) => fetch('http://localhost:3000/products', {
-  // console.log('Enviando', user);
+export const postProduct = (product) => fetch('https://burger-queen-apilab.herokuapp.com/products', {
   method: 'POST',
   body: JSON.stringify(product),
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
-  if (resp.status === 201) {
+  if (resp.status === 200) {
     return resp.json();
   } if (resp.status === 400) {
     return new Error('Faltan el nombre o precio');
@@ -32,10 +34,11 @@ export const postProduct = (product) => fetch('http://localhost:3000/products', 
     return new Error('No existe un producto con ese Id');
   }
 });
-export const deleteProduct = (id) => fetch(`http://localhost:3000/products/${id}`, {
+export const deleteProduct = (id) => fetch(`https://burger-queen-apilab.herokuapp.com/products/${id}`, {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
   if (resp.status === 204) {
@@ -49,11 +52,12 @@ export const deleteProduct = (id) => fetch(`http://localhost:3000/products/${id}
   }
 });
 
-export const putProduct = (product) => fetch(`http://localhost:3000/products/${product.id}`, {
+export const putProduct = (product, id) => fetch(`https://burger-queen-apilab.herokuapp.com/products/${id}`, {
   method: 'PUT',
   body: JSON.stringify(product),
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
   },
 }).then((resp) => {
   if (resp.status === 200) {
