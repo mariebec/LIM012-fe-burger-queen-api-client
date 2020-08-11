@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
@@ -35,11 +36,10 @@ const FormUsers = ({ state, setState }) => {
 
   const closeModal = () => {
     setError({ email: false, password: false, api: '' });
-    const idGenerado = (Math.random() * 1000).toFixed(3).toString();
     setState((prevState) => ({
       ...prevState,
       userData: {
-        id: idGenerado,
+        _id: '',
         email: '',
         password: '',
         roles: { admin: false },
@@ -73,10 +73,15 @@ const FormUsers = ({ state, setState }) => {
         setError(err);
       });
     } else {
-      putUser(state.userData).then((resp) => {
+      const id = state.userData._id;
+      const userObj = {
+        email: state.userData.email,
+        password: state.userData.password,
+      };
+      putUser(userObj, id).then((resp) => {
         setState((prevState) => ({
           ...prevState,
-          allUsers: state.allUsers.map((user) => (user.id === resp.id ? resp : user)),
+          allUsers: state.allUsers.map((user) => (user._id === resp._id ? resp : user)),
         }));
         closeModal();
       }).catch((err) => {

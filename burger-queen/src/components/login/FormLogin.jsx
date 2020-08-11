@@ -34,10 +34,8 @@ const FormLogin = () => {
       if (notValidPassword) setError((prevState) => ({ ...prevState, password: true }));
       else setError((prevState) => ({ ...prevState, password: false }));
     } else {
-      console.log(JSON.stringify({ email, password }));
       postAuth({ email, password }).then((resp) => {
-        console.log('Lo que retorna la API', resp);
-        // sessionStorage.setItem('login', resp.token);
+        sessionStorage.setItem('token', resp.token);
         getUserByEmail(email).then((user) => {
           sessionStorage.setItem('currentRol', user.roles.admin);
           sessionStorage.setItem('currentEmail', user.email);

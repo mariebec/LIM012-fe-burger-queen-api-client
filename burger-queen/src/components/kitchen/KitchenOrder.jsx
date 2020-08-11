@@ -19,13 +19,13 @@ const KitchenOrder = () => {
   const handleOrder = (order) => {
     const arrOrder = pending.find((item) => (item.order === order));
     if (arrOrder.status === 'pending') {
-      console.log(arrOrder);
       const obj = {
-        ...arrOrder,
+        userId: arrOrder.userId,
+        client: arrOrder.client,
+        products: arrOrder.products,
         status: 'delivering',
       };
-      console.log(obj);
-      putOrder(obj).then((resp) => console.log(resp));
+      putOrder(obj, arrOrder._id).then((resp) => console.log(resp));
     }
     // setPending(pending.map((order) => (order.status === 'pending'
     // ? { ...order, status: 'delivering' } : order)));

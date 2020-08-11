@@ -5,16 +5,15 @@ import { getProducts } from '../../../controller/admin-products';
 import ModalProducts from './ModalProducts';
 
 const ProductList = () => {
-  const idGenerado = (Math.random() * 1000).toFixed(0).toString();
   const [product, setProduct] = useState({
     allProducts: [],
     productData: {
-      id: idGenerado,
+      _id: '',
       name: '',
       price: '',
       image: '',
-      type: '',
-      date: '',
+      type: 'breakfast',
+      dateEntry: '',
     },
     display: {
       modal: false,

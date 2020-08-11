@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
@@ -31,7 +32,7 @@ const ProductsMenu = ({ state, setState }) => {
 
   const addProduct = (item) => {
     // Hay que buscar si ya está en el array de la orden
-    const result = state.productsList.find((element) => element.product.id === item.id);
+    const result = state.productsList.find((element) => element.product._id === item._id);
 
     if (!result) {
       setState((prev) => ({
@@ -64,7 +65,7 @@ const ProductsMenu = ({ state, setState }) => {
           {
             state.products.length > 0
               ? state.products.map((element) => (
-                <div key={element.id} className="box-food" onClick={() => addProduct(element)} role="button" tabIndex={0}>
+                <div key={element._id} className="box-food" onClick={() => addProduct(element)} role="button" tabIndex={0}>
                   <img src={element.image} alt="logo" className="img-food" />
                   <p>{element.name}</p>
                 </div>

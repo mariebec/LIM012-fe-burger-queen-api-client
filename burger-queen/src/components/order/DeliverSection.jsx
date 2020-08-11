@@ -14,11 +14,12 @@ const DeliverSection = ({ arr, check }) => {
   const handleStatus = (order) => {
     if (order.status === 'delivering') {
       const obj = {
-        ...order,
+        userId: order.userId,
+        client: order.client,
+        products: order.products,
         status: 'delivered',
       };
-      // console.log(obj);
-      putOrder(obj).then((resp) => console.log(resp));
+      putOrder(obj, order._id).then((resp) => console.log(resp));
     }
   };
 

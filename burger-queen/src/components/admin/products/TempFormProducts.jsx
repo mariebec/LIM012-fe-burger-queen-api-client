@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
@@ -28,21 +29,26 @@ const TempFormProducts = ({ product, setProduct }) => {
     reader.readAsDataURL(e.target.files[0]);
 
     reader.onload = (event) => {
-      setProduct({ ...product, image: event.target.result });
+      setProduct((prevState) => ({
+        ...prevState,
+        productData: {
+          ...product.productData,
+          image: event.target.result,
+        },
+      }));
     };
   };
 
   const closeModal = () => {
     setError({ name: false, price: false, api: '' });
-    const idGenerado = (Math.random() * 1000).toFixed(0).toString();
     setProduct((prevState) => ({
       ...prevState,
       productData: {
-        id: idGenerado,
+        _id: '',
         name: '',
         price: '',
         image: '',
-        type: '',
+        type: 'breakfast',
         date: '',
       },
       display: {
@@ -55,7 +61,7 @@ const TempFormProducts = ({ product, setProduct }) => {
 
   const handleRequestProduct = (request) => {
     const validName = product.productData.name.trim() === '';
-    const validPrice = product.productData.price.trim() === '';
+    const validPrice = product.productData.price < 1;
 
     if (validName || validPrice) {
       if (validName) setError((prevState) => ({ ...prevState, name: true }));
@@ -63,7 +69,13 @@ const TempFormProducts = ({ product, setProduct }) => {
       if (validPrice) setError((prevState) => ({ ...prevState, price: true }));
       else setError((prevState) => ({ ...prevState, price: false }));
     } else if (request === 'POST') {
-      postProduct(product.productData).then((resp) => {
+      const productObj = {
+        name: product.productData.name,
+        price: parseInt(product.productData.price, 10),
+        image: product.productData.image,
+        type: product.productData.type,
+      };
+      postProduct(productObj).then((resp) => {
         setProduct((prevState) => ({
           ...prevState,
           allProducts: [...product.allProducts, resp],
@@ -73,10 +85,17 @@ const TempFormProducts = ({ product, setProduct }) => {
         setError(err);
       });
     } else {
-      putProduct(product.productData).then((resp) => {
+      const productObj = {
+        name: product.productData.name,
+        price: parseInt(product.productData.price, 10),
+        image: product.productData.image,
+        type: product.productData.type,
+      };
+      const id = product.productData._id;
+      putProduct(productObj, id).then((resp) => {
         setProduct((prevState) => ({
           ...prevState,
-          allProducts: product.allProducts.map((prod) => (prod.id === resp.id ? resp : prod)),
+          allProducts: product.allProducts.map((prod) => (prod._id === resp._id ? resp : prod)),
         }));
         closeModal();
       }).catch((err) => {
@@ -126,19 +145,6 @@ const TempFormProducts = ({ product, setProduct }) => {
               <option value="extra">Adicional</option>
               <option value="drink">Bebida</option>
             </select>
-          </div>
-        </div>
-        <div className="field-p">
-          <label htmlFor="input-date" className="label-text">Fecha:</label>
-          <div className="box-option">
-            <input
-              defaultValue={product.productData.date}
-              id="input-date"
-              type="date"
-              name="date"
-              className={error.date ? 'date d-error' : 'date'}
-              onChange={handleInputChange}
-            />
           </div>
         </div>
         <div className="field-p">

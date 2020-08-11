@@ -5,11 +5,10 @@ import { getUsers } from '../../../controller/admin-users';
 import ModalUsers from './ModalUsers';
 
 const UserList = () => {
-  const idGenerado = (Math.random() * 1000).toFixed(3).toString();
   const [state, setState] = useState({
     allUsers: [],
     userData: {
-      id: idGenerado,
+      _id: '',
       email: '',
       password: '',
       roles: { admin: false },
